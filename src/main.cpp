@@ -53,8 +53,8 @@ int main(int argc, char* argv[])
   simgrid::s4u::Mailbox* mb1 = simgrid::s4u::Mailbox::by_name("Mailbox 1");
   simgrid::s4u::Mailbox* mb2 = simgrid::s4u::Mailbox::by_name("Mailbox 2");
 
-  simgrid::s4u::Actor::create("pinger", simgrid::s4u::Host::by_name("Tremblay"), pinger, mb1, mb2);
-  simgrid::s4u::Actor::create("ponger", simgrid::s4u::Host::by_name("Jupiter"), ponger, mb2, mb1);
+  simgrid::s4u::Actor::create("pinger", simgrid::s4u::Host::by_name("host0"), pinger, mb1, mb2);
+  simgrid::s4u::Actor::create("ponger", simgrid::s4u::Host::by_name("host1"), ponger, mb2, mb1);
 
   e.run();
 
