@@ -1,5 +1,14 @@
-# CMAKE
+# Ignore all
+*
 
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+### Above combination will ignore all files without extension ###
+# CMAKE
 CMakeCache.txt
 cmake_install.cmake
 CMakeFiles
