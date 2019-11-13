@@ -1,14 +1,27 @@
 cmake_minimum_required(VERSION 2.8.8)
 
-project(FogSimulator) # TODO: give a real name to your project here
+project(FogSimulator) 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+
 
 find_package(SimGrid 3.22 REQUIRED) # This template requires SimGrid v3.22
 
 include_directories(${SimGrid_INCLUDE_DIR})
 
-add_executable(main main.cpp)
-target_link_libraries(main ${SimGrid_LIBRARY})
+include_directories(
+        
+        ${PROJECT_SOURCE_DIR}/src
+)
 
+file(GLOB all_SRCS
+		"${PROJECT_SOURCE_DIR}/include/*.h"
+		"${PROJECT_SOURCE_DIR}/include/*.hpp"
+        "${PROJECT_SOURCE_DIR}/src/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/*.c"
+        )
+
+
+add_executable(main ${all_SRCS})
+target_link_libraries(main ${SimGrid_LIBRARY})
