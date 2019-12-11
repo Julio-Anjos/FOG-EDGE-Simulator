@@ -1,17 +1,17 @@
-#ifndef SENSOR_H
-#define SENSOR_H
+#ifndef MSQ_NODE_H
+#define MSQ_NODE_H
 using namespace std; 
 #include <simgrid/s4u.hpp>
 
-class Sensor
+class Msq_node
 {
 private:
     simgrid::s4u::Host* host;
     string name;
-    
+     
 public:
    
-    Sensor(simgrid::s4u::Host* host);
+    Msq_node(simgrid::s4u::Host* host);
  
     void display_loaded();
 };

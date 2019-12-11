@@ -1,7 +1,27 @@
 <?xml version='1.0'?>
 <!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
 <platform version="4.1">
-  <cluster id="cluster0" prefix="sensor" radical="0-8" suffix=""
-     speed="1Gf" bw="125MBps" lat="50us"
-           bb_bw="2.25GBps"  bb_lat="500us"/>
+  <AS id="AS1" routing="Full">
+	<host id="Sensor-0" speed="1000000000.0f"  />
+	<host id="Sensor-1" speed="1000000000.0f" />
+	<host id="Sensor-2" speed="1000000000.0f"  />
+	<host id="Sensor-3" speed="1000000000.0f"  />
+	<host id="Sensor-4" speed="1000000000.0f"  />
+	<host id="Sensor-5" speed="1000000000.0f"  />
+	<host id="Sensor-6" speed="1000000000.0f"  />
+	<host id="Sensor-7" speed="1000000000.0f"  />
+	<host id="Sensor-8" speed="1000000000.0f"  />
+	<host id="Sensor-9" speed="1000000000.0f"  />
+
+	<host id="Msq_node-0" speed="1000000000.0f"  />
+	<host id="Msq_node-1" speed="1000000000.0f" />
+	<host id="Msq_node-2" speed="1000000000.0f"  />
+	<host id="Msq_node-3" speed="1000000000.0f"  />
+	<host id="Msq_node-4" speed="1000000000.0f"  />
+	<host id="Msq_node-5" speed="1000000000.0f"  />
+	<host id="Msq_node-6" speed="1000000000.0f"  />
+	<host id="Msq_node-7" speed="1000000000.0f"  />
+	<host id="Msq_node-8" speed="1000000000.0f"  />
+	<host id="Msq_node-9" speed="1000000000.0f"  />
+  </AS>
 </platform>
