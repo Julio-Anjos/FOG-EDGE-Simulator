@@ -46,3 +46,4 @@ Makefile
 *.exe
 *.out
 *.app
+.vscode/settings.json

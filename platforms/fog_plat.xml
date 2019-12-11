@@ -1,0 +1,7 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+  <cluster id="cluster0" prefix="sensor" radical="0-8" suffix=""
+     speed="1Gf" bw="125MBps" lat="50us"
+           bb_bw="2.25GBps"  bb_lat="500us"/>
+</platform>
