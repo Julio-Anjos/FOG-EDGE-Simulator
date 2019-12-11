@@ -1,5 +1,6 @@
 #include <simgrid/s4u.hpp>
 #include <iostream>
+#include "sensor.h"
 
 XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simulator");
 
