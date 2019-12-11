@@ -1,7 +1,8 @@
 #include <simgrid/s4u.hpp>
 #include <iostream>
+#include <string>
 #include "sensor.h"
-
+using namespace std; 
 XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simulator");
 
 
@@ -15,12 +16,17 @@ int main(int argc, char* argv[])
   e.load_platform(argv[1]);
    
   //Getting every host
-  std::vector<simgrid::s4u::Host*> hosts_list = e.get_all_hosts();
+  vector<simgrid::s4u::Host*> host_list = e.get_all_hosts();
   
-  for(simgrid::s4u::Host* host : hosts_list){
-      std::cout << host->get_cname() << std::endl;
-  }
+  Sensor sensor(host_list[0]);
+  sensor.something();
 
+
+  /*
+  for(simgrid::s4u::Host* host : host_list){
+      
+  }
+  */
 
 
   //simgrid::s4u::Actor::create("pinger", simgrid::s4u::Host::by_name("host0"), pinger, mb1, mb2);
