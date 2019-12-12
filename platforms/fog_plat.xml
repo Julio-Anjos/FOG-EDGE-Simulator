@@ -24,4 +24,16 @@
 	<host id="Msq_node-8" speed="1000000000.0f"  />
 	<host id="Msq_node-9" speed="1000000000.0f"  />
   </AS>
+
+  <link id="0" bandwidth="100MBps" latency="500us"/>
+  <link id="1" bandwidth="100MBps" latency="500us"/>
+  <link id="2" bandwidth="100MBps" latency="500us"/>
+  <link id="3" bandwidth="100MBps" latency="500us"/>
+  <link id="4" bandwidth="100MBps" latency="500us"/>
+  <link id="5" bandwidth="100MBps" latency="500us"/>
+  <link id="6" bandwidth="100MBps" latency="500us"/>
+  <link id="7" bandwidth="100MBps" latency="500us"/>
+  <link id="8" bandwidth="100MBps" latency="500us"/>
+  <link id="9" bandwidth="100MBps" latency="500us"/>
+
 </platform>

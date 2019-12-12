@@ -5,15 +5,21 @@
 using namespace std; 
 
 //Constructor
-Msq_node::Msq_node(simgrid::s4u::Host* host){
+Msq_node::Msq_node(vector<string> args)
+{
+    xbt_assert(args.size() > 1, "One argument needed.");
+    test_parameter = stoi(args[1]);
+    
+    cout << "Constructor Executed (MSQ): " << test_parameter << endl;
 
-    this->host = host;
-    this->name = host->get_name();
-    this->display_loaded();
 }
 
-void Msq_node::display_loaded(){
-    cout << "Host " << this->name << " has loaded successfully." << endl;
+
+//This is the function that will first run when the platform executes
+void Msq_node::operator()(void)
+{
+    cout << "Operator Executed (MSQ): " << test_parameter << endl;
 }
+
 
 

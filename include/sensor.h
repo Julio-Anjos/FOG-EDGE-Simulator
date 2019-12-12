@@ -1,19 +1,20 @@
 #ifndef SENSOR_H
 #define SENSOR_H
-using namespace std; 
 #include <simgrid/s4u.hpp>
+
+
+using namespace std; 
 
 class Sensor
 {
-private:
-    simgrid::s4u::Host* host;
-    string name;
-    
-public:
-   
-    Sensor(simgrid::s4u::Host* host);
- 
-    void display_loaded();
+    private:
+        int test_parameter;
+
+    public:
+        
+        Sensor(vector<string> args); //Constructor
+        
+        void operator()(void); //This is the function that will first run when the platform executes
 };
- 
+
 #endif
