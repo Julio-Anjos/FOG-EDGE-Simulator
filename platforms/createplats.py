@@ -34,7 +34,7 @@ def write_connections(f,num_sensors,num_nodes):
 	
 	for i in range(num_sensors):
 		for j in range(num_nodes):
-			f.write("	<route src=\"Sensor-"+str(i)+"\" dst=\"Msq_node-"+str(j)+"\">\n 		<link_ctn id=\"1\"/>\n 	</route>\n")
+			f.write("	<route src=\"Sensor-"+str(i)+"\" dst=\"Msq_node-"+str(j)+"\" symmetrical=\"yes\">\n 		<link_ctn id=\"1\"/>\n 	</route>\n")
 	
 	
 def write_plat_file(num_sensors,num_nodes, platform_name):
