@@ -1,0 +1,331 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+	<zone id="zone0" routing="Full">
+	<host id="Sensor-0" speed="1000000000.0f"  />
+	<host id="Sensor-1" speed="1000000000.0f"  />
+	<host id="Sensor-2" speed="1000000000.0f"  />
+	<host id="Sensor-3" speed="1000000000.0f"  />
+	<host id="Sensor-4" speed="1000000000.0f"  />
+	<host id="Sensor-5" speed="1000000000.0f"  />
+	<host id="Sensor-6" speed="1000000000.0f"  />
+	<host id="Sensor-7" speed="1000000000.0f"  />
+	<host id="Sensor-8" speed="1000000000.0f"  />
+	<host id="Sensor-9" speed="1000000000.0f"  />
+	<host id="Msq_node-0" speed="1000000000.0f"  />
+	<host id="Msq_node-1" speed="1000000000.0f"  />
+	<host id="Msq_node-2" speed="1000000000.0f"  />
+	<host id="Msq_node-3" speed="1000000000.0f"  />
+	<host id="Msq_node-4" speed="1000000000.0f"  />
+	<host id="Msq_node-5" speed="1000000000.0f"  />
+	<host id="Msq_node-6" speed="1000000000.0f"  />
+	<host id="Msq_node-7" speed="1000000000.0f"  />
+	<host id="Msq_node-8" speed="1000000000.0f"  />
+	<host id="Msq_node-9" speed="1000000000.0f"  />
+
+
+ 	<link id="1" bandwidth="50MBps" latency="50us"/>
+
+	<route src="Sensor-0" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-0" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-1" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-2" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-3" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-4" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-5" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-6" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-7" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-8" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-0">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-1">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-2">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-3">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-4">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-5">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-6">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-7">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-8">
+ 		<link_ctn id="1"/>
+ 	</route>
+	<route src="Sensor-9" dst="Msq_node-9">
+ 		<link_ctn id="1"/>
+ 	</route>
+
+ 	</zone>
+</platform>

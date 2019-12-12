@@ -12,7 +12,6 @@ int main(int argc, char* argv[])
     //Starting engine and confirming number of arguments
     simgrid::s4u::Engine e(&argc, argv);
     xbt_assert(argc > 2, "Usage: %s platform_file deployment_file\n", argv[0]);
-
     
     //Register sensors and msq_nodes
     e.register_actor<Msq_node>("msq_node");
@@ -26,8 +25,7 @@ int main(int argc, char* argv[])
     e.run();
 
     //End of simulation
-    XBT_INFO("Total simulation time: %.3f", e.get_clock());
-
+    XBT_INFO("\nTotal simulation time: %.3f", e.get_clock());
 
     return 0;
 }

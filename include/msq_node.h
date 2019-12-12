@@ -8,7 +8,9 @@ class Msq_node
 {
     private:
         int test_parameter;
-
+        simgrid::s4u::Host * host;
+        string host_name;
+    
     public:
         
         Msq_node(vector<string> args); //Constructor

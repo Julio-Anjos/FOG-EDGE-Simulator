@@ -10,7 +10,10 @@ Msq_node::Msq_node(vector<string> args)
     xbt_assert(args.size() > 1, "One argument needed.");
     test_parameter = stoi(args[1]);
     
-    cout << "Constructor Executed (MSQ): " << test_parameter << endl;
+    host = simgrid::s4u::this_actor::get_host();
+    host_name = host->get_name();
+    
+    cout << host_name <<" Constructor Executed."<< endl;
 
 }
 
@@ -18,7 +21,7 @@ Msq_node::Msq_node(vector<string> args)
 //This is the function that will first run when the platform executes
 void Msq_node::operator()(void)
 {
-    cout << "Operator Executed (MSQ): " << test_parameter << endl;
+    cout << host_name << " Operator Executed." << endl;
 }
 
 

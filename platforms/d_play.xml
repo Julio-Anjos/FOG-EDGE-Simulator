@@ -1,0 +1,65 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+	<actor host="Sensor-0" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-1" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-2" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-3" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-4" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-5" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-6" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-7" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-8" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Sensor-9" function="sensor">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-0" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-1" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-2" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-3" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-4" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-5" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-6" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-7" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-8" function="msq_node">
+		<argument value="20"/>
+	</actor>
+	<actor host="Msq_node-9" function="msq_node">
+		<argument value="20"/>
+	</actor>
+
+</platform>
