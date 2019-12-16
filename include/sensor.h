@@ -17,7 +17,7 @@ class Sensor
         Sensor(vector<string> args); //Constructor
         
         void operator()(void); //This is the function that will first run when the platform executes
-        void stream();   //Makes sensor send its stream data to its msq_nodes
+        void burst(int num_packages, long int size , double end_time);   //Makes sensor send its stream data to its msq_nodes
 
 };
 

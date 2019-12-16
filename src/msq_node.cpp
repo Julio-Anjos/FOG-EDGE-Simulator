@@ -16,6 +16,8 @@ Msq_node::Msq_node(vector<string> args)
     host_name = host->get_name();
     mailbox = simgrid::s4u::Mailbox::by_name(host_name);
     
+
+
     cout << host_name <<" Constructor Executed."<< endl;
 
 }
@@ -29,12 +31,22 @@ void Msq_node::operator()(void)
     cout << host_name << " Operator Executed." << endl;
 }
 
-
+//Keeps receiving data untill told to stop
 void Msq_node::receive()
 {
-    int* payload = static_cast<int*>(mailbox->get());
-    printf("%d\n",*payload);
+    
+    double current_time;
+    int *payload_test;
+    do{
 
-    delete payload;
+        payload_test = static_cast<int*>(mailbox->get());
+        current_time = simgrid::s4u::Engine::get_clock();
+        cout << "Receive at: " << current_time << endl;
+
+    }
+    while(*payload_test == 1); // Payload will be 0 when it needs to stop
+    
+    
+    
 
 }

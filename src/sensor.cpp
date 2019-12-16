@@ -5,6 +5,7 @@
 using namespace std; 
 
 
+
 Sensor::Sensor(vector<string> args)
 {
     //Testing arguments (localized on the deploy platform file)
@@ -24,18 +25,28 @@ Sensor::Sensor(vector<string> args)
 void Sensor::operator()(void)
 {
     
-    stream();
+    burst(450,100,200);
     cout << host_name << " Operator Executed."  << endl;
 }
 
-void Sensor::stream()
+void Sensor::burst(int num_packages, long int size , double end_time)
 {
     simgrid::s4u::Mailbox* msq_mailbox = simgrid::s4u::Mailbox::by_name("Msq_node-0");
     
-    int *payload = new int(32);
-    msq_mailbox->put(payload, 1e9);
+    int counter =0 ;
+    int *payload_continue = new int(1);
+    int *payload_stop = new int(0);
+    double current_time;
 
-  
+    do{
+        current_time = simgrid::s4u::Engine::get_clock();
+        msq_mailbox->put(payload_continue, size);
+        counter++;
+    }
+    while(current_time < end_time && counter < num_packages);
+    
+    msq_mailbox->put(payload_stop, 0);
+
 }
 
 
