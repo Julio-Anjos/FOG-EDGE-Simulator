@@ -1,0 +1,9 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+	<actor host="Sensor-0" function="sensor">
+	</actor>
+	<actor host="Msq_node-0" function="msq_node">
+	</actor>
+
+</platform>

@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+	<zone id="zone0" routing="Full">
+	<host id="Sensor-0" speed="1000000000.0f"  />
+	<host id="Msq_node-0" speed="1000000000.0f"  />
+
+
+ 	<link id="1" bandwidth="50MBps" latency="50us"/>
+
+	<route src="Sensor-0" dst="Msq_node-0" symmetrical="yes">
+ 		<link_ctn id="1"/>
+ 	</route>
+
+ 	</zone>
+</platform>
