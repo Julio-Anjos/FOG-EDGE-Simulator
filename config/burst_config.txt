@@ -1,0 +1,10 @@
+burst_config=1
+0-10 : 	1000x100	//Template: From time_start-time_end : num_packets x size_packets
+10-30 : 250x100
+30-50 : 500x150
+
+
+burst_config=2
+0-10 : 	1000x100	
+10-30 : 250x100
+30-50 : 500x150

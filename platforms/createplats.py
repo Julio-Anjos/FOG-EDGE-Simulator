@@ -28,7 +28,7 @@ def read_config(config_path):
 			line = line.split("=")
 			config.append(line)
 
-	print(config)
+	return config
 
 
 def write_connections(f,num_sensors,num_nodes):
@@ -39,7 +39,10 @@ def write_connections(f,num_sensors,num_nodes):
 			f.write("	<route src=\"Sensor-"+str(i)+"\" dst=\"Msq_node-"+str(j)+"\" symmetrical=\"yes\">\n 		<link_ctn id=\"1\"/>\n 	</route>\n")
 	
 	
-def write_plat_file(num_sensors,num_nodes, platform_name):
+def write_plat_file(config):
+	
+	print(config)
+	'''
 	if not platform_name.endswith(".xml"):
 		platform_name = platform_name + ".xml"
 	
@@ -59,7 +62,7 @@ def write_plat_file(num_sensors,num_nodes, platform_name):
 	f.write("\n 	</zone>")
 	f.write(file_end)
 	f.close()
-
+	'''
 def write_d_plat_file(num_sensors,num_nodes,platform_name,arguments):
 	
 	platform_name = "d_" + platform_name 
@@ -95,8 +98,9 @@ def write_d_plat_file(num_sensors,num_nodes,platform_name,arguments):
 def main():
 	config_path = get_config()
 
-	read_config(config_path)
-	#write_plat_file(num_sensors,num_nodes, platform_name,)
+	config = read_config(config_path)
+	
+	write_plat_file(config)
 	
 	#write_d_plat_file(num_sensors,num_nodes,platform_name,arguments)
 
