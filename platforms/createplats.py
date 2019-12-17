@@ -4,30 +4,32 @@ file_start = "<?xml version=\'1.0\'?>\n<!DOCTYPE platform SYSTEM \"http://simgri
 file_end = "\n</platform>"
 
 
-#Getting arguments
-def get_arguments():
+#Getting path of the config
+def get_config():
 	arguments = sys.argv
 	del(arguments[0])
 
-
-	if len(arguments) < 3:
-		print("Number of sensors,number of nodes and platform_name is needed.")
+	if not arguments:
+		print("Please include path to config file.")
 		exit()
 
-	platform_name = arguments[0]
-	del(arguments[0])
+	return arguments[0]	#Config file name
 
-	try:
-		num_sensors = int(arguments[0])
-		num_nodes = int(arguments[1])
-		del(arguments[0])
-		del(arguments[0])
-	except:
-		print("Number of sensors and number of nodes must be numbers.")
+#Read the config file
+def read_config(config_path):
+	f = open(config_path, "r")
+	
+	config = []
 
+	for line in f:
+		line = line.strip('\n')
+		if not line.startswith("//") and line: #Removing comments and empty lines
+			line = line.split("//")[0].strip("\t").strip(" ") #Removing comments and \t and " "
+			line = line.split("=")
+			config.append(line)
 
+	print(config)
 
-	return num_sensors,num_nodes,platform_name,arguments
 
 def write_connections(f,num_sensors,num_nodes):
 	f.write("\n\n 	<link id=\"1\" bandwidth=\"50MBps\" latency=\"50us\"/>\n\n")
@@ -91,11 +93,12 @@ def write_d_plat_file(num_sensors,num_nodes,platform_name,arguments):
 
 
 def main():
-	num_sensors,num_nodes,platform_name,arguments = get_arguments()
+	config_path = get_config()
+
+	read_config(config_path)
+	#write_plat_file(num_sensors,num_nodes, platform_name,)
 	
-	write_plat_file(num_sensors,num_nodes, platform_name,)
-	
-	write_d_plat_file(num_sensors,num_nodes,platform_name,arguments)
+	#write_d_plat_file(num_sensors,num_nodes,platform_name,arguments)
 
 
 
