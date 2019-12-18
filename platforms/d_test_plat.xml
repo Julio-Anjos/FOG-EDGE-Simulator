@@ -9,15 +9,9 @@
        <argument value="0"/>   <!-- burst config id --> 
    </actor>
 
-   <actor host="Msq_node-0" function="msq_node">
-   </actor>
-
    <actor host="Sensor-1" function="sensor">
        <argument value="0"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
-   </actor>
-
-   <actor host="Msq_node-0" function="msq_node">
    </actor>
 
    <actor host="Sensor-2" function="sensor">
@@ -33,23 +27,14 @@
        <argument value="0"/>   <!-- burst config id --> 
    </actor>
 
-   <actor host="Msq_node-1" function="msq_node">
-   </actor>
-
    <actor host="Sensor-4" function="sensor">
        <argument value="1"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
    </actor>
 
-   <actor host="Msq_node-1" function="msq_node">
-   </actor>
-
    <actor host="Sensor-5" function="sensor">
        <argument value="1"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
-   </actor>
-
-   <actor host="Msq_node-1" function="msq_node">
    </actor>
 
    <actor host="Sensor-6" function="sensor">

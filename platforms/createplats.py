@@ -24,8 +24,9 @@ def read_config(config_path):
     for line in f:
         line = line.strip('\n')
         if not line.startswith("//") and line: #Removing comments and empty lines
-            line = line.split("//")[0].strip("\t").strip(" ") #Removing comments and \t and " "
+            line = line.split("//")[0].replace(" ", "").replace("\t","")#Removing comments and \t and " "
             line = line.split("=")
+ 
             config.append(line)
 
     return config
@@ -101,7 +102,7 @@ def write_plat_file(config):
 
         
     #Lets make the connections
-    f.write("\n       <link id=\"1\" bandwidth=\"50MBps\" latency=\"50us\"/>\n\n")
+    f.write("\n       <link id=\"1\" bandwidth=\"50MBps\" latency=\"0us\"/>\n\n")
     msq_node_id = 0
     sensor_id = 0
     for num_sensors in sensor_amount:
@@ -165,8 +166,9 @@ def write_d_plat_file(config):
     msq_node_id = 0
     sensor_id = 0
     for num_sensors in sensor_amounts:
+        write_deploy_msq_node(f,msq_node_id)
         for i in range(num_sensors):
-            write_deploy_msq_node(f,msq_node_id)
+            
             
             write_deploy_sensor(f,sensor_id)
             write_argument(f,str(msq_node_id),"connected msq node id")
