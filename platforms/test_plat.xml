@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+   <zone id="zone0" routing="Full">
+       <host id="Msq_node-0" speed="1000000000f"  />
+       <host id="Sensor-0" speed="500000000	f"  />
+       <host id="Sensor-1" speed="500000000	f"  />
+       <host id="Sensor-2" speed="500000000	f"  />
+       <host id="Msq_node-1" speed="1000000000f"  />
+       <host id="Sensor-3" speed="500000000f"  />
+       <host id="Sensor-4" speed="500000000f"  />
+       <host id="Sensor-5" speed="500000000f"  />
+       <host id="Sensor-6" speed="500000000f"  />

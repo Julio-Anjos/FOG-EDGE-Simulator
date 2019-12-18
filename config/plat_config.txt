@@ -1,23 +1,22 @@
 //Name of the platform files that will be created:
-plat_name=test_plat
-//Amount o msq_nodes, to every msq_node there will be a number of connected sensors.
-num_msq_nodes=3
+plat_name=test_plat			//MUST BE FIRST PARAMETER
+
+//Now lets define every msq_node and its group, please keep the ordering
 
 //For the first msq_node:
-msq_node_speed=1000000000  	//Execution speed in flops
+msq_node_speed=1000000000 	//Execution speed in flops
 num_sensors=3				//Number of sensors connected to this msq_node
-sensors_speed=1000000000	//Execution speed in flops
-burst_config=1				//Burst configuration (look at the burst file)
+sensors_speed=500000000	    //Execution speed in flops
+burst_config=0				//What burst configuration it will use (look at the burst file)
 
 //Next msq node:
-msq_node_speed=1000000000  	//Execution speed in flops
-num_sensors=4				//Number of sensors connected to this msq_node
-sensors_speed=1000000000	//Execution speed in flops
-burst_config=1				//Burst configuration
+msq_node_speed=1000000000  	
+num_sensors=4				
+sensors_speed=500000000	
+burst_config=0				
 
 //Next msq node:
-msq_node_speed=1000000000  	//Execution speed in flops
-num_sensors=1				//Number of sensors connected to this msq_node
-sensors_speed=1000000000	//Execution speed in flops
-burst_config=1				//Burst configuration
-
+msq_node_speed=80000000 	
+num_sensors=1				
+sensors_speed=500000000	
+burst_config=1				
