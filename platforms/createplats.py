@@ -42,7 +42,7 @@ def write_plat_msq_node(f,id,speed):
     f.write("       <host id=\"Msq_node-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
 
 def write_connection(f,sensor_id,msq_node_id):
-    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"Msq_node-"+str(msq_node_id)+"\" symmetrical=\"yes\">\n       <link_ctn id=\"1\"/>\n  </route>\n")
+    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"Msq_node-"+str(msq_node_id)+"\" symmetrical=\"yes\">\n           <link_ctn id=\"1\"/>\n       </route>\n")
     
 
 def write_plat_file(config):
@@ -100,46 +100,86 @@ def write_plat_file(config):
 
 
         
-    
-    
+    #Lets make the connections
     f.write("\n       <link id=\"1\" bandwidth=\"50MBps\" latency=\"50us\"/>\n\n")
-    
+    msq_node_id = 0
+    sensor_id = 0
+    for num_sensors in sensor_amount:
+        for i in range(num_sensors):
+            write_connection(f,sensor_id,msq_node_id)
+            sensor_id += 1
+        msq_node_id += 1
+
+
     #End file
     f.write("\n   </zone>")
     f.write(file_end)
     
     f.close()
 
-def write_d_plat_file(num_sensors,num_nodes,platform_name,arguments):
-    '''
-    platform_name = "d_" + platform_name 
-    
+
+
+def write_argument(f,value,comment):
+    f.write("       <argument value=\""+value+"\"/>   <!-- "+ comment +" --> \n")
+
+def write_deploy_sensor(f,sensor_id):
+    f.write("   <actor host=\"Sensor-"+str(sensor_id)+"\" function=\"sensor\">\n")
+
+def write_deploy_msq_node(f,msq_node_id):
+    f.write("   <actor host=\"Msq_node-"+str(msq_node_id)+"\" function=\"msq_node\">\n")
+    f.write("   </actor>\n\n")
+
+def write_d_plat_file(config):
+
+
+
+    #Creating file with the platform name
+    if config[0][0] == "plat_name":
+        platform_name = config[0][1]
+        platform_name = "d_" + platform_name 
+        if not platform_name.endswith(".xml"):
+            platform_name = platform_name + ".xml"
+        f = open(platform_name, "w")
+    else:
+        raise Exception("First parameter on platform config file must be plat_name")
+
     if not platform_name.endswith(".xml"):
         platform_name = platform_name + ".xml"
-    
     f = open(platform_name, "w")
-
     f.write(file_start)
 
-    
-    for i in range(num_sensors):
-        f.write("   <actor host=\"Sensor-"+str(i)+"\" function=\"sensor\">\n")
-        for value in arguments:
-            f.write("       <argument value=\""+value+"\"/>\n")
-        f.write("   </actor>\n")
+   
+    #Lets us keep track of sensors and msq_nodes
+    id_sensor = 0
+    id_msq_node = 0
+    sensor_amounts = []
+    burst_configs = []
+    for i in range(len(config)):
+        parameter = config[i]
+        if parameter[0] == "num_sensors":
+            sensor_amounts.append(int(parameter[1]))
+        if parameter[0] == "burst_config":
+            burst_configs.append(parameter[1])
 
 
-    for i in range(num_nodes):
-        f.write("   <actor host=\"Msq_node-"+str(i)+"\" function=\"msq_node\">\n")
-        for value in arguments:
-            f.write("       <argument value=\""+value+"\"/>\n")
-        f.write("   </actor>\n")
-
+    msq_node_id = 0
+    sensor_id = 0
+    for num_sensors in sensor_amounts:
+        for i in range(num_sensors):
+            write_deploy_msq_node(f,msq_node_id)
+            
+            write_deploy_sensor(f,sensor_id)
+            write_argument(f,str(msq_node_id),"connected msq node id")
+            write_argument(f,burst_configs[msq_node_id],"burst config id")
+            f.write("   </actor>\n\n")
+            
+            sensor_id += 1
+        msq_node_id += 1
 
     
     f.write(file_end)
     f.close()
-    '''
+
 
 
 def main():
@@ -149,7 +189,7 @@ def main():
     
     write_plat_file(config)
     
-    #write_d_plat_file(num_sensors,num_nodes,platform_name,arguments)
+    write_d_plat_file(config)
 
 
 
