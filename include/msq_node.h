@@ -1,7 +1,7 @@
 #ifndef MSQ_NODE_H
 #define MSQ_NODE_H
 #include <simgrid/s4u.hpp>
-
+#include "burst_conf.h"
 using namespace std; 
 
 class Msq_node

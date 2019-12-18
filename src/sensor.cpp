@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "sensor.h"
+
 using namespace std; 
 
 
@@ -16,7 +17,7 @@ Sensor::Sensor(vector<string> args)
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
     
-
+    burst_config.dosomething();
     cout << host_name << " Constructor Executed."  << endl;
     
 }
@@ -25,7 +26,7 @@ Sensor::Sensor(vector<string> args)
 void Sensor::operator()(void)
 {
     
-    burst(450,100,200);
+    //burst(450,100,200);
     cout << host_name << " Operator Executed."  << endl;
 }
 

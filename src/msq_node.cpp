@@ -27,7 +27,7 @@ Msq_node::Msq_node(vector<string> args)
 void Msq_node::operator()(void)
 {
     
-    receive();
+    //receive();
     cout << host_name << " Operator Executed." << endl;
 }
 

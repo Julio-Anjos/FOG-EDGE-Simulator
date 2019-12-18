@@ -1,6 +1,7 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 #include <simgrid/s4u.hpp>
+#include "burst_conf.h"
 
 
 using namespace std; 
