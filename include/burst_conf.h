@@ -1,8 +1,7 @@
 #ifndef BURST_CONF_H
 #define BURST_CONF_H
 
-#include <iostream>
-#include <string>
+
 using namespace std; 
 
 //This class reads the config file. An instance of this class
@@ -15,8 +14,9 @@ class Burst_conf
     
     public:
     
-    Burst_conf(string x);
+    Burst_conf();
     void dosomething();
+    void set_path(string x);
         
 };
 

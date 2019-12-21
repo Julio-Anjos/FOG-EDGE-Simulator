@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "sensor.h"
-
+#include "burst_conf.h"
 using namespace std; 
 
 

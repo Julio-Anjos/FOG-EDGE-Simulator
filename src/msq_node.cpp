@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "msq_node.h"
+#include "burst_conf.h"
 using namespace std; 
 
 //Constructor
