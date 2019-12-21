@@ -17,9 +17,9 @@ Sensor::Sensor(vector<string> args)
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
     
-    burst_config.dosomething();
-    cout << host_name << " Constructor Executed."  << endl;
-    
+    burst_config.get_intervals("0");
+
+
 }
 
 //This is the function that will first run when the platform executes

@@ -18,9 +18,6 @@ Msq_node::Msq_node(vector<string> args)
     mailbox = simgrid::s4u::Mailbox::by_name(host_name);
     
 
-
-    cout << host_name <<" Constructor Executed."<< endl;
-
 }
 
 

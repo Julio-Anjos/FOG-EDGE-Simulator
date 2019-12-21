@@ -14,11 +14,11 @@ int main(int argc, char* argv[])
 {
     //Starting engine and confirming number of arguments
     simgrid::s4u::Engine e(&argc, argv);
-    xbt_assert(argc > 3, "Usage: %s platform_file deployment_file\n", argv[0]);
+    xbt_assert(argc > 3, "Usage: %s platform_file deployment_file burst_config_file\n", argv[0]);
 
     
     //Getting burst config path
-    burst_config.set_path(argv[3]);
+    burst_config.initialize(argv[3]);
    
     //Register sensors and msq_nodes
     e.register_actor<Msq_node>("msq_node");

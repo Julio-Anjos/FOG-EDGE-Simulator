@@ -1,12 +1,12 @@
-//ALWAYS ADD burst_config atribute before each config (start at 0)
+//ALWAYS ADD burst_config atribute before each config, so you can later reference it on the platform file
 
 burst_config=0
-0-10 : 	1000x100	//Template: From time_start-time_end : num_packets x size_packets
-10-30 : 250x100
-30-50 : 500x150
+0-10 : 1000x100	//Template: From time_start-time_end : num_packets x size_packets (gaps of time with no definition will keep the same stream as the last determined one)
+10-30 : 250x100  
+30-50 : 500x150 
 
 
-burst_config=1	
-0-10 : 	1000x100	
+burst_config=1
+0-10  :	1000x100
 10-30 : 250x100
 30-50 : 500x150
