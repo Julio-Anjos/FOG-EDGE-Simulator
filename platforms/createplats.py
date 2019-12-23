@@ -165,14 +165,16 @@ def write_d_plat_file(config):
 
     msq_node_id = 0
     sensor_id = 0
+
     for num_sensors in sensor_amounts:
         write_deploy_msq_node(f,msq_node_id)
         for i in range(num_sensors):
             
-            
+            #Writes the nodes and arguments with comments explaining each argument
             write_deploy_sensor(f,sensor_id)
             write_argument(f,str(msq_node_id),"connected msq node id")
             write_argument(f,burst_configs[msq_node_id],"burst config id")
+            write_argument(f,str(num_sensors),"number of sensors in the same msq node connection")
             f.write("   </actor>\n\n")
             
             sensor_id += 1

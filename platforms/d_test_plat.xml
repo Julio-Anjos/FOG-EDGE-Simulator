@@ -7,16 +7,19 @@
    <actor host="Sensor-0" function="sensor">
        <argument value="0"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="3"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
    <actor host="Sensor-1" function="sensor">
        <argument value="0"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="3"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
    <actor host="Sensor-2" function="sensor">
        <argument value="0"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="3"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
    <actor host="Msq_node-1" function="msq_node">
@@ -25,21 +28,25 @@
    <actor host="Sensor-3" function="sensor">
        <argument value="1"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="4"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
    <actor host="Sensor-4" function="sensor">
        <argument value="1"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="4"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
    <actor host="Sensor-5" function="sensor">
        <argument value="1"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="4"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
    <actor host="Sensor-6" function="sensor">
        <argument value="1"/>   <!-- connected msq node id --> 
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="4"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
    <actor host="Msq_node-2" function="msq_node">
@@ -48,6 +55,7 @@
    <actor host="Sensor-7" function="sensor">
        <argument value="2"/>   <!-- connected msq node id --> 
        <argument value="1"/>   <!-- burst config id --> 
+       <argument value="1"/>   <!-- number of sensors in the same msq node connection --> 
    </actor>
 
 
