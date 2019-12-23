@@ -2,43 +2,52 @@
 <!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
 <platform version="4.1">
    <zone id="zone0" routing="Full">
-       <host id="Msq_node-0" speed="1000000000f"  />
+       <host id="MsqNode-0" speed="1000000000f"  />
        <host id="Sensor-0" speed="500000000f"  />
        <host id="Sensor-1" speed="500000000f"  />
        <host id="Sensor-2" speed="500000000f"  />
-       <host id="Msq_node-1" speed="1000000000f"  />
+       <host id="MsqNode-1" speed="1000000000f"  />
        <host id="Sensor-3" speed="500000000f"  />
        <host id="Sensor-4" speed="500000000f"  />
        <host id="Sensor-5" speed="500000000f"  />
        <host id="Sensor-6" speed="500000000f"  />
-       <host id="Msq_node-2" speed="80000000f"  />
+       <host id="MsqNode-2" speed="80000000f"  />
        <host id="Sensor-7" speed="500000000f"  />
 
-       <link id="1" bandwidth="50MBps" latency="0us"/>
+        <!-- The bandwidth is defined during the program execution by the burst_config -->
 
-       <route src="Sensor-0" dst="Msq_node-0" symmetrical="yes">
-           <link_ctn id="1"/>
+       <link id="Sensor-0_MsqNode-0" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-0_MsqNode-0.txt" />
+       <link id="Sensor-1_MsqNode-0" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-1_MsqNode-0.txt" />
+       <link id="Sensor-2_MsqNode-0" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-2_MsqNode-0.txt" />
+       <link id="Sensor-3_MsqNode-1" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-3_MsqNode-1.txt" />
+       <link id="Sensor-4_MsqNode-1" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-4_MsqNode-1.txt" />
+       <link id="Sensor-5_MsqNode-1" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-5_MsqNode-1.txt" />
+       <link id="Sensor-6_MsqNode-1" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-6_MsqNode-1.txt" />
+       <link id="Sensor-7_MsqNode-2" bandwidth="0MBps" latency="0us" bandwidth_file="profiles_temp/Sensor-7_MsqNode-2.txt" />
+
+       <route src="Sensor-0" dst="MsqNode-0" symmetrical="yes">
+           <link_ctn id="Sensor-0_MsqNode-0" />
        </route>
-       <route src="Sensor-1" dst="Msq_node-0" symmetrical="yes">
-           <link_ctn id="1"/>
+       <route src="Sensor-1" dst="MsqNode-0" symmetrical="yes">
+           <link_ctn id="Sensor-1_MsqNode-0" />
        </route>
-       <route src="Sensor-2" dst="Msq_node-0" symmetrical="yes">
-           <link_ctn id="1"/>
+       <route src="Sensor-2" dst="MsqNode-0" symmetrical="yes">
+           <link_ctn id="Sensor-2_MsqNode-0" />
        </route>
-       <route src="Sensor-3" dst="Msq_node-1" symmetrical="yes">
-           <link_ctn id="1"/>
+       <route src="Sensor-3" dst="MsqNode-1" symmetrical="yes">
+           <link_ctn id="Sensor-3_MsqNode-1" />
        </route>
-       <route src="Sensor-4" dst="Msq_node-1" symmetrical="yes">
-           <link_ctn id="1"/>
+       <route src="Sensor-4" dst="MsqNode-1" symmetrical="yes">
+           <link_ctn id="Sensor-4_MsqNode-1" />
        </route>
-       <route src="Sensor-5" dst="Msq_node-1" symmetrical="yes">
-           <link_ctn id="1"/>
+       <route src="Sensor-5" dst="MsqNode-1" symmetrical="yes">
+           <link_ctn id="Sensor-5_MsqNode-1" />
        </route>
-       <route src="Sensor-6" dst="Msq_node-1" symmetrical="yes">
-           <link_ctn id="1"/>
+       <route src="Sensor-6" dst="MsqNode-1" symmetrical="yes">
+           <link_ctn id="Sensor-6_MsqNode-1" />
        </route>
-       <route src="Sensor-7" dst="Msq_node-2" symmetrical="yes">
-           <link_ctn id="1"/>
+       <route src="Sensor-7" dst="MsqNode-2" symmetrical="yes">
+           <link_ctn id="Sensor-7_MsqNode-2" />
        </route>
 
    </zone>

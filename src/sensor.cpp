@@ -10,15 +10,22 @@ using namespace std;
 Sensor::Sensor(vector<string> args)
 {
     //Testing arguments (localized on the deploy platform file)
-    //xbt_assert(args.size() > 1, "One argument needed.");
-    //test_parameter = stoi(args[1]);
+    xbt_assert(args.size() > 3, "Three arguments needed. Connected msq node id, burst config id and number of sensors in the same msq node connection");
     
+    //Getting arguments
+    connected_msq_node = args[1];
+    burst_config_id = args[2];
+    num_concurrent_sensors = stoi(args[3]);
+
     //Setting host variables
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
-    
-    burst_config.get_intervals("0");
 
+
+    simgrid::s4u::Link *this_link = simgrid::s4u::Link::by_name(host_name + "_" + connected_msq_node);
+    cout << this_link->get_bandwidth() << endl;
+
+    
 
 }
 
@@ -32,6 +39,10 @@ void Sensor::operator()(void)
 
 void Sensor::burst(int num_packages, long int size , double end_time)
 {
+    
+    return;
+    /*
+    
     simgrid::s4u::Mailbox* msq_mailbox = simgrid::s4u::Mailbox::by_name("Msq_node-0");
     
     int counter =0 ;
@@ -47,7 +58,7 @@ void Sensor::burst(int num_packages, long int size , double end_time)
     while(current_time < end_time && counter < num_packages);
     
     msq_mailbox->put(payload_stop, 0);
-
+    */
 }
 
 

@@ -140,12 +140,6 @@ void Burst_conf::parse_file(){
 vector<interval> Burst_conf::get_intervals(string burst_config){
 
     vector<interval> intervals = this->interval_map[burst_config];
-    
-    for (int i = 0; i < intervals.size(); i++) {
-		cout << intervals[i].num_packages << endl;
-	}
-
-
     return intervals;
 }
 

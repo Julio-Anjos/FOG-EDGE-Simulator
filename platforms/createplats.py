@@ -40,10 +40,13 @@ def write_plat_sensor(f,id,speed):
     f.write("       <host id=\"Sensor-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
 
 def write_plat_msq_node(f,id,speed):
-    f.write("       <host id=\"Msq_node-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
+    f.write("       <host id=\"MsqNode-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
 
+
+def write_link(f,sensor_id,msq_node_id):
+     f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\"0MBps\" latency=\"0us\" bandwidth_file=\"profiles_temp/Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+".txt\" />")
 def write_connection(f,sensor_id,msq_node_id):
-    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"Msq_node-"+str(msq_node_id)+"\" symmetrical=\"yes\">\n           <link_ctn id=\"1\"/>\n       </route>\n")
+    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" symmetrical=\"yes\">\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")
     
 
 def write_plat_file(config):
@@ -100,9 +103,22 @@ def write_plat_file(config):
         raise Exception("Parameter " + parameter[0] + "does not exist.")
 
 
+    f.write("\n        <!-- The bandwidth is defined during the program execution by the burst_config -->\n")
         
-    #Lets make the connections
-    f.write("\n       <link id=\"1\" bandwidth=\"50MBps\" latency=\"0us\"/>\n\n")
+    #Making the links
+    msq_node_id = 0
+    sensor_id = 0
+    for num_sensors in sensor_amount:
+        #creates empty profile files, they will be written during the program
+        for i in range(num_sensors):
+            write_link(f,sensor_id,msq_node_id)
+            open("profiles_temp/Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+".txt","w").close()
+            sensor_id += 1
+        msq_node_id += 1
+
+
+    f.write("\n\n")
+    #Making the connections
     msq_node_id = 0
     sensor_id = 0
     for num_sensors in sensor_amount:
@@ -110,6 +126,8 @@ def write_plat_file(config):
             write_connection(f,sensor_id,msq_node_id)
             sensor_id += 1
         msq_node_id += 1
+
+        
 
 
     #End file
@@ -127,7 +145,7 @@ def write_deploy_sensor(f,sensor_id):
     f.write("   <actor host=\"Sensor-"+str(sensor_id)+"\" function=\"sensor\">\n")
 
 def write_deploy_msq_node(f,msq_node_id):
-    f.write("   <actor host=\"Msq_node-"+str(msq_node_id)+"\" function=\"msq_node\">\n")
+    f.write("   <actor host=\"MsqNode-"+str(msq_node_id)+"\" function=\"msq_node\">\n")
     f.write("   </actor>\n\n")
 
 def write_d_plat_file(config):
@@ -172,7 +190,7 @@ def write_d_plat_file(config):
             
             #Writes the nodes and arguments with comments explaining each argument
             write_deploy_sensor(f,sensor_id)
-            write_argument(f,str(msq_node_id),"connected msq node id")
+            write_argument(f,"MsqNode-"+str(msq_node_id),"connected msq node")
             write_argument(f,burst_configs[msq_node_id],"burst config id")
             write_argument(f,str(num_sensors),"number of sensors in the same msq node connection")
             f.write("   </actor>\n\n")
