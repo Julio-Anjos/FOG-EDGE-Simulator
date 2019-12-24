@@ -1,5 +1,6 @@
 #include <simgrid/s4u.hpp>
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "sensor.h"
 #include "burst_conf.h"
@@ -21,11 +22,8 @@ Sensor::Sensor(vector<string> args)
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
 
-
-    simgrid::s4u::Link *this_link = simgrid::s4u::Link::by_name(host_name + "_" + connected_msq_node);
-    cout << this_link->get_bandwidth() << endl;
-
-    
+    //Target msq_node mailbox
+    msq_mailbox = simgrid::s4u::Mailbox::by_name(connected_msq_node);
 
 }
 
@@ -33,32 +31,48 @@ Sensor::Sensor(vector<string> args)
 void Sensor::operator()(void)
 {
     
-    //burst(450,100,200);
-    cout << host_name << " Operator Executed."  << endl;
+    vector<interval> burst_intervals = burst_config.get_intervals(burst_config_id);
+    
+    float last_end_time = 0;
+    //Iterate over the intervals
+    for(interval burst : burst_intervals ){
+        start_burst(burst.end_time, burst.num_packages,burst.package_size);
+    }
+
+
+
+    
+    //cout << host_name << " Operator Executed."  << endl;
 }
 
-void Sensor::burst(int num_packages, long int size , double end_time)
+
+
+void Sensor::start_burst(float end_time, int num_packages, int package_size )
 {
     
-    return;
-    /*
+    double* current_time = new double();
     
-    simgrid::s4u::Mailbox* msq_mailbox = simgrid::s4u::Mailbox::by_name("Msq_node-0");
     
-    int counter =0 ;
-    int *payload_continue = new int(1);
-    int *payload_stop = new int(0);
-    double current_time;
-
+    int *stop_flag = new int(0);
+    int *continue_flag = new int(1);
+    
+    int counter = 0;
     do{
-        current_time = simgrid::s4u::Engine::get_clock();
-        msq_mailbox->put(payload_continue, size);
+
+        *current_time = simgrid::s4u::Engine::get_clock();
+        
+        
+        msq_mailbox->put(continue_flag,package_size);
         counter++;
     }
-    while(current_time < end_time && counter < num_packages);
+    while(counter < num_packages);
     
-    msq_mailbox->put(payload_stop, 0);
-    */
+    cout << host_name << " finished burst " <<  end_time << ":" << num_packages <<"x" << package_size << " at the time: " << *current_time << endl;
+
+    msq_mailbox->put(stop_flag,0);
+    *current_time = simgrid::s4u::Engine::get_clock();  
+    
+    return;
 }
 
 

@@ -6,8 +6,9 @@ using namespace std;
 class Msq_node
 {
     private:
-        int test_parameter;
-        
+        int num_sensors;    //Num of sensors connected to this msq node
+        int num_bursts;  //Number of intervals in the burst_config
+
         simgrid::s4u::Host * host;  
         string host_name;
         simgrid::s4u::Mailbox* mailbox;

@@ -11,7 +11,9 @@ class Sensor
         string connected_msq_node;    //Msq node that is connected to this sensor
         string burst_config_id;       //Burst configuration that its being used
         int num_concurrent_sensors; //Number of sensors that are also connected to the msq_node
-
+        
+        simgrid::s4u::Mailbox* msq_mailbox; //Mailbox of the target msq_node
+        
         simgrid::s4u::Host * host;
         string host_name;
 
@@ -20,7 +22,9 @@ class Sensor
         Sensor(vector<string> args); //Constructor
         
         void operator()(void); //This is the function that will first run when the platform executes
-        void burst(int num_packages, long int size , double end_time);   //Makes sensor send its stream data to its msq_nodes
+        
+        void prepare_bandwidth(); //This function prepares the profile bandwith according to the burst_config
+        void start_burst(float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
 
 };
 

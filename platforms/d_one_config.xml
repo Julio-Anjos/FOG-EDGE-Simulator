@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+   <actor host="MsqNode-0" function="msq_node">
+       <argument value="0"/>   <!-- burst config id --> 
+       <argument value="1"/>   <!-- number of sensors connected to this msq --> 
+   </actor>
+
+   <actor host="Sensor-0" function="sensor">
+       <argument value="MsqNode-0"/>   <!-- connected msq node --> 
+       <argument value="0"/>   <!-- burst config id --> 
+       <argument value="1"/>   <!-- number of sensors in the same msq node connection --> 
+   </actor>
+
+
+</platform>

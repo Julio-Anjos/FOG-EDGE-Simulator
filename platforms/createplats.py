@@ -156,7 +156,6 @@ def write_deploy_sensor(f,sensor_id):
 
 def write_deploy_msq_node(f,msq_node_id):
     f.write("   <actor host=\"MsqNode-"+str(msq_node_id)+"\" function=\"msq_node\">\n")
-    f.write("   </actor>\n\n")
 
 def write_d_plat_file(config):
 
@@ -196,6 +195,9 @@ def write_d_plat_file(config):
 
     for num_sensors in sensor_amounts:
         write_deploy_msq_node(f,msq_node_id)
+        write_argument(f,burst_configs[msq_node_id],"burst config id")
+        write_argument(f,str(num_sensors),"number of sensors connected to this msq")
+        f.write("   </actor>\n\n")
         for i in range(num_sensors):
             
             #Writes the nodes and arguments with comments explaining each argument
@@ -207,7 +209,7 @@ def write_d_plat_file(config):
             
             sensor_id += 1
         msq_node_id += 1
-
+        
     
     f.write(file_end)
     f.close()

@@ -75,12 +75,13 @@ void Burst_conf::parse_file(){
         found = line.find("burst_config=");
         if(found != string::npos){
             
-            //Every time we change config we save the new information on the map
+
+            //Save the new information on the map
             if (!first_config){
-                
+            
                 this->interval_map.insert(make_pair(current_config, aux_vec));
                 aux_vec.clear();
-                
+            
             }
 
             //13 is burst_config size
@@ -116,7 +117,6 @@ void Burst_conf::parse_file(){
                 //Save auxiliar vector
                 aux_vec.push_back(aux_interval);
                 
-
                 continue;
             }
         }
@@ -128,7 +128,8 @@ void Burst_conf::parse_file(){
         xbt_assert(false, "Burst configuration file is not correct, line: %s",line.c_str());
     }
             
-        
+    //Add the last one
+    this->interval_map.insert(make_pair(current_config, aux_vec));
       
     file.close();
 }
