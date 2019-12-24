@@ -6,7 +6,7 @@ using namespace std;
 
 
 typedef struct burst_interval{
-    float start_time, end_time;
+    float end_time;
     int num_packages,package_size;
 } interval;
 

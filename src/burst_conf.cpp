@@ -45,10 +45,19 @@ void Burst_conf::parse_file(){
     int num_packages,package_size;
 
     bool first_config = true;
-
+    string::iterator end_pos;
+    
     while (getline(file, line)) {
         
         
+        //Remove all tabs and spaces from this line
+        end_pos = std::remove(line.begin(), line.end(), ' ');
+        line.erase(end_pos, line.end());
+        end_pos = std::remove(line.begin(), line.end(), '\t');
+        line.erase(end_pos, line.end());
+            
+
+
         
         //Removing comments
         found = line.find("//");
@@ -84,49 +93,36 @@ void Burst_conf::parse_file(){
         }
         
         
-        string::iterator end_pos;
+        
+       
+       
         //Getting a burst interval information
-        found = line.find("-");
+        found = line.find(":");
         if(found != string::npos){
-            
-            //Remove all tabs and spaces from this interval information
-            end_pos = std::remove(line.begin(), line.end(), ' ');
-            line.erase(end_pos, line.end());
-            end_pos = std::remove(line.begin(), line.end(), '\t');
-            line.erase(end_pos, line.end());
-            
-            //Get starting time
-            found = line.find("-");
-            if(found != string::npos){
-                aux_interval.start_time = stof(line.substr(0,found));
-                line.erase(0,found+1);
-            
+            //Get end time
+            aux_interval.end_time = stof(line.substr(0,found));
+            line.erase(0,found+1);
 
-                //Get end time
-                found = line.find(":");
-                if(found != string::npos){
-                    aux_interval.end_time = stof(line.substr(0,found));
-                    line.erase(0,found+1);
+
+            //Get number of packages
+            found = line.find("x");
+            if(found != string::npos){
+                aux_interval.num_packages = stoi(line.substr(0,found));
+                line.erase(0,found+1);
+    
+                //Get packages_size
+                aux_interval.package_size = stoi(line);
+
+                //Save auxiliar vector
+                aux_vec.push_back(aux_interval);
                 
 
-                    //Get number of packages
-                    found = line.find("x");
-                    if(found != string::npos){
-                        aux_interval.num_packages = stoi(line.substr(0,found));
-                        line.erase(0,found+1);
-            
-                        //Get packages_size
-                        aux_interval.package_size = stoi(line);
-
-                        //Save auxiliar vector
-                        aux_vec.push_back(aux_interval);
-                        
-
-                        continue;
-                    }
-                }
+                continue;
             }
         }
+       
+            
+        
                 
             
         xbt_assert(false, "Burst configuration file is not correct, line: %s",line.c_str());
