@@ -43,8 +43,8 @@ def write_plat_msq_node(f,id,speed):
     f.write("       <host id=\"MsqNode-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
 
 
-def write_link(f,sensor_id,msq_node_id):
-     f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\"0MBps\" latency=\"0us\" bandwidth_file=\"profiles_temp/Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+".txt\" />")
+def write_link(f,sensor_id,msq_node_id,connection_speed):
+     f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\"0us\" />")
 def write_connection(f,sensor_id,msq_node_id):
     f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" symmetrical=\"yes\">\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")
     
@@ -64,6 +64,11 @@ def write_plat_file(config):
     #Start file
     f.write(file_start)
     f.write("   <zone id=\"zone0\" routing=\"Full\">\n")
+
+
+    #Keeping track of links and their speeds
+    link_id=0
+    link_speed = []
 
 
     #Keeping track of how many sensors are in each msq_node
@@ -89,6 +94,12 @@ def write_plat_file(config):
             id_msq_node += 1
             continue
         
+        if parameter[0] == "connection_speed":
+            for i in range(num_sensors):
+                link_speed.append(parameter[1])
+                link_id += 1
+            continue
+
         if parameter[0] == "num_sensors":
             if next_parameter[0] == "sensors_speed":
                num_sensors = int(parameter[1])
@@ -111,8 +122,7 @@ def write_plat_file(config):
     for num_sensors in sensor_amount:
         #creates empty profile files, they will be written during the program
         for i in range(num_sensors):
-            write_link(f,sensor_id,msq_node_id)
-            open("profiles_temp/Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+".txt","w").close()
+            write_link(f,sensor_id,msq_node_id,link_speed[sensor_id])
             sensor_id += 1
         msq_node_id += 1
 
