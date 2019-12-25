@@ -44,10 +44,10 @@ def write_plat_msq_node(f,id,speed):
 
 
 def write_link(f,sensor_id,msq_node_id,connection_speed):
-     f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\"0us\" />")
+    f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\"0us\" />")
 def write_connection(f,sensor_id,msq_node_id):
-    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" symmetrical=\"yes\">\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")
-    
+    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" >\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")
+   
 
 def write_plat_file(config):
     
@@ -191,23 +191,25 @@ def write_d_plat_file(config):
 
 
     msq_node_id = 0
-    sensor_id = 0
-
+    sensor_id1 = 0
+    sensor_id2=0
     for num_sensors in sensor_amounts:
         write_deploy_msq_node(f,msq_node_id)
         write_argument(f,burst_configs[msq_node_id],"burst config id")
-        write_argument(f,str(num_sensors),"number of sensors connected to this msq")
+
+
+        for i in range(num_sensors):
+            write_argument(f,"Sensor-"+str(sensor_id1),"one of this hosts sensor")
+            sensor_id1 += 1
+
+
         f.write("   </actor>\n\n")
         for i in range(num_sensors):
-            
             #Writes the nodes and arguments with comments explaining each argument
-            write_deploy_sensor(f,sensor_id)
-            write_argument(f,"MsqNode-"+str(msq_node_id),"connected msq node")
-            write_argument(f,burst_configs[msq_node_id],"burst config id")
-            write_argument(f,str(num_sensors),"number of sensors in the same msq node connection")
+            write_deploy_sensor(f,sensor_id2)
             f.write("   </actor>\n\n")
             
-            sensor_id += 1
+            sensor_id2 += 1
         msq_node_id += 1
         
     

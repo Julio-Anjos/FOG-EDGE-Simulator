@@ -18,8 +18,8 @@ connection_speed=50MBps
 burst_config=0				
 
 //Next msq node:
-msq_node_speed=80000000 	
+msq_node_speed=1000000000	
 num_sensors=4				
 sensors_speed=500000000
 connection_speed=50MBps	
-burst_config=0				
+burst_config=0			

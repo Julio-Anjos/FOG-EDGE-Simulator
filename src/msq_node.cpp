@@ -9,20 +9,30 @@ using namespace std;
 Msq_node::Msq_node(vector<string> args)
 {
     //Testing arguments (localized on the deploy platform file)
-    xbt_assert(args.size() > 2, "Number of sensors and burst_config_id needed for each msq_node");
+    xbt_assert(args.size() > 1, "Burst config id needed for each msq_node");
 
-    string burst_config_id = args[1];
+    burst_config_id = args[1];
     num_bursts = burst_config.get_intervals(burst_config_id).size(); //Number of intervals in the burst_config
-
-    num_sensors = stoi(args[2]);   
 
 
     //Getting host variables
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
     
-    //Setting up mailbox
-    mailbox =  simgrid::s4u::Mailbox::by_name(host_name);
+    string receive_mailbox_name;
+    //Getting the sensor names and mailboxes
+
+
+    //Creating mailbox vectors
+    for(int i =2; i< args.size(); i++){
+        sensor_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(args[i]));
+        receive_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(host_name + "_" + args[i]));  //This node has one mailbox for each sensor to receive their info
+    }
+
+    num_sensors =  sensor_mailboxes.size();
+    
+  
+    
 
 }
 
@@ -31,13 +41,27 @@ Msq_node::Msq_node(vector<string> args)
 void Msq_node::operator()(void)
 {
     
+    //Send starting information for the sensors
+    for(int i =0;i<num_sensors ;i++){
+        sensor_mailboxes[i]->put(&burst_config_id,0);
+        sensor_mailboxes[i]->put(&host_name,0);
+        sensor_mailboxes[i]->put(&num_sensors,0);
+    }
+    
+
+    //Receive the bursts from the sensors
+    
     receive();
-    //cout << host_name << " Operator Executed." << endl;
+   
+        
+    
 }
 
 //Keeps receiving data untill told to stop
 void Msq_node::receive()
 {
+    
+    
     int complete_bursts=0;
     double current_time;
     
@@ -46,22 +70,20 @@ void Msq_node::receive()
     int *flag;
     do{
         //Receive a payload
-        flag = static_cast<int*>(mailbox->get());
-        
-        
-        /*
+        for(int i=0;i<num_sensors;i++){
+            flag = static_cast<int*>(receive_mailboxes[i]->get());
+            if(*flag == 0){
+                complete_bursts++;
+            }
+        }
+       
         //Getting current time
         current_time = simgrid::s4u::Engine::get_clock();  
-        */
-
-        //Saves the fact that a node has ended
-        if(*flag == 0){
-            complete_bursts++;
-        }
-        
+    
     }
     while(complete_bursts < total_bursts); //Check if all sensors of this node have ended
-    cout << host_name << " " << complete_bursts << endl;
+    
+    cout << host_name << " completed all " << complete_bursts << " bursts." << endl;
     
     
     

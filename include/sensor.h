@@ -12,8 +12,9 @@ class Sensor
         string burst_config_id;       //Burst configuration that its being used
         int num_concurrent_sensors; //Number of sensors that are also connected to the msq_node
         
-        simgrid::s4u::Mailbox* msq_mailbox; //Mailbox of the target msq_node
-        
+        simgrid::s4u::Mailbox* mailbox;     
+        simgrid::s4u::Mailbox* msq_mailbox; //mailbox of target msq
+
         simgrid::s4u::Host * host;
         string host_name;
 

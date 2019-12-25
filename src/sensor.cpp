@@ -2,47 +2,56 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <math.h>
 #include "sensor.h"
 #include "burst_conf.h"
+
 using namespace std; 
 
 
 
 Sensor::Sensor(vector<string> args)
 {
-    //Testing arguments (localized on the deploy platform file)
-    xbt_assert(args.size() > 3, "Three arguments needed. Connected msq node id, burst config id and number of sensors in the same msq node connection");
     
-    //Getting arguments
-    connected_msq_node = args[1];
-    burst_config_id = args[2];
-    num_concurrent_sensors = stoi(args[3]);
-
     //Setting host variables
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
 
     //Target msq_node mailbox
-    msq_mailbox = simgrid::s4u::Mailbox::by_name(connected_msq_node);
+    mailbox = simgrid::s4u::Mailbox::by_name(host_name);
+
+
+
+    //Receiving starting information from the msq_node
+    string *temp_payload1 =  static_cast<string*>(mailbox->get());
+    string *temp_payload2 = static_cast<string*>(mailbox->get());
+    int *temp_payload3 = static_cast<int*>(mailbox->get());
+    
+    burst_config_id = *temp_payload1;  
+    connected_msq_node = *temp_payload2;
+    num_concurrent_sensors = *temp_payload3;
+
+
+    msq_mailbox = simgrid::s4u::Mailbox::by_name(connected_msq_node+ "_" +host_name);
 
 }
 
 //This is the function that will first run when the platform executes
 void Sensor::operator()(void)
 {
-    
+   
+    int num_packages = 0;
     vector<interval> burst_intervals = burst_config.get_intervals(burst_config_id);
-    
-    float last_end_time = 0;
     //Iterate over the intervals
     for(interval burst : burst_intervals ){
-        start_burst(burst.end_time, burst.num_packages,burst.package_size);
+
+        //Divide the packages between the sensors
+        num_packages = burst.num_packages/num_concurrent_sensors;   
+        
+        start_burst(burst.end_time, num_packages ,burst.package_size);
+      
     }
 
-
-
-    
-    //cout << host_name << " Operator Executed."  << endl;
 }
 
 
