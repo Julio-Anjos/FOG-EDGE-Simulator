@@ -39,7 +39,7 @@ Sensor::Sensor(vector<string> args)
 //This is the function that will first run when the platform executes
 void Sensor::operator()(void)
 {
-   
+    float last_end_time = 0;
     int num_packages = 0;
     vector<interval> burst_intervals = burst_config.get_intervals(burst_config_id);
     //Iterate over the intervals
@@ -48,15 +48,15 @@ void Sensor::operator()(void)
         //Divide the packages between the sensors
         num_packages = burst.num_packages/num_concurrent_sensors;   
         
-        start_burst(burst.end_time, num_packages ,burst.package_size);
-      
+        start_burst(burst.end_time - last_end_time,burst.end_time, num_packages ,burst.package_size);
+        last_end_time = burst.end_time;
     }
 
 }
 
 
 
-void Sensor::start_burst(float end_time, int num_packages, int package_size )
+void Sensor::start_burst(float duration,float end_time, int num_packages, int package_size )
 {
     
     double* current_time = new double();
@@ -66,13 +66,19 @@ void Sensor::start_burst(float end_time, int num_packages, int package_size )
     int *continue_flag = new int(1);
     
     int counter = 0;
+
+    double spacing = duration/(num_packages);
+
     do{
+        //Constant
+        simgrid::s4u::this_actor::sleep_until(*current_time + spacing);
+
 
         *current_time = simgrid::s4u::Engine::get_clock();
-        
-        
         msq_mailbox->put(continue_flag,package_size);
         counter++;
+
+        
     }
     while(counter < num_packages);
     

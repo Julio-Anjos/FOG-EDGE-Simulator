@@ -25,7 +25,7 @@ class Sensor
         void operator()(void); //This is the function that will first run when the platform executes
         
         void prepare_bandwidth(); //This function prepares the profile bandwith according to the burst_config
-        void start_burst(float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
+        void start_burst(float duration,float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
 
 };
 
