@@ -43,8 +43,8 @@ def write_plat_msq_node(f,id,speed):
     f.write("       <host id=\"MsqNode-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
 
 
-def write_link(f,sensor_id,msq_node_id,connection_speed):
-    f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\"0us\" />")
+def write_link(f,sensor_id,msq_node_id,connection_speed,latency):
+    f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
 def write_connection(f,sensor_id,msq_node_id):
     f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" >\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")
    
@@ -69,6 +69,7 @@ def write_plat_file(config):
     #Keeping track of links and their speeds
     link_id=0
     link_speed = []
+    link_latency = []
 
 
     #Keeping track of how many sensors are in each msq_node
@@ -85,7 +86,7 @@ def write_plat_file(config):
             next_parameter = config[i+1]
 
         
-        if parameter[0] == "burst_config" or parameter[0] ==  "sensors_speed" or parameter[0] == "plat_name":
+        if parameter[0] == "burst_config" or parameter[0] ==  "sensors_speed" or parameter[0] == "plat_name" or parameter[0] ==  "connection_latency":
             continue
 
         
@@ -95,10 +96,12 @@ def write_plat_file(config):
             continue
         
         if parameter[0] == "connection_speed":
-            for i in range(num_sensors):
-                link_speed.append(parameter[1])
-                link_id += 1
-            continue
+            if next_parameter[0] == "connection_latency":
+                for i in range(num_sensors):
+                    link_speed.append(parameter[1])
+                    link_latency.append(next_parameter[1])
+                    link_id += 1
+                continue
 
         if parameter[0] == "num_sensors":
             if next_parameter[0] == "sensors_speed":
@@ -111,7 +114,7 @@ def write_plat_file(config):
                     id_sensor += 1
             continue
 
-        raise Exception("Parameter " + parameter[0] + "does not exist.")
+        raise Exception("Parameter " + parameter[0] + " does not exist.")
 
 
     f.write("\n        <!-- The bandwidth is defined during the program execution by the burst_config -->\n")
@@ -122,7 +125,7 @@ def write_plat_file(config):
     for num_sensors in sensor_amount:
         #creates empty profile files, they will be written during the program
         for i in range(num_sensors):
-            write_link(f,sensor_id,msq_node_id,link_speed[sensor_id])
+            write_link(f,sensor_id,msq_node_id,link_speed[sensor_id],link_latency[sensor_id])
             sensor_id += 1
         msq_node_id += 1
 

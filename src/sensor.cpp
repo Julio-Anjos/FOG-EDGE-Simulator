@@ -60,29 +60,37 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
 {
     
     double* current_time = new double();
-    
-    
+    double* start_time = new double();
+    *start_time = simgrid::s4u::Engine::get_clock();
     int *stop_flag = new int(0);
     int *continue_flag = new int(1);
-    
     int counter = 0;
 
-    double spacing = duration/(num_packages);
-
+    double spacing = duration/num_packages;
+    
+    
+    double transference_time = 0;  //Time it takes for a single message to be transfered
+    bool first_msg_flag = true;
     do{
-        //Constant
-        simgrid::s4u::this_actor::sleep_until(*current_time + spacing);
-
+        
 
         *current_time = simgrid::s4u::Engine::get_clock();
+
         msq_mailbox->put(continue_flag,package_size);
         counter++;
 
+    
+        //cout << host_name << " finished interval " <<  end_time << ":" << num_packages <<"x" << package_size << " at the time: " << *current_time << endl;
+        simgrid::s4u::this_actor::sleep_until(*current_time + spacing);
         
     }
-    while(counter < num_packages);
+    while(counter < num_packages or end_time < *current_time );
     
     cout << host_name << " finished burst " <<  end_time << ":" << num_packages <<"x" << package_size << " at the time: " << *current_time << endl;
+    
+    if(counter < num_packages ){
+        cout << "MISSED " << num_packages-counter << " PACKAGES" << endl;
+    }
 
     msq_mailbox->put(stop_flag,0);
     *current_time = simgrid::s4u::Engine::get_clock();  

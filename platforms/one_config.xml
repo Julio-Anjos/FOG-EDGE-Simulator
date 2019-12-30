@@ -4,13 +4,18 @@
    <zone id="zone0" routing="Full">
        <host id="MsqNode-0" speed="1000000000f"  />
        <host id="Sensor-0" speed="500000000f"  />
+       <host id="Sensor-1" speed="500000000f"  />
 
         <!-- The bandwidth is defined during the program execution by the burst_config -->
 
-       <link id="Sensor-0_MsqNode-0" bandwidth="30MBps" latency="0us" />
+       <link id="Sensor-0_MsqNode-0" bandwidth="30MBps" latency="50us" />
+       <link id="Sensor-1_MsqNode-0" bandwidth="30MBps" latency="50us" />
 
        <route src="Sensor-0" dst="MsqNode-0" >
            <link_ctn id="Sensor-0_MsqNode-0" />
+       </route>
+       <route src="Sensor-1" dst="MsqNode-0" >
+           <link_ctn id="Sensor-1_MsqNode-0" />
        </route>
 
    </zone>

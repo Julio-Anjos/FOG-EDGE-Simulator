@@ -17,15 +17,15 @@
 
         <!-- The bandwidth is defined during the program execution by the burst_config -->
 
-       <link id="Sensor-0_MsqNode-0" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-1_MsqNode-0" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-2_MsqNode-1" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-3_MsqNode-1" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-4_MsqNode-1" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-5_MsqNode-2" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-6_MsqNode-2" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-7_MsqNode-2" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-8_MsqNode-2" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-0_MsqNode-0" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-1_MsqNode-0" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-2_MsqNode-1" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-3_MsqNode-1" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-4_MsqNode-1" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-5_MsqNode-2" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-6_MsqNode-2" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-7_MsqNode-2" bandwidth="50MBps" latency="50us" />
+       <link id="Sensor-8_MsqNode-2" bandwidth="50MBps" latency="50us" />
 
        <route src="Sensor-0" dst="MsqNode-0" >
            <link_ctn id="Sensor-0_MsqNode-0" />
