@@ -2,9 +2,9 @@
 //TIME ALWAYS STARTS AT 0, when one burst end the next one starts
 
 burst_config=0
-10 : 1000x100	//Template: From time_end : num_packets x size_packets 
-30 : 2000x100  
-50 : 3000x150 
+10 : 2000x100	//Template: From time_end : num_packets x size_packets 
+30 : 3000x100  
+50 : 4000x150 
 
 
 burst_config=1

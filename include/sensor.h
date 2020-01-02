@@ -1,6 +1,6 @@
 #ifndef SENSOR_H
 #define SENSOR_H
-
+#include "burst_conf.h"
 
 
 using namespace std; 
@@ -15,6 +15,8 @@ class Sensor
         simgrid::s4u::Mailbox* mailbox;     
         simgrid::s4u::Mailbox* msq_mailbox; //mailbox of target msq
 
+        vector<interval> bursts; //bursts this node needs to send
+
         simgrid::s4u::Host * host;
         string host_name;
 
@@ -22,6 +24,9 @@ class Sensor
         
         Sensor(vector<string> args); //Constructor
         
+        
+        void get_msq_information();//Receiving starting information from the msq_node (burst config and host name)
+
         void operator()(void); //This is the function that will first run when the platform executes
         
         void prepare_bandwidth(); //This function prepares the profile bandwith according to the burst_config
