@@ -52,13 +52,14 @@ void Sensor::operator()(void)
         
         start_burst(burst.end_time - last_end_time,burst.end_time, burst.num_packages ,burst.package_size);
         last_end_time = burst.end_time;
+        simgrid::s4u::this_actor::sleep_until(last_end_time);
     }
 
 }
 
 
 
-void Sensor::start_burst(float duration,float end_time, int num_packages, int package_size )
+void Sensor::start_burst(float duration,float end_time, int num_packages, int package_size)
 {
     
     double* current_time = new double();
@@ -71,18 +72,19 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
     int counter = 0;
 
     double spacing = duration/num_packages;
+
     
    
     do{
         
         *current_time = simgrid::s4u::Engine::get_clock();
-        //simgrid::s4u::this_actor::sleep_until(counter*spacing + *start_time);
+        
 
 
         //Receive the message
         msq_mailbox->put(continue_flag,package_size);
         
-
+        simgrid::s4u::this_actor::sleep_until(counter*spacing + *start_time);
     
         counter++;
         //Wait to receive new one
