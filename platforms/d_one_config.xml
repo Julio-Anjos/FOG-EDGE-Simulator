@@ -4,13 +4,9 @@
    <actor host="MsqNode-0" function="msq_node">
        <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-0"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-1"/>   <!-- one of this hosts sensor --> 
    </actor>
 
    <actor host="Sensor-0" function="sensor">
-   </actor>
-
-   <actor host="Sensor-1" function="sensor">
    </actor>
 
 
