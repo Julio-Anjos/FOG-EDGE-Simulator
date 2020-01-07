@@ -67,9 +67,10 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
   
 
     *start_time = simgrid::s4u::Engine::get_clock();
-    int *stop_flag = new int(0);
-    int *continue_flag = new int(1);
     int counter = 0;
+
+    //Flag send when the communication must stop
+    int *stop_flag = new int(-1);
 
     double spacing = duration/num_packages;
 
@@ -79,10 +80,9 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
         
         *current_time = simgrid::s4u::Engine::get_clock();
         
-
-
-        //Receive the message
-        msq_mailbox->put(continue_flag,package_size);
+        //Send the package
+        msq_mailbox->put(&package_size,package_size);
+       
         
         simgrid::s4u::this_actor::sleep_until(counter*spacing + *start_time);
     
@@ -101,7 +101,7 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
 
     //Send to the msq_node that the transmission has ended
     msq_mailbox->put(stop_flag,0);
-   
+    
     return;
 }
 

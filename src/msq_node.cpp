@@ -88,19 +88,23 @@ void Msq_node::receive_burst()
 {
     int complete_bursts=0;
 
-    int flags[num_sensors];   //Determines if the sensor is still sending messages
-    for(int i=0;i<num_sensors;i++)//Initialize with 1
+    // payload = -1 MEANS THE COMMUNICATION MUST STOP
+    // Otherwise, payload is the number of bytes that were transmitted
+    int *payload;  
+    // When a payload = -1 is received, the flags vector is updated on that sensor, indicating that the current burst ended
+    int flags[num_sensors];   
+    for(int i=0;i<num_sensors;i++)//Initialize with 1 (communication burst still running)
         flags[i] = 1;
+    
 
-    int *flag;
     do{
         //Receive a payload
         for(int i=0;i<num_sensors;i++){
             
-            if(flags[i]){
-                flag = static_cast<int*>(receive_mailboxes[i]->get()); //Receive data from sensor
-                
-                if(*flag == 0){  //Update the flag vector
+            if(flags[i]){ //Test if this communication hasn't ended
+                payload = static_cast<int*>(receive_mailboxes[i]->get()); //Receive data from sensor
+
+                if(*payload == -1){  //Update the flag vector in case the payload is -1 (burst ended)
                     complete_bursts++;
                     flags[i] = 0;
                 }
