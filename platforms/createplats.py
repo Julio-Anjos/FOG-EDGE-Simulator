@@ -42,7 +42,6 @@ def write_plat_sensor(f,id,speed):
 def write_plat_msq_node(f,id,speed):
     f.write("       <host id=\"MsqNode-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
 
-
 def write_link(f,sensor_id,msq_node_id,connection_speed,latency):
     f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
 def write_connection(f,sensor_id,msq_node_id):
@@ -85,9 +84,7 @@ def write_plat_file(config):
         if i != len(config)-1:
             next_parameter = config[i+1]
 
-        
-        if parameter[0] == "burst_config" or parameter[0] ==  "sensors_speed" or parameter[0] == "plat_name" or parameter[0] ==  "connection_latency":
-            continue
+      
 
         
         if parameter[0] == "msq_node_speed":
@@ -95,6 +92,7 @@ def write_plat_file(config):
             id_msq_node += 1
             continue
         
+
         if parameter[0] == "connection_speed":
             if next_parameter[0] == "connection_latency":
                 for i in range(num_sensors):
@@ -112,6 +110,13 @@ def write_plat_file(config):
                for i in range(num_sensors):
                     write_plat_sensor(f,id_sensor,next_parameter[1])
                     id_sensor += 1
+            continue
+
+
+        #MAKING SURE ONLY THE ALLOWED PARAMETERS ARE BEING USED
+        if parameter[0] == "burst_config" or parameter[0] ==  "sensors_speed" or parameter[0] == "plat_name" or parameter[0] ==  "connection_latency":
+            continue 
+        if parameter[0] == "stream_timeout_time" or parameter[0] == "stream_buffer_size" or parameter[0] == "stream_window_size":
             continue
 
         raise Exception("Parameter " + parameter[0] + " does not exist.")
@@ -185,22 +190,47 @@ def write_d_plat_file(config):
     id_msq_node = 0
     sensor_amounts = []
     burst_configs = []
+    window_sizes= []
+    buffer_sizes=[]
+    timeout_times=[]
+
+    #Getting the arguments for the msq_nodes
     for i in range(len(config)):
         parameter = config[i]
+       
         if parameter[0] == "num_sensors":
             sensor_amounts.append(int(parameter[1]))
+        
         if parameter[0] == "burst_config":
             burst_configs.append(parameter[1])
+
+
+        if parameter[0] == "stream_window_size":
+            window_sizes.append(parameter[1])
+
+
+        if parameter[0] == "stream_buffer_size":
+            buffer_sizes.append(parameter[1])
+           
+
+        if parameter[0] == "stream_timeout_time":
+            timeout_times.append(parameter[1])
+    
+
+
+
 
 
     msq_node_id = 0
     sensor_id1 = 0
     sensor_id2=0
+    #Writing for the MSQ node each of its arguments, arguments include: Burst config id, connected sensors, and information about the streaming window and buffer
     for num_sensors in sensor_amounts:
         write_deploy_msq_node(f,msq_node_id)
         write_argument(f,burst_configs[msq_node_id],"burst config id")
-
-
+        write_argument(f,window_sizes[msq_node_id],"stream window size")
+        write_argument(f,buffer_sizes[msq_node_id],"stream buffer size")
+        write_argument(f,timeout_times[msq_node_id],"stream timeout time")
         for i in range(num_sensors):
             write_argument(f,"Sensor-"+str(sensor_id1),"one of this hosts sensor")
             sensor_id1 += 1
@@ -208,7 +238,6 @@ def write_d_plat_file(config):
 
         f.write("   </actor>\n\n")
         for i in range(num_sensors):
-            #Writes the nodes and arguments with comments explaining each argument
             write_deploy_sensor(f,sensor_id2)
             f.write("   </actor>\n\n")
             

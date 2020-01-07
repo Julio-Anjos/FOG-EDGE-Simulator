@@ -3,6 +3,9 @@
 <platform version="4.1">
    <actor host="MsqNode-0" function="msq_node">
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="1000000"/>   <!-- stream window size --> 
+       <argument value="1000000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
        <argument value="Sensor-0"/>   <!-- one of this hosts sensor --> 
        <argument value="Sensor-1"/>   <!-- one of this hosts sensor --> 
    </actor>
@@ -15,6 +18,9 @@
 
    <actor host="MsqNode-1" function="msq_node">
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="1000000"/>   <!-- stream window size --> 
+       <argument value="1000000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
        <argument value="Sensor-2"/>   <!-- one of this hosts sensor --> 
        <argument value="Sensor-3"/>   <!-- one of this hosts sensor --> 
        <argument value="Sensor-4"/>   <!-- one of this hosts sensor --> 
@@ -31,6 +37,9 @@
 
    <actor host="MsqNode-2" function="msq_node">
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="1000000"/>   <!-- stream window size --> 
+       <argument value="1000000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
        <argument value="Sensor-5"/>   <!-- one of this hosts sensor --> 
        <argument value="Sensor-6"/>   <!-- one of this hosts sensor --> 
        <argument value="Sensor-7"/>   <!-- one of this hosts sensor --> 
