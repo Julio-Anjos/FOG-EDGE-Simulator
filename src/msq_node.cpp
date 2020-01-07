@@ -7,24 +7,28 @@ using namespace std;
 //Constructor
 Msq_node::Msq_node(vector<string> args)
 {
-    //Testing arguments (localized on the deploy platform file)
-    xbt_assert(args.size() > 1, "Burst config id needed for each msq_node");
-
-    burst_config_id = args[1];
-    bursts =  burst_config.get_intervals(burst_config_id);
-    num_bursts = bursts.size(); //numbers of intervals
-
-
+    
     //Getting host variables
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
     
-    string receive_mailbox_name;
-    //Getting the sensor names and mailboxes
+    
+    //Testing arguments (localized on the deploy platform file)
+    xbt_assert(args.size() > 1, "Burst config id needed for each msq_node");
 
+    //Burst config arguments
+    burst_config_id = args[1];
+    bursts =  burst_config.get_intervals(burst_config_id);
+    num_bursts = bursts.size(); //numbers of intervals
+    
+    //Streaming arguments
+    window_size = stoi(args[2]);
+    buffer_size = stoi(args[3]);
+    stream_timeout = stof(args[4]);
 
-    //Creating mailbox vectors
-    for(int i =2; i< args.size(); i++){
+   
+    //Getting mailboxes for each sensors (Arguments from 5.. are sensor names)
+    for(int i =5; i< args.size(); i++){
         sensor_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(args[i]));
         receive_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(host_name + "_" + args[i]));  //This node has one mailbox for each sensor to receive their info
     }
