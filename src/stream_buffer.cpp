@@ -13,8 +13,13 @@ Stream_buffer::Stream_buffer(int wind_size, int buff_size, float timeout)
     window_size = wind_size;
     buffer_size = buff_size;
     stream_timeout = timeout;
+    last_time = 0;
     current_amount = 0;
     
-    
+}
 
+string Stream_buffer::add(int bytes, float current_time){
+
+    current_amount = current_amount + bytes;
+    return "TODO: think how this function will work";
 }

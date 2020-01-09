@@ -14,12 +14,12 @@ class Stream_buffer
         int buffer_size; //Size in bytes, the total buffer size, if the buffer fills up without the data being processed, the sensors are warned to stop sending data.
         float stream_timeout;  //Amount of time in seconds before the data in the buffer is send to be processed even if the window size hasn't completly filled up.
         int current_amount; //Current amount of bytes in the buffer
-       
+        float last_time;; //Last time a window was send for processing
 
     public:
         
         Stream_buffer(int window_size, int buffer_size, float stream_timeout);
-        
+        string add(int bytes, float current_time);
         
 };
 
