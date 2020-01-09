@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include "msq_node.h"
+#include "stream_buffer.h"
+
 using namespace std; 
 
 //Constructor
@@ -59,7 +61,8 @@ void Msq_node::operator()(void)
         
         for(int j=0; j< num_sensors;j++){
             sensor_burst[j][i].num_packages = sensor_burst[j][i].num_packages/num_sensors;   
-            if(rest > 0){
+            if(rest > 0){   //Basically divide the packages equally, then grabs the rest of the division
+                            //and add to the sensors untill the rest ends.
                sensor_burst[j][i].num_packages = sensor_burst[j][i].num_packages + 1;
                rest--; 
             }
