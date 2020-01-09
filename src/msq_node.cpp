@@ -24,9 +24,12 @@ Msq_node::Msq_node(vector<string> args)
     num_bursts = bursts.size(); //numbers of intervals
     
     //Streaming arguments
-    window_size = stoi(args[2]);
-    buffer_size = stoi(args[3]);
-    stream_timeout = stof(args[4]);
+    int window_size = stoi(args[2]);
+    int buffer_size = stoi(args[3]);
+    float stream_timeout = stof(args[4]);
+
+    Stream_buffer streaming_buffer(window_size,buffer_size,stream_timeout); 
+
 
    
     //Getting mailboxes for each sensors (Arguments from 5.. are sensor names)
