@@ -19,7 +19,7 @@ class Stream_buffer
     public:
         
         Stream_buffer(int window_size, int buffer_size, float stream_timeout);
-        string add(int bytes, float current_time);
+        string add(int bytes, float current_time); //Adds a new quantity of bytes to the buffer and test the basic conditions if the node must attempt to send a window to be processed
         
 };
 

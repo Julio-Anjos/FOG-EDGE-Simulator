@@ -18,8 +18,16 @@ Stream_buffer::Stream_buffer(int wind_size, int buff_size, float timeout)
     
 }
 
+//Adds a new quantity of bytes to the buffer and test the basic conditions if the node must attempt to 
+//send a window to be processed
 string Stream_buffer::add(int bytes, float current_time){
 
     current_amount = current_amount + bytes;
-    return "TODO: think how this function will work";
+    
+    if (current_amount < window_size || current_time <= last_time + stream_timeout)
+        return "send";
+    else
+        return "continue";
+
+
 }
