@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "msq_node.h"
-#include "stream_buffer.h"
+
 
 using namespace std; 
 
@@ -28,8 +28,8 @@ Msq_node::Msq_node(vector<string> args)
     int buffer_size = stoi(args[3]);
     float stream_timeout = stof(args[4]);
 
-    Stream_buffer streaming_buffer(window_size,buffer_size,stream_timeout); 
-
+    
+    streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
 
    
     //Getting mailboxes for each sensors (Arguments from 5.. are sensor names)
@@ -92,6 +92,10 @@ void Msq_node::operator()(void)
 //receives a full burst from each sensor
 void Msq_node::receive_burst()
 {
+    
+    double* current_time = new double();
+    
+    
     int complete_bursts=0;
 
     // payload = -1 MEANS THE COMMUNICATION MUST STOP
@@ -109,7 +113,10 @@ void Msq_node::receive_burst()
             
             if(flags[i]){ //Test if this communication hasn't ended
                 payload = static_cast<int*>(receive_mailboxes[i]->get()); //Receive data from sensor
-
+                
+                *current_time = simgrid::s4u::Engine::get_clock();
+                cout << streaming_buffer->add(*payload, *current_time) << endl;
+                
                 if(*payload == -1){  //Update the flag vector in case the payload is -1 (burst ended)
                     complete_bursts++;
                     flags[i] = 0;

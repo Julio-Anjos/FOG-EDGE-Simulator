@@ -1,6 +1,7 @@
 #ifndef MSQ_NODE_H
 #define MSQ_NODE_H
 #include "burst_conf.h"
+#include "stream_buffer.h"
 using namespace std; 
 
 class Msq_node
@@ -15,6 +16,8 @@ class Msq_node
         int num_bursts; //Number of intervals in the burst_config
         int num_sensors;
         
+        Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed
+
         simgrid::s4u::Host * host;  
         string host_name;
     

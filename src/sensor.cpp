@@ -77,7 +77,7 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
     
    
     do{
-        
+         
         *current_time = simgrid::s4u::Engine::get_clock();
         
         //Send the package
