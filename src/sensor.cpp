@@ -45,7 +45,7 @@ void Sensor::get_msq_information(){
 void Sensor::operator()(void)
 {
     float last_end_time = 0;
- 
+    
     
     //Iterate over the intervals
     for(interval burst : bursts ){

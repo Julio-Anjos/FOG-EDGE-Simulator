@@ -116,7 +116,8 @@ void Msq_node::receive_burst()
                 
                 *current_time = simgrid::s4u::Engine::get_clock();
                 
-                streaming_buffer->add(*payload, *current_time); //Add the receiving payload to the buffer
+                update_buffer(*payload,*current_time);
+                
                 
                 if(*payload == -1){  //Update the flag vector in case the payload is -1 (burst ended)
                     complete_bursts++;
@@ -127,8 +128,23 @@ void Msq_node::receive_burst()
     }
     while(complete_bursts < num_sensors); //Check if all sensors of this node have ended
     
+}
 
+void Msq_node::update_buffer(int num_bytes, double current_time){
+    string buffer_command;
+    string exec_flag;
+    buffer_command = streaming_buffer->add(num_bytes, current_time); //Add the receiving payload to the buffer
     
-    
+    //HOW TO DEAL WITH BLOCKING COMMUNICATIONS WHEN EXECUTING???
+    /*
+    if(buffer_command == "send"){
+        exec_flag = execute();
+        
+        if(exec_flag == "execute"){
+            streaming_buffer->remove(current_time); //Remove data that was executed from the buffer
+        }
+    }
 
+
+    */
 }
