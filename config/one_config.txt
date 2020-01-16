@@ -1,5 +1,4 @@
-//Name of the platform files that will be created:
-plat_name=one_config			//MUST BE FIRST PARAMETER
+one_config					//NAME OF PLATFORM FILES THAT WILL BE CREATED MUST BE ON FIRST LINE		
 
 //Now lets define every msq_node and its group, please keep the ordering
 

@@ -1,4 +1,4 @@
-plat_name=test_plat		//Name of the platform files that will be created MUST BE ON FIRST LINE
+test_plat					//Name of the platform files that will be created MUST BE ON FIRST LINE
 
 //Now lets define every msq_node and its group, please keep the ordering
 

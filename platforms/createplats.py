@@ -28,7 +28,6 @@ def read_config(config_path):
             line = line.split("=")
  
             config.append(line)
-
     return config
 
 
@@ -51,13 +50,12 @@ def write_connection(f,sensor_id,msq_node_id):
 def write_plat_file(config):
     
     #Creating file with the platform name
-    if config[0][0] == "plat_name":
-        platform_name = config[0][1]
-        if not platform_name.endswith(".xml"):
-            platform_name = platform_name + ".xml"
-        f = open(platform_name, "w")
-    else:
-        raise Exception("First parameter on platform config file must be plat_name")
+
+    platform_name = config[0][0]
+    if not platform_name.endswith(".xml"):
+        platform_name = platform_name + ".xml"
+    f = open(platform_name, "w")
+
 
 
     #Start file
@@ -78,7 +76,9 @@ def write_plat_file(config):
     id_msq_node = 0
     
     for i in range(len(config)):
-        
+        if i == 0:  #first parameter is always plat_name
+            continue
+
         parameter = config[i]
 
         if i != len(config)-1:
@@ -170,14 +170,13 @@ def write_d_plat_file(config):
 
 
     #Creating file with the platform name
-    if config[0][0] == "plat_name":
-        platform_name = config[0][1]
-        platform_name = "d_" + platform_name 
-        if not platform_name.endswith(".xml"):
-            platform_name = platform_name + ".xml"
-        f = open(platform_name, "w")
-    else:
-        raise Exception("First parameter on platform config file must be plat_name")
+
+    platform_name = config[0][0]
+    platform_name = "d_" + platform_name 
+    if not platform_name.endswith(".xml"):
+        platform_name = platform_name + ".xml"
+    f = open(platform_name, "w")
+    
 
     if not platform_name.endswith(".xml"):
         platform_name = platform_name + ".xml"
@@ -196,6 +195,10 @@ def write_d_plat_file(config):
 
     #Getting the arguments for the msq_nodes
     for i in range(len(config)):
+
+        if i == 0:  #first parameter is always plat_name
+            continue
+            
         parameter = config[i]
        
         if parameter[0] == "num_sensors":
