@@ -25,8 +25,6 @@ string Stream_buffer::add(int bytes, float current_time){
     current_amount = current_amount + bytes;
     
 
-    cout << window_size << " "  <<  current_amount << endl;
-
     //Attempt to send bytes to be processed when window_size is filled or a timeout happens
     if (current_amount < window_size || current_time < last_time + stream_timeout)
         return "continue";

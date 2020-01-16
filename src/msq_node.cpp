@@ -115,7 +115,8 @@ void Msq_node::receive_burst()
                 payload = static_cast<int*>(receive_mailboxes[i]->get()); //Receive data from sensor
                 
                 *current_time = simgrid::s4u::Engine::get_clock();
-                cout << streaming_buffer->add(*payload, *current_time) << endl;
+                
+                streaming_buffer->add(*payload, *current_time); //Add the receiving payload to the buffer
                 
                 if(*payload == -1){  //Update the flag vector in case the payload is -1 (burst ended)
                     complete_bursts++;
