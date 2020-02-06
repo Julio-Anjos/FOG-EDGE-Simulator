@@ -1,5 +1,6 @@
 # Ideas and problems for simulating sensors:
 - Idea: Pre-calculated list L of every time a package must be sent according to a math function, received together with the burst config. Make the sensors sleep_untill(L[i]) before sending new packages. (must do lots of code)
 - Problem: Reading math expressions into code and then executing that expression must be somehow complicated, and might require additional libraries. (need to learn)
+- Idea: Using https://github.com/cparse/cparse (currently testing)
 - Problem: How to divide the packages between the sensors in a unequal manner? (not as important right now)
 
