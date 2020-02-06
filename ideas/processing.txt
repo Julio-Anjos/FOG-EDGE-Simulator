@@ -1,0 +1,5 @@
+#Ideas and problems with the processing of the data sent from sensors to msq nodes.
+- Problem: Executing data on simgrid stops data transmission.
+- Idea: Actors aren't actually hosts, so a new actor in the same host can be used for the processing of the data. (must do lots of code)
+- Problem: What exactly are we simulating, if not a simple execution of the received byte size? (BIG ONE MUST READ ARTICLES)
+- Problem: Is the Kafka model special in some way i am not seeing?
