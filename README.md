@@ -6,8 +6,9 @@ Please use a version of simgrid 3.22 or higher.
 
 You can execute a example run using the following command:
 
-$ ./compile_run config/plat_config.txt config/burst_config.txt
-
+```
+./compile_run config/plat_config.txt config/burst_config.txt
+```
 After that, you can build your own platform configs and burst configs, following the examples found in the /config file.
 
 (to be completed)

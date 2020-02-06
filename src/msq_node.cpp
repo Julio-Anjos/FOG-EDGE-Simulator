@@ -136,6 +136,7 @@ void Msq_node::update_buffer(int num_bytes, double current_time){
     buffer_command = streaming_buffer->add(num_bytes, current_time); //Add the receiving payload to the buffer
     
     //HOW TO DEAL WITH BLOCKING COMMUNICATIONS WHEN EXECUTING???
+    // Creating a new actor to act on this same host and execute the processing?
     /*
     if(buffer_command == "send"){
         exec_flag = execute();
