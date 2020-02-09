@@ -1,2 +1,1 @@
-test-shunting-yard
-*.o
+!*.o
