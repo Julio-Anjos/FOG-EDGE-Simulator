@@ -2,12 +2,14 @@
 //TIME ALWAYS STARTS AT 0, when one burst end the next one starts
 
 burst_config=0
+f(x)= x^2        //This mathematical function represents how each burst interval will behave (please always start with f(x)=)
 10 : 2000x50000	//Template: From time_end : num_packets x size_packets 
 30 : 3000x100000 
 50 : 4000x100000
 
 
 burst_config=1
+f(x)= x^3
 10  : 10000x100
 20 : 2000x100
 60 : 4000x150

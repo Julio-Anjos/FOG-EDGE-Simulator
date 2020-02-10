@@ -5,7 +5,7 @@
 #include <boost/algorithm/string.hpp>
 using namespace std; 
 #include "burst_conf.h"
-
+#include "shunting-yard.h"
 //Auxiliar function not of burst_class
 string trim_string(string s){
     boost::trim_right(s);
@@ -93,9 +93,8 @@ void Burst_conf::parse_file(){
             continue;
         }
         
-        
-        
-       
+    
+      
        
         //Getting a burst interval information
         found = line.find(":");
@@ -121,9 +120,17 @@ void Burst_conf::parse_file(){
             }
         }
        
+
+        string math_function;
+        //Getting a burst interval information
+        found = line.find("f(x)=");
+        if(found != string::npos){
+            math_function = line.substr(found+5,line.length()); // 5 is 1 + the length of "f(x)="
             
-        
-                
+
+
+            continue;
+        }
             
         xbt_assert(false, "Burst configuration file is not correct, line: %s",line.c_str());
     }

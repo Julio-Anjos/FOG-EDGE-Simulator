@@ -33,4 +33,4 @@ num_sensors=4
 sensors_speed=500000000
 connection_speed=50MBps	
 connection_latency=50us					
-burst_config=0			
+burst_config=1			
