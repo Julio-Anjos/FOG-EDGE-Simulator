@@ -127,8 +127,12 @@ void Burst_conf::parse_file(){
         if(found != string::npos){
             math_function = line.substr(found+5,line.length()); // 5 is 1 + the length of "f(x)="
             
-
-
+            TokenMap vars;
+            vars["x"] = 8;
+            calculator calc(math_function.c_str());
+            std::cout << calc.eval(vars) << std::endl; 
+            vars["x"] = 27;
+            std::cout << calc.eval(vars) << std::endl; 
             continue;
         }
             
