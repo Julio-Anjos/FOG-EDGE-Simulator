@@ -194,7 +194,7 @@ void math_function_match(string math_function, float math_start, float math_end,
     //Calculates a vector with the result of applying the math function with x = (math_start+math_step/2) + math_step+i, with i from 0 to num_divisions
     for(int i=0;i<num_divisions;i++){
         vars["x"] = x;
-        y= calc.eval(vars).asDouble();
+        y= abs(calc.eval(vars).asDouble());
         cout << "x = " << x << "\t\ty = " << y << endl;
         
         sum = sum + y;
