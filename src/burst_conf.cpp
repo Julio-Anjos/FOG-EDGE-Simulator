@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cmath>
 #include <simgrid/s4u.hpp>
 #include <boost/algorithm/string.hpp>
 using namespace std; 
@@ -173,8 +174,8 @@ void math_function_match(string math_function, float math_start, float math_end,
     vector<double> vy;
     
     cout << "---------------------------------------------" << endl ;
-    cout << "MATH FUNCTION: " << math_function << endl;
     cout << "REAL_INTERVAL: " << interval_start << " - " << interval_end << endl;
+    cout << "MATH FUNCTION: " << math_function << endl;
     cout << "MATH_INTERVAL: " << math_start << " - " << math_end << endl;
     
 
@@ -195,6 +196,7 @@ void math_function_match(string math_function, float math_start, float math_end,
     for(int i=0;i<num_divisions;i++){
         vars["x"] = x;
         y= abs(calc.eval(vars).asDouble());
+        
         cout << "x = " << x << "\t\ty = " << y << endl;
         
         sum = sum + y;
@@ -203,16 +205,42 @@ void math_function_match(string math_function, float math_start, float math_end,
         vy.push_back(y);
     }
     
-    double ratio = num_packages/sum;
-    cout << "Packages = " << num_packages << endl;
-    cout << "Sum = " << sum << endl;
-    cout << "Ratio = " << ratio  << endl;
-
+    double ratio = num_packages/sum;    //Multiplying this number by the calculated y values, we are matching the math function
+                                        //with the number of sent packages
+    int pkg_sum=0;
+    int pkg_amount=0;
+    vector<int> package_amounts;
+    
+    //Create a vector with the amount of packages for each division
     for(int i=0;i<num_divisions;i++){
-        cout << "Time= " << interval_start + step*i  << " - " << interval_start + step*(i+1) << ", Package Amount= " <<  vy[i]*ratio << endl;
+        pkg_amount = round(vy[i]*ratio);
+        package_amounts.push_back(pkg_amount);
+        pkg_sum += pkg_amount;
+  
+    }
+    
+    //Fix problems due to aproximation of values when using round (maybe less/more packages could be send)
+    int difference = num_packages - pkg_sum;
+    int i = num_divisions/2;
+    
+    while(difference < 0){//If the difference is negative, we must remove the extra packages
+        if(package_amounts[i] > 0){
+            package_amounts[i] -= 1;
+            difference += 1;
+        }
+        i++;
+    }
+    while(difference > 0){//If the difference is positive, we must add the missing packages
+        package_amounts[i] += 1;
+        difference -= 1;
+        i--;
     }
 
-    
+    for(int i =0; i < num_divisions; i++){
+        cout << "Time: " << interval_start+i*step << " - " << interval_start+ (1+i)*step << " Packages: " << package_amounts[i] << endl;
+    }
+
+
     
 }
 
