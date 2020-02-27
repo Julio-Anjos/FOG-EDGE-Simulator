@@ -33,6 +33,8 @@ void Burst_conf::parse_file(){
     //Iterate through each line of the file
     string line; 
     size_t found;
+    size_t defined_interval;
+    size_t division;
 
     //Auxiliar variables used to complete the interval map
     vector<interval> aux_vec;
@@ -112,61 +114,48 @@ void Burst_conf::parse_file(){
                 //Get packages_size
                 aux_interval.package_size = stoi(line);
 
-                //Save auxiliar vector
-                aux_vec.push_back(aux_interval);
-                
                 continue;
             }
         }
        
 
+        
         string math_function;
         //Getting a burst interval information
         found = line.find("f(x)=");
         if(found != string::npos){
-            math_function = line.substr(found+5,line.length()); // 5 is 1 + the length of "f(x)="
+            defined_interval = line.find("["); // searching for the defined interval ex: [0,2]
             
-            TokenMap vars;
-            vars["pi"] = 3.14;
-            vars["e"] = 2.73;
-            double sum=0;
-            double y=0;
-            vector<double> vy;
-            int intervals= 20;
-            int packages = 10000;
-            calculator calc(math_function.c_str());
-            for(int i=1;i<=intervals;i++){
-                vars["x"] = i;
-                y= calc.eval(vars).asDouble();
-                cout << "x = " << i << ", y = " << y << endl;
-                sum = sum + y;
-                vy.push_back(y);
-            }
-            double ratio = packages/sum;
-            cout << "Packages = " << packages << endl;
-            cout << "Sum = " << sum << endl;
-            cout << "Ratio = " << packages/sum  << endl;
-
-            for(int i=1;i<=intervals;i++){
-                cout << "Time= " << i << ", Package Amount= " <<  vy[i-1]*ratio << endl;
-            }
+            aux_interval.math_function = line.substr(found+5,defined_interval -(found+5) ); // 5 is 1 + the length of "f(x)="
             
+            division= line.find(",");   //Find the "," that divides both the start and end of the interval
 
+            aux_interval.math_start =stof(line.substr(defined_interval+1, division - (defined_interval+1)));
+            aux_interval.math_end = stof(line.substr(division+1, line.size()-1 -(division+1) ));
+            
+            
+            //Save auxiliar vector
+            aux_vec.push_back(aux_interval);
+      
             continue;
-
-
-
         }
             
         xbt_assert(false, "Burst configuration file is not correct, line: %s",line.c_str());
+    
+    
     }
             
     //Add the last one
     this->interval_map.insert(make_pair(current_config, aux_vec));
-      
     file.close();
 }
 
+
+
+
+
+
+//Get the intervals of a certain burst_config
 vector<interval> Burst_conf::get_intervals(string burst_config){
 
     vector<interval> intervals = this->interval_map[burst_config];

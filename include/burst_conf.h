@@ -6,8 +6,12 @@ using namespace std;
 
 
 typedef struct burst_interval{
+    
     float end_time;
     int num_packages,package_size;
+
+    string math_function;   //Math function that defines how the sensor will behave during this interval
+    float math_start, math_end; //Start and end of interval in which we will consider the math function
 } interval;
 
 
