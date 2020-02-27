@@ -148,11 +148,9 @@ void Burst_conf::parse_file(){
     //Add the last one
     this->interval_map.insert(make_pair(current_config, aux_vec));
     file.close();
+    
+    calculate_send_times();
 }
-
-
-
-
 
 
 //Get the intervals of a certain burst_config
@@ -161,6 +159,96 @@ vector<interval> Burst_conf::get_intervals(string burst_config){
     vector<interval> intervals = this->interval_map[burst_config];
     return intervals;
 }
+
+
+
+
+//Auxiliar function not of burst_class
+void math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end){
+    TokenMap vars;  //Initialize constants
+    vars["pi"] = 3.14;
+    vars["e"] = 2.73;
+    double sum=0;
+    double y=0;
+    vector<double> vy;
+    
+    cout << "---------------------------------------------" << endl ;
+    cout << "MATH FUNCTION: " << math_function << endl;
+    cout << "REAL_INTERVAL: " << interval_start << " - " << interval_end << endl;
+    cout << "MATH_INTERVAL: " << math_start << " - " << math_end << endl;
+    
+
+    //Matches a certain mathematical function (math_function) defined in a interval [math_start,math_end]
+    //With the function that represents the amount of packages a sensor will send per time
+
+    //Divides in num_divisions the interval between math_start and math_end
+    int num_divisions = interval_end - interval_start;
+    
+    
+    double step = (interval_end - interval_start)/num_divisions;
+    double math_step = (math_end - math_start)/num_divisions;
+    calculator calc(math_function.c_str());
+    float x = math_start + math_step/2;
+
+
+    //Calculates a vector with the result of applying the math function with x = (math_start+math_step/2) + math_step+i, with i from 0 to num_divisions
+    for(int i=0;i<num_divisions;i++){
+        vars["x"] = x;
+        y= calc.eval(vars).asDouble();
+        cout << "x = " << x << "\t\ty = " << y << endl;
+        
+        sum = sum + y;
+        x = x + math_step;
+
+        vy.push_back(y);
+    }
+    
+    double ratio = num_packages/sum;
+    cout << "Packages = " << num_packages << endl;
+    cout << "Sum = " << sum << endl;
+    cout << "Ratio = " << ratio  << endl;
+
+    for(int i=0;i<num_divisions;i++){
+        cout << "Time= " << interval_start + step*i  << " - " << interval_start + step*(i+1) << ", Package Amount= " <<  vy[i]*ratio << endl;
+    }
+
+    
+    
+}
+
+
+
+
+
+//According to each math function calculate how many packets must be send at each second of an interval
+void Burst_conf::calculate_send_times(){
+
+    //LOOP THROUGH EACH INTERVAL IN EACH BURST CONFIG
+    for(auto const& map_pair : this->interval_map){
+        vector<interval>intervals = map_pair.second;
+        
+        float interval_start = 0;
+        for(int i=0;i<intervals.size();i++){
+           //For every interval calculate the amount of messages to be sent every second 
+
+            math_function_match(intervals[i].math_function,intervals[i].math_start,intervals[i].math_end, intervals[i].num_packages,interval_start,intervals[i].end_time);
+            interval_start = intervals[i].end_time;
+
+        
+        
+        }
+
+        //Update the interval map
+        this->interval_map[map_pair.first] = intervals;
+    }
+
+    vector<interval> intervals  =this->get_intervals("0");
+
+   
+
+};
+
+
 
 //Will be accessed globally
 Burst_conf burst_config;
