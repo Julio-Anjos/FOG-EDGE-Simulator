@@ -10,7 +10,7 @@ XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simul
 
 
 
-#include "shunting-yard.h"
+
 
 int main(int argc, char* argv[])
 {

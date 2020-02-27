@@ -15,7 +15,7 @@ def get_config():
 
     return arguments[0] #Config file name
 
-#Read the config file
+#Read the config file and returning it as a list o strings
 def read_config(config_path):
     f = open(config_path, "r")
     

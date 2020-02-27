@@ -20,6 +20,7 @@ class Burst_conf
     //Vars
         string file_path;
         //Burst configuration to a vector of intervals map
+        //<burst_config_id,intervals>
         map <string,vector<interval>> interval_map;
 
     //Methods

@@ -39,14 +39,11 @@ Msq_node::Msq_node(vector<string> args)
     }
 
     num_sensors =  sensor_mailboxes.size();
-    
-  
-    
 
 }
 
 
-//This is the function that will first run when the platform executes
+//The operator is the function that will run automatically as the platform starting executing
 void Msq_node::operator()(void)
 {
    
@@ -131,21 +128,13 @@ void Msq_node::receive_burst()
 }
 
 void Msq_node::update_buffer(int num_bytes, double current_time){
+   
     string buffer_command;
     string exec_flag;
     buffer_command = streaming_buffer->add(num_bytes, current_time); //Add the receiving payload to the buffer
-    
-    //HOW TO DEAL WITH BLOCKING COMMUNICATIONS WHEN EXECUTING???
-    // Creating a new actor to act on this same host and execute the processing?
-    /*
-    if(buffer_command == "send"){
-        exec_flag = execute();
-        
-        if(exec_flag == "execute"){
-            streaming_buffer->remove(current_time); //Remove data that was executed from the buffer
-        }
-    }
-
-
-    */
+    //TODO
+    //This is the last step for the simulator completion.
+    //The streaming_buffer->add returns a buffer_command that explains if the data must be send for processing, and the  way of this processing
+    //will be defined by the user. There must be communication between the buffer and the processing of data to know if more data 
+    //can be sent for processing. If the buffer fills up without being able send the data for processing, that data will be lost.
 }

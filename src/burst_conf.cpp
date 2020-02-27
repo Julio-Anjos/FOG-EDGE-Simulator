@@ -22,7 +22,6 @@ void Burst_conf::initialize(string path){
 }
 
 
-
 void Burst_conf::parse_file(){
     
     //Opening the file
@@ -76,7 +75,7 @@ void Burst_conf::parse_file(){
         if(found != string::npos){
             
 
-            //Save the new information on the map
+            //Save the new information on the interval map
             if (!first_config){
             
                 this->interval_map.insert(make_pair(current_config, aux_vec));
