@@ -2,8 +2,9 @@
 //TIME ALWAYS STARTS AT 0, when one burst end the next one starts
 
 //ALLOWED MATH OPERATORS:
-// +, -, /, *, %, <<, >>, sqrt(), pow(), ** ,sin, cos, tan, abs
+// +, -, /, *, %, <<, >>, sqrt(), pow(), ** ,sin, cos, tan, abs. Consts: pi,e
 //example: cube root of x: f(x)=x**(1/3)
+
 
 burst_config=0
 f(x)= x**2    //This mathematical function represents how each burst interval will behave (please always start with f(x)=)
@@ -13,7 +14,7 @@ f(x)= x**2    //This mathematical function represents how each burst interval wi
 
 
 burst_config=1
-f(x)= x**(1/3)
+f(x)= e**x
 10  : 10000x100
 20 : 2000x100
 60 : 4000x150

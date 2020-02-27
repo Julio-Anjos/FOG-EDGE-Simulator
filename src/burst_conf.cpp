@@ -127,12 +127,35 @@ void Burst_conf::parse_file(){
             math_function = line.substr(found+5,line.length()); // 5 is 1 + the length of "f(x)="
             
             TokenMap vars;
-            vars["x"] = 8;
+            vars["pi"] = 3.14;
+            vars["e"] = 2.73;
+            double sum=0;
+            double y=0;
+            vector<double> vy;
+            int intervals= 20;
+            int packages = 10000;
             calculator calc(math_function.c_str());
-            std::cout << calc.eval(vars) << std::endl; 
-            vars["x"] = 27;
-            std::cout << calc.eval(vars) << std::endl; 
+            for(int i=1;i<=intervals;i++){
+                vars["x"] = i;
+                y= calc.eval(vars).asDouble();
+                cout << "x = " << i << ", y = " << y << endl;
+                sum = sum + y;
+                vy.push_back(y);
+            }
+            double ratio = packages/sum;
+            cout << "Packages = " << packages << endl;
+            cout << "Sum = " << sum << endl;
+            cout << "Ratio = " << packages/sum  << endl;
+
+            for(int i=1;i<=intervals;i++){
+                cout << "Time= " << i << ", Package Amount= " <<  vy[i-1]*ratio << endl;
+            }
+            
+
             continue;
+
+
+
         }
             
         xbt_assert(false, "Burst configuration file is not correct, line: %s",line.c_str());
