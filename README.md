@@ -11,4 +11,3 @@ You can execute a example run using the following command:
 ```
 After that, you can build your own platform configs and burst configs, following the examples found in the /config file.
 
-(to be completed)

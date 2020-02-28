@@ -1,10 +1,15 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cmath>
 #include <simgrid/s4u.hpp>
 #include <boost/algorithm/string.hpp>
 using namespace std; 
 #include "burst_conf.h"
+#include "shunting-yard.h"
+
+#define PRECISION 1 //The higher this number, the more divisions will be made when matching the mathematical functions
+//increasing the precision, might be useful to make it a parameter on a config file later
 
 //Auxiliar function not of burst_class
 string trim_string(string s){
@@ -22,7 +27,6 @@ void Burst_conf::initialize(string path){
 }
 
 
-
 void Burst_conf::parse_file(){
     
     //Opening the file
@@ -34,6 +38,8 @@ void Burst_conf::parse_file(){
     //Iterate through each line of the file
     string line; 
     size_t found;
+    size_t defined_interval;
+    size_t division;
 
     //Auxiliar variables used to complete the interval map
     vector<interval> aux_vec;
@@ -76,7 +82,7 @@ void Burst_conf::parse_file(){
         if(found != string::npos){
             
 
-            //Save the new information on the map
+            //Save the new information on the interval map
             if (!first_config){
             
                 this->interval_map.insert(make_pair(current_config, aux_vec));
@@ -93,9 +99,8 @@ void Burst_conf::parse_file(){
             continue;
         }
         
-        
-        
-       
+    
+      
        
         //Getting a burst interval information
         found = line.find(":");
@@ -114,31 +119,175 @@ void Burst_conf::parse_file(){
                 //Get packages_size
                 aux_interval.package_size = stoi(line);
 
-                //Save auxiliar vector
-                aux_vec.push_back(aux_interval);
-                
                 continue;
             }
         }
        
-            
+
         
-                
+        string math_function;
+        //Getting a burst interval information
+        found = line.find("f(x)=");
+        if(found != string::npos){
+            defined_interval = line.find("["); // searching for the defined interval ex: [0,2]
+            
+            aux_interval.math_function = line.substr(found+5,defined_interval -(found+5) ); // 5 is 1 + the length of "f(x)="
+            
+            division= line.find(",");   //Find the "," that divides both the start and end of the interval
+
+            aux_interval.math_start =stof(line.substr(defined_interval+1, division - (defined_interval+1)));
+            aux_interval.math_end = stof(line.substr(division+1, line.size()-1 -(division+1) ));
+            
+            
+            //Save auxiliar vector
+            aux_vec.push_back(aux_interval);
+      
+            continue;
+        }
             
         xbt_assert(false, "Burst configuration file is not correct, line: %s",line.c_str());
+    
+    
     }
             
     //Add the last one
     this->interval_map.insert(make_pair(current_config, aux_vec));
-      
     file.close();
+    
+    calculate_send_times();
 }
 
+
+//Get the intervals of a certain burst_config
 vector<interval> Burst_conf::get_intervals(string burst_config){
 
     vector<interval> intervals = this->interval_map[burst_config];
     return intervals;
 }
+
+
+
+
+//Auxiliar function not of burst_class, returns a vector of packages amount per division
+vector<int> math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end){
+    TokenMap vars;  //Initialize constants
+    vars["pi"] = 3.14;
+    vars["e"] = 2.73;
+    double sum=0;
+    double y=0;
+    vector<double> vy;
+    
+    /* I recommend you remove this comment tags from the "cout" commands if you want to try to understand better what this function does
+    cout << "---------------------------------------------" << endl ;
+    cout << "REAL_INTERVAL: " << interval_start << " - " << interval_end << endl;
+    cout << "MATH FUNCTION: " << math_function << endl;
+    cout << "MATH_INTERVAL: " << math_start << " - " << math_end << endl;
+    */
+
+    //Matches a certain mathematical function (math_function) defined in a interval [math_start,math_end]
+    //With the function that represents the amount of packages a sensor will send per time
+
+    //Divides in num_divisions the interval between math_start and math_end
+    int num_divisions = (interval_end - interval_start)*PRECISION;
+    
+    
+    double step = (interval_end - interval_start)/num_divisions;
+    double math_step = (math_end - math_start)/num_divisions;
+    calculator calc(math_function.c_str());
+    float x = math_start + math_step/2;
+
+
+    //Calculates a vector with the result of applying the math function with x = (math_start+math_step/2) + math_step+i, with i from 0 to num_divisions
+    //We will later scale the results from this vector to get the amount of packages for each division of the interval
+    for(int i=0;i<num_divisions;i++){
+        vars["x"] = x;
+        y= abs(calc.eval(vars).asDouble());
+        
+        //cout << "x = " << x << "\t\ty = " << y << endl;
+        
+        sum = sum + y;
+        x = x + math_step;
+
+        vy.push_back(y);
+    }
+    
+    double ratio = num_packages/sum;    //Multiplying this number by the calculated y values, we are matching the math function
+                                        //with the number of sent packages
+    int pkg_sum=0;
+    int pkg_amount=0;
+    vector<int> package_amounts;
+    
+    //Create a vector with the amount of packages for each division
+    for(int i=0;i<num_divisions;i++){
+        pkg_amount = round(vy[i]*ratio);    //This rounding up might cause problems that must be fixed
+        package_amounts.push_back(pkg_amount);
+        pkg_sum += pkg_amount;
+  
+    }
+    
+    //Fix problems due to aproximation of values when using round (maybe less/more packages could be send)
+    int difference = num_packages - pkg_sum;
+    int i = num_divisions/2;
+    
+    while(difference < 0){//If the difference is negative, we must remove the extra packages
+        if(package_amounts[i] > 0){
+            package_amounts[i] -= 1;
+            difference += 1;
+        }
+        i++;
+    }
+    while(difference > 0){//If the difference is positive, we must add the missing packages
+        package_amounts[i] += 1;
+        difference -= 1;
+        i--;
+    }
+
+    /*
+    for(int i =0; i < num_divisions; i++){
+        cout << "Time: " << interval_start+i*step << " - " << interval_start+ (1+i)*step << " Packages: " << package_amounts[i] << endl;
+    }
+    */
+
+    return package_amounts;
+    
+}
+
+
+
+
+
+//According to each math function calculate how many packets must be send at each second of an interval
+void Burst_conf::calculate_send_times(){
+
+    //LOOP THROUGH EACH INTERVAL IN EACH BURST CONFIG
+    for(auto const& map_pair : this->interval_map){
+        vector<interval>intervals = map_pair.second;
+        
+        float interval_start = 0;
+        for(int i=0;i<intervals.size();i++){
+           //For every interval calculate the amount of messages to be sent every second 
+
+            intervals[i].package_amounts = math_function_match(intervals[i].math_function,intervals[i].math_start,intervals[i].math_end, intervals[i].num_packages,interval_start,intervals[i].end_time);
+            intervals[i].step = (intervals[i].end_time - interval_start)/(intervals[i].package_amounts.size()); //get the step size again
+        
+        
+            interval_start = intervals[i].end_time;
+
+        
+        
+        }
+
+        //Update the interval map
+        this->interval_map[map_pair.first] = intervals;
+    }
+
+    vector<interval> intervals  =this->get_intervals("0");
+
+   
+
+};
+
+
 
 //Will be accessed globally
 Burst_conf burst_config;

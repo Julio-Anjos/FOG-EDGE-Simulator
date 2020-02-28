@@ -7,13 +7,9 @@
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
        <argument value="Sensor-0"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-1"/>   <!-- one of this hosts sensor --> 
    </actor>
 
    <actor host="Sensor-0" function="sensor">
-   </actor>
-
-   <actor host="Sensor-1" function="sensor">
    </actor>
 
    <actor host="MsqNode-1" function="msq_node">
@@ -21,12 +17,24 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="Sensor-1"/>   <!-- one of this hosts sensor --> 
        <argument value="Sensor-2"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-3"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-4"/>   <!-- one of this hosts sensor --> 
+   </actor>
+
+   <actor host="Sensor-1" function="sensor">
    </actor>
 
    <actor host="Sensor-2" function="sensor">
+   </actor>
+
+   <actor host="MsqNode-2" function="msq_node">
+       <argument value="0"/>   <!-- burst config id --> 
+       <argument value="1000000"/>   <!-- stream window size --> 
+       <argument value="1000000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="Sensor-3"/>   <!-- one of this hosts sensor --> 
+       <argument value="Sensor-4"/>   <!-- one of this hosts sensor --> 
+       <argument value="Sensor-5"/>   <!-- one of this hosts sensor --> 
    </actor>
 
    <actor host="Sensor-3" function="sensor">
@@ -35,27 +43,7 @@
    <actor host="Sensor-4" function="sensor">
    </actor>
 
-   <actor host="MsqNode-2" function="msq_node">
-       <argument value="0"/>   <!-- burst config id --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="Sensor-5"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-6"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-7"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-8"/>   <!-- one of this hosts sensor --> 
-   </actor>
-
    <actor host="Sensor-5" function="sensor">
-   </actor>
-
-   <actor host="Sensor-6" function="sensor">
-   </actor>
-
-   <actor host="Sensor-7" function="sensor">
-   </actor>
-
-   <actor host="Sensor-8" function="sensor">
    </actor>
 
 

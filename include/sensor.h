@@ -15,10 +15,12 @@ class Sensor
         simgrid::s4u::Mailbox* mailbox;     
         simgrid::s4u::Mailbox* msq_mailbox; //mailbox of target msq
 
-        vector<interval> bursts; //bursts this node needs to send
+        vector<interval> intervals; //intervals this node needs to send, defined on the burst config
 
         simgrid::s4u::Host * host;
         string host_name;
+
+        int num_sensors; //number of sensor this node divides a msq node with
 
     public:
         
@@ -29,8 +31,7 @@ class Sensor
 
         void operator()(void); //This is the function that will first run when the platform executes
         
-        void prepare_bandwidth(); //This function prepares the profile bandwith according to the burst_config
-        void start_burst(float duration,float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
+        void send_packages(float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
 
 };
 

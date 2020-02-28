@@ -1,14 +1,24 @@
 //ALWAYS ADD burst_config atribute before each config, so you can later reference it on the platform file
-//TIME ALWAYS STARTS AT 0, when one burst end the next one starts
+//TIME ALWAYS STARTS AT 0, when one interval end the next one starts
+
+//ALLOWED MATH OPERATORS:
+// +, -, /, *, %, <<, >>, sqrt(), pow(), ** ,sin, cos, tan, abs. Consts: pi,e
+//example: cube root of x: f(x)=x**(1/3)
+
 
 burst_config=0
-10 : 2000x50000	//Template: From time_end : num_packets x size_packets 
-30 : 3000x100000 
-50 : 4000x100000
+15 : 30000x100        //Template: time_end : num_packets x size_packets 
+f(x)= x**2  [0,0.2]     //Always start with f(x)=, this math function and the defined interval will represent how the sensor will send data
+30 : 30000x100 
+f(x)= x**3  [0,0.2]
+50 : 30000x100
+f(x)= x**4  [0,0.2]
 
 
 burst_config=1
-10  : 10000x100
+10.5  : 10000x100
+f(x)=10  [0,1]
 20 : 2000x100
+f(x)=sin(x)   [0,6]
 60 : 4000x150
-70 : 4000x100
+f(x)=x**(1/3) [11,33]

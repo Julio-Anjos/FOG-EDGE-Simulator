@@ -13,7 +13,7 @@ cd platforms
 python createplats.py "../$1"
 cd ..
 
-#Get platform name
+#Get platform name (must be first line of the file)
 plat_name=$(echo $line | cut -d' ' -f1)
 
 
