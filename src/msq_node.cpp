@@ -20,15 +20,15 @@ Msq_node::Msq_node(vector<string> args)
 
     //Burst config arguments
     burst_config_id = args[1];
-    bursts =  burst_config.get_intervals(burst_config_id);
-    num_bursts = bursts.size(); //numbers of intervals
+    intervals =  burst_config.get_intervals(burst_config_id);
+    num_intervals = intervals.size(); //numbers of intervals
     
     //Streaming arguments
     int window_size = stoi(args[2]);
     int buffer_size = stoi(args[3]);
     float stream_timeout = stof(args[4]);
 
-    
+    //Currently not being used
     streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
 
    
@@ -47,47 +47,33 @@ Msq_node::Msq_node(vector<string> args)
 void Msq_node::operator()(void)
 {
    
-    //Initialize a burst vector for each sensor
-    vector<vector<interval>> sensor_burst;
-    for(int i =0;i<num_sensors ;i++){
-        sensor_burst.push_back(bursts);
-    }
-    //Fix the burst vectors so that the packages are equally divided 
-    //When there is some division rest, the first nodes receive extra packages
-    int rest = 0;
-    int sensor_id = 0;
-    for(int i=0;i<num_bursts;i++){
-        rest = bursts[i].num_packages % num_sensors;
-        
-        for(int j=0; j< num_sensors;j++){
-            sensor_burst[j][i].num_packages = sensor_burst[j][i].num_packages/num_sensors;   
-            if(rest > 0){   //Basically divide the packages equally, then grabs the rest of the division
-                            //and add to the sensors untill the rest ends.
-               sensor_burst[j][i].num_packages = sensor_burst[j][i].num_packages + 1;
-               rest--; 
-            }
-            sensor_id++;
-        }
-    }
-
     //Send starting information to the sensors
     for(int i =0;i<num_sensors ;i++){
         sensor_mailboxes[i]->put(&host_name,0);
-        sensor_mailboxes[i]->put(&(sensor_burst[i]),0);
+        sensor_mailboxes[i]->put(&(intervals),0);
     }
 
-    //Receive the bursts from the sensors    
-    for(int i=0; i< num_bursts;i++){
-        receive_burst();
+    
+    vector<int> packages;
+    //Receive the packages from the sensors    
+    for(interval inter : intervals ){
+        
+        packages = inter.package_amounts;
+    
+        //Receive the packages thata are being sent from the sensors
+        for(int i =0;i<packages.size();i++){
+            receive_packages();
+        }
+    
     }
-    cout << host_name << " completed all " << num_bursts << " bursts." << endl;
+    cout << host_name << " completed all " << num_intervals << " bursts." << endl;
     
     
 }
 
 //Keeps receiving data untill told to stop by the sensor
 //receives a full burst from each sensor
-void Msq_node::receive_burst()
+void Msq_node::receive_packages()
 {
     
     double* current_time = new double();
@@ -113,8 +99,13 @@ void Msq_node::receive_burst()
                 
                 *current_time = simgrid::s4u::Engine::get_clock();
                 
+                
+                
+                //Update the buffer with the new amount of data, currently incomplete
                 update_buffer(*payload,*current_time);
                 
+
+
                 
                 if(*payload == -1){  //Update the flag vector in case the payload is -1 (burst ended)
                     complete_bursts++;

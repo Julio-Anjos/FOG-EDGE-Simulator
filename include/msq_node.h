@@ -12,8 +12,8 @@ class Msq_node
         vector<simgrid::s4u::Mailbox*> receive_mailboxes; //This node has one mailbox for each sensor to receive their info
 
         string burst_config_id;  
-        vector<interval> bursts;
-        int num_bursts; //Number of intervals in the burst_config
+        vector<interval> intervals;
+        int num_intervals; //Number of intervals in the burst_config
         int num_sensors;
         
         Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed
@@ -26,7 +26,7 @@ class Msq_node
         Msq_node(vector<string> args); //Constructor
         
         void operator()(void); //This is the function that will first run when the platform executes
-        void receive_burst(); //Gets info from one of the sensors
+        void receive_packages(); //Receives packages from the
 
         void update_buffer(int num_bytes, double current_time); //Updates the buffer and tests if data must/can be executed
 };

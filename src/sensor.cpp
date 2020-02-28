@@ -34,9 +34,9 @@ void Sensor::get_msq_information(){
     connected_msq_node = *temp_payload1;
     msq_mailbox = simgrid::s4u::Mailbox::by_name(connected_msq_node+ "_" +host_name);
 
-    //Gets the bursts
+    //Gets the intervals
     vector<interval> *temp_payload2  = static_cast<vector<interval>*>(mailbox->get());
-    bursts = *temp_payload2;
+    intervals = *temp_payload2;
 }
 
 
@@ -46,22 +46,44 @@ void Sensor::operator()(void)
 {
     float last_end_time = 0;
     
-    
-    //Iterate over the intervals
-    for(interval burst : bursts ){
+    vector<int> packages;
+    float step;
+    int package_size;
+    float start_time = 0;
+    float end_time;
+
+    //Iterate over the intervals, every interval is divided in small divisions of time, on each
+    //division a certain amount of packages must be sent, this are defined by the user using mathematical functions
+   
+    for(interval inter : intervals ){
         
-        start_burst(burst.end_time - last_end_time,burst.end_time, burst.num_packages ,burst.package_size);
-        last_end_time = burst.end_time;
-        simgrid::s4u::this_actor::sleep_until(last_end_time);
+        package_size = inter.package_size;
+        end_time = inter.end_time;
+        packages = inter.package_amounts;
+        step = inter.step;
+
+        //Send the packages according to the previous defined division
+        for(int i =0;i<packages.size();i++){
+            send_packages(start_time+(step*i),packages[i], package_size);
+        }
+
+
+        start_time = inter.end_time;
+        simgrid::s4u::this_actor::sleep_until(start_time);  //Making sure a new interval doesn't start untill it's start time
+        
     }
 
 }
 
 
 
-void Sensor::start_burst(float duration,float end_time, int num_packages, int package_size)
+void Sensor::send_packages(float end_time, int num_packages, int package_size)
 {
     
+    //Flag send when the communication must stop
+    int *stop_flag = new int(-1);
+   
+   
     double* current_time = new double();
     double* start_time = new double();
   
@@ -69,15 +91,11 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
     *start_time = simgrid::s4u::Engine::get_clock();
     int counter = 0;
 
-    //Flag send when the communication must stop
-    int *stop_flag = new int(-1);
-
+    double duration = end_time - *start_time;
     double spacing = duration/num_packages;
 
     
-   
-    do{
-         
+    do{  
         *current_time = simgrid::s4u::Engine::get_clock();
         
         //Send the package
@@ -91,7 +109,7 @@ void Sensor::start_burst(float duration,float end_time, int num_packages, int pa
         
     }
     while(counter < num_packages &&  *current_time < end_time );
-    cout << host_name << " finished burst " <<  end_time << ":" << num_packages <<"x" << package_size << " at the time: " << *current_time << endl;
+    cout << host_name << " finished  " <<  end_time << ":" << num_packages <<"x" << package_size << " at the time: " << *current_time << endl;
     
 
     //Checking for missing packages

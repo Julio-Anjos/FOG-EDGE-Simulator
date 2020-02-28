@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     burst_config.initialize(argv[3]);
    
 
-    /*
+    
     //Register sensors and msq_nodes
     e.register_actor<Msq_node>("msq_node");
     e.register_actor<Sensor>("sensor");
@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     //End of simulation
     XBT_INFO("\nTotal simulation time: %.3f", e.get_clock());
 
-    */
+    
     
     return 0;
 }
