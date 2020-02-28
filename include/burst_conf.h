@@ -12,7 +12,11 @@ typedef struct burst_interval{
 
     string math_function;       //Math function that defines how the sensor will behave during this interval
     float math_start, math_end; //Start and end of interval in which we will consider the math function
-                                
+
+    
+    vector<int> package_amounts;  //Amount of packages that will be sent during the interval for each interval division (divided in steps)
+    float step;   //Example: start_time = 0, end_time = 2, step = 0.5, and packages_amount=[10,20,10,5],
+                  // Means that: 0 - 0.5 : 10 packages sent, 0.5 - 1 : 20 packages sent etc...                       
 
 } interval;
 

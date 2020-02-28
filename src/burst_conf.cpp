@@ -168,8 +168,8 @@ vector<interval> Burst_conf::get_intervals(string burst_config){
 
 
 
-//Auxiliar function not of burst_class
-void math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end){
+//Auxiliar function not of burst_class, returns a vector of packages amount per division
+vector<int> math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end){
     TokenMap vars;  //Initialize constants
     vars["pi"] = 3.14;
     vars["e"] = 2.73;
@@ -198,6 +198,7 @@ void math_function_match(string math_function, float math_start, float math_end,
 
 
     //Calculates a vector with the result of applying the math function with x = (math_start+math_step/2) + math_step+i, with i from 0 to num_divisions
+    //We will later scale the results from this vector to get the amount of packages for each division of the interval
     for(int i=0;i<num_divisions;i++){
         vars["x"] = x;
         y= abs(calc.eval(vars).asDouble());
@@ -218,7 +219,7 @@ void math_function_match(string math_function, float math_start, float math_end,
     
     //Create a vector with the amount of packages for each division
     for(int i=0;i<num_divisions;i++){
-        pkg_amount = round(vy[i]*ratio);
+        pkg_amount = round(vy[i]*ratio);    //This rounding up might cause problems that must be fixed
         package_amounts.push_back(pkg_amount);
         pkg_sum += pkg_amount;
   
@@ -247,6 +248,7 @@ void math_function_match(string math_function, float math_start, float math_end,
     }
     */
 
+    return package_amounts;
     
 }
 
@@ -265,7 +267,10 @@ void Burst_conf::calculate_send_times(){
         for(int i=0;i<intervals.size();i++){
            //For every interval calculate the amount of messages to be sent every second 
 
-            math_function_match(intervals[i].math_function,intervals[i].math_start,intervals[i].math_end, intervals[i].num_packages,interval_start,intervals[i].end_time);
+            intervals[i].package_amounts = math_function_match(intervals[i].math_function,intervals[i].math_start,intervals[i].math_end, intervals[i].num_packages,interval_start,intervals[i].end_time);
+            intervals[i].step = (intervals[i].end_time - interval_start)/(intervals[i].package_amounts.size()); //get the step size again
+        
+        
             interval_start = intervals[i].end_time;
 
         
