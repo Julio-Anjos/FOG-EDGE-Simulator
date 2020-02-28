@@ -20,6 +20,8 @@ class Sensor
         simgrid::s4u::Host * host;
         string host_name;
 
+        int num_sensors; //number of sensor this node divides a msq node with
+
     public:
         
         Sensor(vector<string> args); //Constructor

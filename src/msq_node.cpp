@@ -51,6 +51,7 @@ void Msq_node::operator()(void)
     for(int i =0;i<num_sensors ;i++){
         sensor_mailboxes[i]->put(&host_name,0);
         sensor_mailboxes[i]->put(&(intervals),0);
+        sensor_mailboxes[i]->put(&(num_sensors),0);
     }
 
     
@@ -59,11 +60,15 @@ void Msq_node::operator()(void)
     for(interval inter : intervals ){
         
         packages = inter.package_amounts;
+        
+        cout << "------------------------------ " << host_name << " START NEW BURST AT " <<  simgrid::s4u::Engine::get_clock()  << "--------------------------------------------" << endl;
     
         //Receive the packages thata are being sent from the sensors
         for(int i =0;i<packages.size();i++){
             receive_packages();
         }
+        cout << "------------------------------ " << host_name << " FINISHED BURST AT " <<  simgrid::s4u::Engine::get_clock()  << "---------------------------------------------" << endl;
+    
     
     }
     cout << host_name << " completed all " << num_intervals << " bursts." << endl;
@@ -100,17 +105,14 @@ void Msq_node::receive_packages()
                 *current_time = simgrid::s4u::Engine::get_clock();
                 
                 
-                
-                //Update the buffer with the new amount of data, currently incomplete
-                update_buffer(*payload,*current_time);
-                
-
-
-                
                 if(*payload == -1){  //Update the flag vector in case the payload is -1 (burst ended)
                     complete_bursts++;
                     flags[i] = 0;
                 }
+                
+                
+                //Update the buffer with the new amount of data, currently incomplete
+                //update_buffer(*payload,*current_time);
             }     
         }
     }

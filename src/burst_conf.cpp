@@ -8,7 +8,7 @@ using namespace std;
 #include "burst_conf.h"
 #include "shunting-yard.h"
 
-#define PRECISION 2 //The higher this number, the more divisions will be made when matching the mathematical functions
+#define PRECISION 1 //The higher this number, the more divisions will be made when matching the mathematical functions
 //increasing the precision, might be useful to make it a parameter on a config file later
 
 //Auxiliar function not of burst_class

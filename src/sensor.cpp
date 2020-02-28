@@ -37,6 +37,9 @@ void Sensor::get_msq_information(){
     //Gets the intervals
     vector<interval> *temp_payload2  = static_cast<vector<interval>*>(mailbox->get());
     intervals = *temp_payload2;
+
+    int *temp_payload3  = static_cast<int*>(mailbox->get());
+    num_sensors = *temp_payload3;
 }
 
 
@@ -64,14 +67,13 @@ void Sensor::operator()(void)
 
         //Send the packages according to the previous defined division
         for(int i =0;i<packages.size();i++){
-            send_packages(start_time+(step*i),packages[i], package_size);
+            send_packages(start_time+(step*(i+1)),packages[i]/num_sensors, package_size);
         }
 
-
+        
         start_time = inter.end_time;
         simgrid::s4u::this_actor::sleep_until(start_time);  //Making sure a new interval doesn't start untill it's start time
-        
-    }
+        }
 
 }
 
@@ -94,7 +96,10 @@ void Sensor::send_packages(float end_time, int num_packages, int package_size)
     double duration = end_time - *start_time;
     double spacing = duration/num_packages;
 
+    cout << host_name << " start sending " <<  num_packages << " packages of size " << package_size << " from the time: " << *start_time << " to " << end_time << endl;
     
+
+
     do{  
         *current_time = simgrid::s4u::Engine::get_clock();
         
@@ -109,7 +114,6 @@ void Sensor::send_packages(float end_time, int num_packages, int package_size)
         
     }
     while(counter < num_packages &&  *current_time < end_time );
-    cout << host_name << " finished  " <<  end_time << ":" << num_packages <<"x" << package_size << " at the time: " << *current_time << endl;
     
 
     //Checking for missing packages
