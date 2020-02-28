@@ -7,6 +7,10 @@
 using namespace std; 
 #include "burst_conf.h"
 #include "shunting-yard.h"
+
+#define PRECISION 2 //The higher this number, the more divisions will be made when matching the mathematical functions
+//increasing the precision, might be useful to make it a parameter on a config file later
+
 //Auxiliar function not of burst_class
 string trim_string(string s){
     boost::trim_right(s);
@@ -173,17 +177,18 @@ void math_function_match(string math_function, float math_start, float math_end,
     double y=0;
     vector<double> vy;
     
+    /* I recommend you remove this comment tags from the "cout" commands if you want to try to understand better what this function does
     cout << "---------------------------------------------" << endl ;
     cout << "REAL_INTERVAL: " << interval_start << " - " << interval_end << endl;
     cout << "MATH FUNCTION: " << math_function << endl;
     cout << "MATH_INTERVAL: " << math_start << " - " << math_end << endl;
-    
+    */
 
     //Matches a certain mathematical function (math_function) defined in a interval [math_start,math_end]
     //With the function that represents the amount of packages a sensor will send per time
 
     //Divides in num_divisions the interval between math_start and math_end
-    int num_divisions = interval_end - interval_start;
+    int num_divisions = (interval_end - interval_start)*PRECISION;
     
     
     double step = (interval_end - interval_start)/num_divisions;
@@ -197,7 +202,7 @@ void math_function_match(string math_function, float math_start, float math_end,
         vars["x"] = x;
         y= abs(calc.eval(vars).asDouble());
         
-        cout << "x = " << x << "\t\ty = " << y << endl;
+        //cout << "x = " << x << "\t\ty = " << y << endl;
         
         sum = sum + y;
         x = x + math_step;
@@ -236,10 +241,11 @@ void math_function_match(string math_function, float math_start, float math_end,
         i--;
     }
 
+    /*
     for(int i =0; i < num_divisions; i++){
         cout << "Time: " << interval_start+i*step << " - " << interval_start+ (1+i)*step << " Packages: " << package_amounts[i] << endl;
     }
-
+    */
 
     
 }
