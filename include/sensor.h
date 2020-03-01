@@ -10,8 +10,9 @@ class Sensor
     private:
         string connected_msq_node;    //Msq node that is connected to this sensor
         string burst_config_id;       //Burst configuration that its being used
-        int num_concurrent_sensors; //Number of sensors that are also connected to the msq_node
         
+        
+
         simgrid::s4u::Mailbox* mailbox;     
         simgrid::s4u::Mailbox* msq_mailbox; //mailbox of target msq
 
@@ -21,6 +22,7 @@ class Sensor
         string host_name;
 
         int num_sensors; //number of sensor this node divides a msq node with
+        int sensors_position; //This sensor position relative to other sensors, used to correctly divide packets
 
     public:
         

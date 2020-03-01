@@ -50,8 +50,9 @@ void Msq_node::operator()(void)
     //Send starting information to the sensors
     for(int i =0;i<num_sensors ;i++){
         sensor_mailboxes[i]->put(&host_name,0);
-        sensor_mailboxes[i]->put(&(intervals),0);
-        sensor_mailboxes[i]->put(&(num_sensors),0);
+        sensor_mailboxes[i]->put(&intervals,0);
+        sensor_mailboxes[i]->put(&num_sensors,0);
+        sensor_mailboxes[i]->put(&i,0); //Used to divide messages between sensors
     }
 
     

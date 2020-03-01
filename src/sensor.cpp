@@ -40,8 +40,32 @@ void Sensor::get_msq_information(){
 
     int *temp_payload3  = static_cast<int*>(mailbox->get());
     num_sensors = *temp_payload3;
+
+    int *temp_payload4  = static_cast<int*>(mailbox->get());
+    sensors_position = *temp_payload4;
+
 }
 
+
+
+//Function to guaranteed that packages aren't lost due to doing a common division
+//If you have n sensors:
+//Sensors are ordered as 0,1,2,3... n-1
+//When rest of the division by n can be 0,1,2,3... n-1
+//So to make sure the packages are divided correctly, we are putting a package for every sensor
+//if his position is between the 0 and the rest+1 
+//Ex: 5 % 3 = 2, sensor 0 is not 0 < and <=2, but the other 2 are, division becomes: 1,2,2
+//Sensor with relative position 0 never gets extra packages
+int calculate_num_packages_divided(int num_packages, int num_sensors, int sensor_position){
+    //gets the rest of division
+    int rest = num_packages % num_sensors; 
+    int num_packages_divided = num_packages / num_sensors;
+
+    if(0 < sensor_position && sensor_position <= rest){
+        num_packages_divided++;
+    }
+    return num_packages_divided;
+}
 
 
 //This is the function that will first run when the platform executes
@@ -52,6 +76,7 @@ void Sensor::operator()(void)
     vector<int> packages;
     float step;
     int package_size;
+    int num_packages;
     float start_time = 0;
     float end_time;
 
@@ -65,9 +90,12 @@ void Sensor::operator()(void)
         packages = inter.package_amounts;
         step = inter.step;
 
+
         //Send the packages according to the previous defined division
         for(int i =0;i<packages.size();i++){
-            send_packages(start_time+(step*(i+1)),packages[i]/num_sensors, package_size);
+            
+            num_packages = calculate_num_packages_divided(packages[i],num_sensors, sensors_position);
+            send_packages(start_time+(step*(i+1)),num_packages, package_size);
         }
 
         
@@ -126,5 +154,4 @@ void Sensor::send_packages(float end_time, int num_packages, int package_size)
     
     return;
 }
-
 
