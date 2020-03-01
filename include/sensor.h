@@ -1,7 +1,7 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 #include "burst_conf.h"
-
+#include <fstream>
 
 using namespace std; 
 //This class represents an actor of a sensor
@@ -23,6 +23,8 @@ class Sensor
 
         int num_sensors; //number of sensor this node divides a msq node with
         int sensors_position; //This sensor position relative to other sensors, used to correctly divide packets
+
+        ofstream logfile;
 
     public:
         

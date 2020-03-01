@@ -1,6 +1,5 @@
 #include <simgrid/s4u.hpp>
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <math.h>
 #include "burst_conf.h"
@@ -38,11 +37,18 @@ void Sensor::get_msq_information(){
     vector<interval> *temp_payload2  = static_cast<vector<interval>*>(mailbox->get());
     intervals = *temp_payload2;
 
+
+    //Getting info used to divide packages
     int *temp_payload3  = static_cast<int*>(mailbox->get());
     num_sensors = *temp_payload3;
-
     int *temp_payload4  = static_cast<int*>(mailbox->get());
     sensors_position = *temp_payload4;
+
+
+    //Open the log file
+    logfile.open ("result_logs/"+connected_msq_node+"_sensor_stream.txt",fstream::app);
+    
+    
 
 }
 
@@ -89,7 +95,14 @@ void Sensor::operator()(void)
         end_time = inter.end_time;
         packages = inter.package_amounts;
         step = inter.step;
+        
 
+        if(sensors_position == 0){
+            logfile << "-------------------------------------------------" << endl;
+            logfile << "Starting burst: " << start_time << " - " << end_time;
+            logfile << ": " << inter.num_packages << "x" << package_size << " f(x)=" << inter.math_function << endl;
+            logfile << "-------------------------------------------------" << endl; 
+        }
 
         //Send the packages according to the previous defined division
         for(int i =0;i<packages.size();i++){
@@ -124,7 +137,7 @@ void Sensor::send_packages(float end_time, int num_packages, int package_size)
     double duration = end_time - *start_time;
     double spacing = duration/num_packages;
 
-    cout << host_name << " start sending " <<  num_packages << " packages of size " << package_size << " from the time: " << *start_time << " to " << end_time << endl;
+    logfile << host_name << " sending " <<  num_packages << " packages of size " << package_size << " from times " << *start_time << " - " << end_time << endl;
     
 
 
@@ -146,8 +159,9 @@ void Sensor::send_packages(float end_time, int num_packages, int package_size)
 
     //Checking for missing packages
     if(counter < num_packages ){
-        cout << host_name << " COULD NOT SEND " << num_packages-counter << " PACKAGES IN TIME." << endl;
+        logfile << host_name << " COULD NOT SEND " << num_packages-counter << " PACKAGES IN TIME." << endl;
     }
+
 
     //Send to the msq_node that the transmission has ended
     msq_mailbox->put(stop_flag,0);

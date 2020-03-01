@@ -14,7 +14,6 @@ Msq_node::Msq_node(vector<string> args)
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
     
-    
     //Testing arguments (localized on the deploy platform file)
     xbt_assert(args.size() > 1, "Burst config id needed for each msq_node");
 
@@ -23,23 +22,29 @@ Msq_node::Msq_node(vector<string> args)
     intervals =  burst_config.get_intervals(burst_config_id);
     num_intervals = intervals.size(); //numbers of intervals
     
-    //Streaming arguments
-    int window_size = stoi(args[2]);
-    int buffer_size = stoi(args[3]);
-    float stream_timeout = stof(args[4]);
 
-    //Currently not being used
-    streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
+    
 
-   
+
     //Getting mailboxes for each sensors (Arguments from 5.. are sensor names)
     for(int i =5; i< args.size(); i++){
         sensor_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(args[i]));
         receive_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(host_name + "_" + args[i]));  //This node has one mailbox for each sensor to receive their info
     }
-
     num_sensors =  sensor_mailboxes.size();
 
+    //Create logfile for the stream between msq and sensors
+    sensor_stream_logfile.open ("result_logs/"+host_name+"_sensor_stream.txt",fstream::out | fstream::trunc );   
+    
+
+    /*
+    //Streaming arguments, currently not being used
+    int window_size = stoi(args[2]);
+    int buffer_size = stoi(args[3]);
+    float stream_timeout = stof(args[4]);
+    streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
+    */
+    sensor_stream_logfile.close();
 }
 
 
@@ -51,8 +56,9 @@ void Msq_node::operator()(void)
     for(int i =0;i<num_sensors ;i++){
         sensor_mailboxes[i]->put(&host_name,0);
         sensor_mailboxes[i]->put(&intervals,0);
-        sensor_mailboxes[i]->put(&num_sensors,0);
-        sensor_mailboxes[i]->put(&i,0); //Used to divide messages between sensors
+        sensor_mailboxes[i]->put(&num_sensors,0);//Used to divide messages between sensors
+        sensor_mailboxes[i]->put(&i,0);          //Used to divide messages between sensors
+        //sensor_mailboxes[i]->put(sensor_stream_logfile,0);
     }
 
     
@@ -73,6 +79,8 @@ void Msq_node::operator()(void)
     
     }
     cout << host_name << " completed all " << num_intervals << " bursts." << endl;
+    
+
     
     
 }
@@ -121,6 +129,7 @@ void Msq_node::receive_packages()
     
 }
 
+/*
 void Msq_node::update_buffer(int num_bytes, double current_time){
    
     string buffer_command;
@@ -132,3 +141,4 @@ void Msq_node::update_buffer(int num_bytes, double current_time){
     //will be defined by the user. There must be communication between the buffer and the processing of data to know if more data 
     //can be sent for processing. If the buffer fills up without being able send the data for processing, that data will be lost.
 }
+*/
