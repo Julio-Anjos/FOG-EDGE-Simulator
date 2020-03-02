@@ -30,6 +30,7 @@ class Burst_conf
     private:
     //Vars
         string file_path;
+        float precision;//The higher this number, the more divisions will be made when matching the mathematical functions
         //Burst configuration to a vector of intervals map
         //<burst_config_id,intervals>
         map <string,vector<interval>> interval_map;

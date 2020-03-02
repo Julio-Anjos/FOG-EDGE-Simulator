@@ -8,8 +8,8 @@ using namespace std;
 #include "burst_conf.h"
 #include "shunting-yard.h"
 
-#define PRECISION 10 //The higher this number, the more divisions will be made when matching the mathematical functions
-//increasing the precision, might be useful to make it a parameter on a config file later
+ 
+
 
 //Auxiliar function not of burst_class
 string trim_string(string s){
@@ -77,6 +77,15 @@ void Burst_conf::parse_file(){
         //Skip empty lines and comments 
         if(line == "")
             continue;
+        
+
+        //If it is the burst_config parameter
+        found = line.find("PRECISION=");
+        if(found != string::npos){
+            precision = stof(line.substr(found+10,line.length()));
+            continue;
+        }
+
 
         //If it is the burst_config parameter
         found = line.find("burst_config=");
@@ -191,7 +200,7 @@ vector<int>  Burst_conf::math_function_match(string math_function, float math_st
     //With the function that represents the amount of packages a sensor will send per time
 
     //Divides in num_divisions the interval between math_start and math_end
-    int num_divisions = (interval_end - interval_start)*PRECISION;
+    int num_divisions = (interval_end - interval_start)*precision;
     
     
     double step = (interval_end - interval_start)/num_divisions;
