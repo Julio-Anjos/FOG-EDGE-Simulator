@@ -22,6 +22,7 @@ string trim_string(string s){
 //Initialized at main
 void Burst_conf::initialize(string path){
     this->file_path = path;
+    burst_logfile.open("result_logs/burst_math_logs.txt",fstream::out | fstream::trunc);
     parse_file();
 
 }
@@ -169,7 +170,7 @@ vector<interval> Burst_conf::get_intervals(string burst_config){
 
 
 //Auxiliar function not of burst_class, returns a vector of packages amount per division
-vector<int> math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end){
+vector<int>  Burst_conf::math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end){
     TokenMap vars;  //Initialize constants
     vars["pi"] = 3.14;
     vars["e"] = 2.73;
@@ -177,12 +178,14 @@ vector<int> math_function_match(string math_function, float math_start, float ma
     double y=0;
     vector<double> vy;
     
-    /* I recommend you remove this comment tags from the "cout" commands if you want to try to understand better what this function does
-    cout << "---------------------------------------------" << endl ;
-    cout << "REAL_INTERVAL: " << interval_start << " - " << interval_end << endl;
-    cout << "MATH FUNCTION: " << math_function << endl;
-    cout << "MATH_INTERVAL: " << math_start << " - " << math_end << endl;
-    */
+
+
+
+    burst_logfile << "------------------------------------------------------------------------"<<endl;
+    burst_logfile << "STREAM_INTERVAL: " << interval_start << " - " << interval_end << endl;
+    burst_logfile << "MATH FUNCTION: f(x)=" << math_function << endl;
+    burst_logfile << "MATH_INTERVAL: " << math_start << " - " << math_end << endl;
+    
 
     //Matches a certain mathematical function (math_function) defined in a interval [math_start,math_end]
     //With the function that represents the amount of packages a sensor will send per time
@@ -203,7 +206,7 @@ vector<int> math_function_match(string math_function, float math_start, float ma
         vars["x"] = x;
         y= abs(calc.eval(vars).asDouble());
         
-        //cout << "x = " << x << "\t\ty = " << y << endl;
+        burst_logfile << "x = " << x << "\t\ty = " << y << endl;
         
         sum = sum + y;
         x = x + math_step;
@@ -242,11 +245,11 @@ vector<int> math_function_match(string math_function, float math_start, float ma
         i--;
     }
 
-    /*
+    
     for(int i =0; i < num_divisions; i++){
-        cout << "Time: " << interval_start+i*step << " - " << interval_start+ (1+i)*step << " Packages: " << package_amounts[i] << endl;
+        burst_logfile << "Time: " << interval_start+i*step << " - " << interval_start+ (1+i)*step << " Packages: " << package_amounts[i] << endl;
     }
-    */
+    
    
     return package_amounts;
     
@@ -262,7 +265,7 @@ void Burst_conf::calculate_send_times(){
     //LOOP THROUGH EACH INTERVAL IN EACH BURST CONFIG
     for(auto const& map_pair : this->interval_map){
         vector<interval>intervals = map_pair.second;
-        
+        burst_logfile << "------------------------- Burst_id= " << map_pair.first <<" -------------------------" << endl ;
         float interval_start = 0;
         for(int i=0;i<intervals.size();i++){
            //For every interval calculate the amount of messages to be sent every second 

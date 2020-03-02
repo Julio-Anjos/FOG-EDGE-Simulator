@@ -34,7 +34,6 @@ Msq_node::Msq_node(vector<string> args)
     num_sensors =  sensor_mailboxes.size();
 
     //Create logfile for the stream between msq and sensors
-    system("exec rm -r result_logs/*");
     sensor_stream_logfile.open ("result_logs/"+host_name+"_sensor_stream.txt",fstream::out | fstream::trunc );   
     
 

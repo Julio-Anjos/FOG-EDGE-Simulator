@@ -14,7 +14,7 @@ XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simul
 
 int main(int argc, char* argv[])
 {
-   
+    system("exec rm -r result_logs/*");
     //Starting engine and confirming number of arguments
     simgrid::s4u::Engine e(&argc, argv);
     xbt_assert(argc > 3, "Usage: %s platform_file deployment_file burst_config_file\n", argv[0]);

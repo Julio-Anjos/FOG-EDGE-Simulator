@@ -2,6 +2,7 @@
 #define BURST_CONF_H
 
 
+#include <fstream>
 using namespace std; 
 
 
@@ -33,12 +34,16 @@ class Burst_conf
         //<burst_config_id,intervals>
         map <string,vector<interval>> interval_map;
 
+        ofstream burst_logfile; //logging the burst mathematical function conversion
+
     //Methods
         void parse_file();
     public:
         void initialize(string file_path);
         vector<interval> get_intervals(string burst_config);
+        
         void calculate_send_times();
+        vector<int> math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end);
         
 };
 
