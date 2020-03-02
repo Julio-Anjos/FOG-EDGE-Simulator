@@ -7,12 +7,14 @@
 
 
 burst_config=0
-15 : 30000x100        //Template: time_end : num_packets x size_packets 
-f(x)= x**3  [0,3]     //Always start with f(x)=, this math function and the defined interval will represent how the sensor will send data
-30 : 30000x100 
-f(x)= x**3  [0,4]
-45 : 30000x100
-f(x)= x**4  [0,5]
+15 : 300000x100        //Template: time_end : num_packets x size_packets 
+f(x)= x**2  [0,10]     //Always start with f(x)=, this math function and the defined interval will represent how the sensor will send data
+30 : 300000x100 
+f(x)= x**3  [0,10]
+45 : 300000x100
+f(x)= x**4  [0,10]
+60 : 300000x100
+f(x)= e**x  [0,10]
 
 
 burst_config=1

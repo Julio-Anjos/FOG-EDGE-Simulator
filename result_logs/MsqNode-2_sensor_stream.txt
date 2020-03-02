@@ -103,21 +103,21 @@ Sensor-5 sending 76 packages of size 100 from times 20.7143 - 21.4286
 Sensor-3 sending 350 packages of size 100 from times 21.4286 - 22.1429
 Sensor-4 sending 351 packages of size 100 from times 21.4286 - 22.1429
 Sensor-5 sending 351 packages of size 100 from times 21.4286 - 22.1429
-Sensor-3 sending 962 packages of size 100 from times 22.1429 - 22.8571
-Sensor-4 sending 963 packages of size 100 from times 22.1429 - 22.8571
-Sensor-5 sending 963 packages of size 100 from times 22.1429 - 22.8571
+Sensor-3 sending 962 packages of size 100 from times 22.1428 - 22.8571
+Sensor-4 sending 963 packages of size 100 from times 22.1428 - 22.8571
+Sensor-5 sending 963 packages of size 100 from times 22.1428 - 22.8571
 Sensor-3 sending 2045 packages of size 100 from times 22.8571 - 23.5714
 Sensor-4 sending 2045 packages of size 100 from times 22.8571 - 23.5714
 Sensor-5 sending 2045 packages of size 100 from times 22.8571 - 23.5714
 Sensor-3 sending 3733 packages of size 100 from times 23.5714 - 24.2857
 Sensor-4 sending 3734 packages of size 100 from times 23.5714 - 24.2857
 Sensor-5 sending 3734 packages of size 100 from times 23.5714 - 24.2857
-Sensor-4 COULD NOT SEND 182 PACKAGES IN TIME.
-Sensor-5 COULD NOT SEND 182 PACKAGES IN TIME.
-Sensor-3 COULD NOT SEND 180 PACKAGES IN TIME.
-Sensor-4 sending 6163 packages of size 100 from times 24.2861 - 25
+Sensor-5 COULD NOT SEND 184 PACKAGES IN TIME.
+Sensor-3 COULD NOT SEND 182 PACKAGES IN TIME.
+Sensor-4 COULD NOT SEND 183 PACKAGES IN TIME.
 Sensor-5 sending 6163 packages of size 100 from times 24.2862 - 25
-Sensor-3 sending 6163 packages of size 100 from times 24.2863 - 25
-Sensor-4 COULD NOT SEND 2615 PACKAGES IN TIME.
-Sensor-5 COULD NOT SEND 2615 PACKAGES IN TIME.
-Sensor-3 COULD NOT SEND 2614 PACKAGES IN TIME.
+Sensor-3 sending 6163 packages of size 100 from times 24.2862 - 25
+Sensor-4 sending 6163 packages of size 100 from times 24.2863 - 25
+Sensor-4 COULD NOT SEND 2622 PACKAGES IN TIME.
+Sensor-5 COULD NOT SEND 2622 PACKAGES IN TIME.
+Sensor-3 COULD NOT SEND 2621 PACKAGES IN TIME.
