@@ -41,10 +41,16 @@ fig, ax = plt.subplots()
 for d in data:
 	first_sensor = d[0] #For now, displaying only a single sensor, due to all of the sensors connected to the same MSQ_node doing the same thing
 	
-	if len(d) == 5:
-		if d[0] == first_sensor:  
-			ax.plot([d[3],d[4]],[d[1],d[1]])
-		
+	
+	if d[0] == first_sensor: 
+		if len(d) == 5: 
+			start = d[3]
+			end = d[4]
+			pkgs = d[1]
+
+			ax.plot([start,end],[pkgs,pkgs],"b")
+		if len(d) ==2:
+			ax.plot([start,end],[pkgs,pkgs],"r")
 		
 
 
@@ -52,5 +58,5 @@ for d in data:
 ax.set(xlabel='time (s)', ylabel='num packages sent at time',
        title='Sensor_Msq Stream Plotting')
 ax.grid()
-fig.savefig("test.png")
+fig.savefig("result.png")
 plt.show()
