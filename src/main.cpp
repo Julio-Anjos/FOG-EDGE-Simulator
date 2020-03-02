@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
     e.run();
 
     //End of simulation
-    XBT_INFO("\nTotal simulation time: %.3f", e.get_clock());
+    XBT_INFO("\nTotal simulation time: %f", e.get_clock());
 
     
     

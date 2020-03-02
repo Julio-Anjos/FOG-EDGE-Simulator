@@ -36,8 +36,6 @@ void Sensor::get_msq_information(){
     //Gets the intervals
     vector<interval> *temp_payload2  = static_cast<vector<interval>*>(mailbox->get());
     intervals = *temp_payload2;
-
-
     //Getting info used to divide packages
     int *temp_payload3  = static_cast<int*>(mailbox->get());
     num_sensors = *temp_payload3;
@@ -66,10 +64,13 @@ int calculate_num_packages_divided(int num_packages, int num_sensors, int sensor
     //gets the rest of division
     int rest = num_packages % num_sensors; 
     int num_packages_divided = num_packages / num_sensors;
-
+    
+    
     if(0 < sensor_position && sensor_position <= rest){
         num_packages_divided++;
     }
+
+
     return num_packages_divided;
 }
 
@@ -83,6 +84,7 @@ void Sensor::operator()(void)
     float step;
     int package_size;
     int num_packages;
+    int interval_sent_packages; //counts how many packages this sensor sent in one burst interval
     float start_time = 0;
     float end_time;
 
@@ -90,7 +92,7 @@ void Sensor::operator()(void)
     //division a certain amount of packages must be sent, this are defined by the user using mathematical functions
    
     for(interval inter : intervals ){
-        
+        interval_sent_packages =0;
         package_size = inter.package_size;
         end_time = inter.end_time;
         packages = inter.package_amounts;
@@ -108,19 +110,22 @@ void Sensor::operator()(void)
         for(int i =0;i<packages.size();i++){
             
             num_packages = calculate_num_packages_divided(packages[i],num_sensors, sensors_position);
-            send_packages(start_time+(step*(i+1)),num_packages, package_size);
+            interval_sent_packages += send_packages(start_time+(step*(i+1)),num_packages, package_size);
+            
         }
-
+    
+        //Checking for missing packages
+        msq_mailbox->put(new int(interval_sent_packages),0); //Sending to the msq_node how sucessfull was the interval burst          
         
+
         start_time = inter.end_time;
-        simgrid::s4u::this_actor::sleep_until(start_time);  //Making sure a new interval doesn't start untill it's start time
         }
 
 }
 
 
 
-void Sensor::send_packages(float end_time, int num_packages, int package_size)
+int Sensor::send_packages(float end_time, int num_packages, int package_size)
 {
     
     //Flag send when the communication must stop
@@ -140,8 +145,9 @@ void Sensor::send_packages(float end_time, int num_packages, int package_size)
     logfile << host_name << " sending " <<  num_packages << " packages of size " << package_size << " from times " << *start_time << " - " << end_time << endl;
     
 
-
-    do{  
+    //Main loop of sending packages
+    while(counter < num_packages &&  *current_time < end_time ){
+        
         *current_time = simgrid::s4u::Engine::get_clock();
         
         //Send the package
@@ -154,18 +160,24 @@ void Sensor::send_packages(float end_time, int num_packages, int package_size)
         //Wait to receive new one
         
     }
-    while(counter < num_packages &&  *current_time < end_time );
+    
     
 
-    //Checking for missing packages
+    //Checking for missing packages in this division
     if(counter < num_packages ){
-        logfile << host_name << " COULD NOT SEND " << num_packages-counter << " PACKAGES IN TIME." << endl;
+        logfile << host_name << " COULD NOT SEND " << num_packages-counter << " PACKAGES IN TIME." << endl;  
     }
-
 
     //Send to the msq_node that the transmission has ended
     msq_mailbox->put(stop_flag,0);
+
+    simgrid::s4u::this_actor::sleep_until(end_time);  //Making sure a new interval doesn't start before the correct time
     
-    return;
+    
+    
+    
+    
+
+    return counter;
 }
 

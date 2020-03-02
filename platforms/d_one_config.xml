@@ -8,16 +8,12 @@
        <argument value="20"/>   <!-- stream timeout time --> 
        <argument value="Sensor-0"/>   <!-- one of this hosts sensor --> 
        <argument value="Sensor-1"/>   <!-- one of this hosts sensor --> 
-       <argument value="Sensor-2"/>   <!-- one of this hosts sensor --> 
    </actor>
 
    <actor host="Sensor-0" function="sensor">
    </actor>
 
    <actor host="Sensor-1" function="sensor">
-   </actor>
-
-   <actor host="Sensor-2" function="sensor">
    </actor>
 
 

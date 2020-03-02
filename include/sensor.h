@@ -35,7 +35,7 @@ class Sensor
 
         void operator()(void); //This is the function that will first run when the platform executes
         
-        void send_packages(float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
+        int send_packages(float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
 
 };
 

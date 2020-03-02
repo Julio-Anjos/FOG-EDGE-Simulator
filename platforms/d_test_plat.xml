@@ -28,7 +28,7 @@
    </actor>
 
    <actor host="MsqNode-2" function="msq_node">
-       <argument value="0"/>   <!-- burst config id --> 
+       <argument value="1"/>   <!-- burst config id --> 
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 

@@ -34,6 +34,7 @@ Msq_node::Msq_node(vector<string> args)
     num_sensors =  sensor_mailboxes.size();
 
     //Create logfile for the stream between msq and sensors
+    system("exec rm -r result_logs/*");
     sensor_stream_logfile.open ("result_logs/"+host_name+"_sensor_stream.txt",fstream::out | fstream::trunc );   
     
 
@@ -58,25 +59,41 @@ void Msq_node::operator()(void)
         sensor_mailboxes[i]->put(&intervals,0);
         sensor_mailboxes[i]->put(&num_sensors,0);//Used to divide messages between sensors
         sensor_mailboxes[i]->put(&i,0);          //Used to divide messages between sensors
-        //sensor_mailboxes[i]->put(sensor_stream_logfile,0);
     }
 
-    
+    int burst_counter=0;
+    int interval_sent_packages;
     vector<int> packages;
     //Receive the packages from the sensors    
     for(interval inter : intervals ){
-        
+        burst_counter++;
         packages = inter.package_amounts;
+        interval_sent_packages =0;
         
-        cout << "------------------------------ " << host_name << " START NEW BURST AT " <<  simgrid::s4u::Engine::get_clock()  << "--------------------------------------------" << endl;
-    
-        //Receive the packages thata are being sent from the sensors
+        cout <<  host_name << " started  burst "<<burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()  << endl;
+        //Receive the packages that are being sent from the sensors
         for(int i =0;i<packages.size();i++){
             receive_packages();
         }
-        cout << "------------------------------ " << host_name << " FINISHED BURST AT " <<  simgrid::s4u::Engine::get_clock()  << "---------------------------------------------" << endl;
-    
-    
+        
+
+        int *temp;
+        //For this specific interval, get the amount of packages correctly sent
+        for(int i =0;i<num_sensors ;i++){
+            temp  = static_cast<int*>(receive_mailboxes[i]->get());
+            interval_sent_packages += *temp;   
+        }
+
+        //Print information about missed packages
+        if(interval_sent_packages < inter.num_packages){
+            cout  << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<<" FAILED TO SEND " << inter.num_packages - interval_sent_packages << " packages out of " << inter.num_packages << endl;;
+        }
+        else{
+            cout  << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<< " sucessfully sending all " <<  inter.num_packages <<" packages " << endl;
+        }
+       
+
+
     }
     cout << host_name << " completed all " << num_intervals << " bursts." << endl;
     

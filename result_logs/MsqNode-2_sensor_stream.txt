@@ -1,0 +1,123 @@
+-------------------------------------------------
+Starting burst: 0 - 10.5: 100000x100 f(x)=10
+-------------------------------------------------
+Sensor-3 sending 2222 packages of size 100 from times 0.0002602 - 0.7
+Sensor-4 sending 2223 packages of size 100 from times 0.0005204 - 0.7
+Sensor-5 sending 2222 packages of size 100 from times 0.0007806 - 0.7
+Sensor-3 sending 2222 packages of size 100 from times 0.7 - 1.4
+Sensor-5 sending 2222 packages of size 100 from times 0.7 - 1.4
+Sensor-4 sending 2223 packages of size 100 from times 0.7 - 1.4
+Sensor-3 sending 2222 packages of size 100 from times 1.4 - 2.1
+Sensor-5 sending 2222 packages of size 100 from times 1.4 - 2.1
+Sensor-4 sending 2223 packages of size 100 from times 1.4 - 2.1
+Sensor-3 sending 2222 packages of size 100 from times 2.1 - 2.8
+Sensor-5 sending 2222 packages of size 100 from times 2.1 - 2.8
+Sensor-4 sending 2223 packages of size 100 from times 2.1 - 2.8
+Sensor-3 sending 2222 packages of size 100 from times 2.8 - 3.5
+Sensor-5 sending 2222 packages of size 100 from times 2.8 - 3.5
+Sensor-4 sending 2223 packages of size 100 from times 2.8 - 3.5
+Sensor-3 sending 2222 packages of size 100 from times 3.5 - 4.2
+Sensor-5 sending 2222 packages of size 100 from times 3.5 - 4.2
+Sensor-4 sending 2223 packages of size 100 from times 3.5 - 4.2
+Sensor-3 sending 2222 packages of size 100 from times 4.2 - 4.9
+Sensor-5 sending 2222 packages of size 100 from times 4.2 - 4.9
+Sensor-4 sending 2223 packages of size 100 from times 4.2 - 4.9
+Sensor-3 sending 2222 packages of size 100 from times 4.9 - 5.6
+Sensor-5 sending 2222 packages of size 100 from times 4.9 - 5.6
+Sensor-4 sending 2222 packages of size 100 from times 4.9 - 5.6
+Sensor-3 sending 2222 packages of size 100 from times 5.6 - 6.3
+Sensor-4 sending 2222 packages of size 100 from times 5.6 - 6.3
+Sensor-5 sending 2222 packages of size 100 from times 5.6 - 6.3
+Sensor-3 sending 2222 packages of size 100 from times 6.3 - 7
+Sensor-4 sending 2222 packages of size 100 from times 6.3 - 7
+Sensor-5 sending 2222 packages of size 100 from times 6.3 - 7
+Sensor-3 sending 2222 packages of size 100 from times 7 - 7.7
+Sensor-4 sending 2222 packages of size 100 from times 7 - 7.7
+Sensor-5 sending 2222 packages of size 100 from times 7 - 7.7
+Sensor-3 sending 2222 packages of size 100 from times 7.7 - 8.4
+Sensor-4 sending 2222 packages of size 100 from times 7.7 - 8.4
+Sensor-5 sending 2222 packages of size 100 from times 7.7 - 8.4
+Sensor-3 sending 2222 packages of size 100 from times 8.4 - 9.1
+Sensor-4 sending 2223 packages of size 100 from times 8.4 - 9.1
+Sensor-5 sending 2222 packages of size 100 from times 8.4 - 9.1
+Sensor-3 sending 2222 packages of size 100 from times 9.1 - 9.8
+Sensor-5 sending 2222 packages of size 100 from times 9.1 - 9.8
+Sensor-4 sending 2223 packages of size 100 from times 9.1 - 9.8
+Sensor-3 sending 2222 packages of size 100 from times 9.8 - 10.5
+Sensor-5 sending 2222 packages of size 100 from times 9.8 - 10.5
+Sensor-4 sending 2223 packages of size 100 from times 9.8 - 10.5
+-------------------------------------------------
+Starting burst: 10.5 - 20: 20000x100 f(x)=sin(x)
+-------------------------------------------------
+Sensor-3 sending 153 packages of size 100 from times 10.5001 - 11.1786
+Sensor-4 sending 153 packages of size 100 from times 10.5001 - 11.1786
+Sensor-5 sending 153 packages of size 100 from times 10.5002 - 11.1786
+Sensor-3 sending 431 packages of size 100 from times 11.1786 - 11.8571
+Sensor-4 sending 432 packages of size 100 from times 11.1786 - 11.8571
+Sensor-5 sending 431 packages of size 100 from times 11.1786 - 11.8571
+Sensor-3 sending 631 packages of size 100 from times 11.8571 - 12.5357
+Sensor-5 sending 632 packages of size 100 from times 11.8571 - 12.5357
+Sensor-4 sending 632 packages of size 100 from times 11.8571 - 12.5357
+Sensor-3 sending 717 packages of size 100 from times 12.5357 - 13.2143
+Sensor-4 sending 718 packages of size 100 from times 12.5357 - 13.2143
+Sensor-5 sending 718 packages of size 100 from times 12.5357 - 13.2143
+Sensor-3 sending 674 packages of size 100 from times 13.2143 - 13.8929
+Sensor-4 sending 674 packages of size 100 from times 13.2143 - 13.8929
+Sensor-5 sending 674 packages of size 100 from times 13.2143 - 13.8929
+Sensor-3 sending 508 packages of size 100 from times 13.8929 - 14.5714
+Sensor-4 sending 509 packages of size 100 from times 13.8929 - 14.5714
+Sensor-5 sending 508 packages of size 100 from times 13.8929 - 14.5714
+Sensor-3 sending 251 packages of size 100 from times 14.5714 - 15.25
+Sensor-5 sending 251 packages of size 100 from times 14.5714 - 15.25
+Sensor-4 sending 251 packages of size 100 from times 14.5714 - 15.25
+Sensor-3 sending 52 packages of size 100 from times 15.25 - 15.9286
+Sensor-4 sending 53 packages of size 100 from times 15.25 - 15.9286
+Sensor-5 sending 53 packages of size 100 from times 15.25 - 15.9286
+Sensor-3 sending 345 packages of size 100 from times 15.9286 - 16.6071
+Sensor-4 sending 346 packages of size 100 from times 15.9286 - 16.6071
+Sensor-5 sending 346 packages of size 100 from times 15.9286 - 16.6071
+Sensor-3 sending 576 packages of size 100 from times 16.6071 - 17.2857
+Sensor-4 sending 577 packages of size 100 from times 16.6071 - 17.2857
+Sensor-5 sending 577 packages of size 100 from times 16.6071 - 17.2857
+Sensor-3 sending 703 packages of size 100 from times 17.2857 - 17.9643
+Sensor-4 sending 704 packages of size 100 from times 17.2857 - 17.9643
+Sensor-5 sending 703 packages of size 100 from times 17.2857 - 17.9643
+Sensor-3 sending 703 packages of size 100 from times 17.9643 - 18.6429
+Sensor-5 sending 703 packages of size 100 from times 17.9643 - 18.6429
+Sensor-4 sending 703 packages of size 100 from times 17.9643 - 18.6429
+Sensor-3 sending 575 packages of size 100 from times 18.6429 - 19.3214
+Sensor-4 sending 575 packages of size 100 from times 18.6429 - 19.3214
+Sensor-5 sending 575 packages of size 100 from times 18.6429 - 19.3214
+Sensor-3 sending 343 packages of size 100 from times 19.3214 - 20
+Sensor-4 sending 344 packages of size 100 from times 19.3214 - 20
+Sensor-5 sending 343 packages of size 100 from times 19.3214 - 20
+-------------------------------------------------
+Starting burst: 20 - 25: 40000x100 f(x)=x**3
+-------------------------------------------------
+Sensor-3 sending 2 packages of size 100 from times 20.0001 - 20.7143
+Sensor-4 sending 3 packages of size 100 from times 20.0001 - 20.7143
+Sensor-5 sending 3 packages of size 100 from times 20.0002 - 20.7143
+Sensor-3 sending 75 packages of size 100 from times 20.7143 - 21.4286
+Sensor-4 sending 76 packages of size 100 from times 20.7143 - 21.4286
+Sensor-5 sending 76 packages of size 100 from times 20.7143 - 21.4286
+Sensor-3 sending 350 packages of size 100 from times 21.4286 - 22.1429
+Sensor-4 sending 351 packages of size 100 from times 21.4286 - 22.1429
+Sensor-5 sending 351 packages of size 100 from times 21.4286 - 22.1429
+Sensor-3 sending 962 packages of size 100 from times 22.1429 - 22.8571
+Sensor-4 sending 963 packages of size 100 from times 22.1429 - 22.8571
+Sensor-5 sending 963 packages of size 100 from times 22.1429 - 22.8571
+Sensor-3 sending 2045 packages of size 100 from times 22.8571 - 23.5714
+Sensor-4 sending 2045 packages of size 100 from times 22.8571 - 23.5714
+Sensor-5 sending 2045 packages of size 100 from times 22.8571 - 23.5714
+Sensor-3 sending 3733 packages of size 100 from times 23.5714 - 24.2857
+Sensor-4 sending 3734 packages of size 100 from times 23.5714 - 24.2857
+Sensor-5 sending 3734 packages of size 100 from times 23.5714 - 24.2857
+Sensor-4 COULD NOT SEND 182 PACKAGES IN TIME.
+Sensor-5 COULD NOT SEND 182 PACKAGES IN TIME.
+Sensor-3 COULD NOT SEND 180 PACKAGES IN TIME.
+Sensor-4 sending 6163 packages of size 100 from times 24.2861 - 25
+Sensor-5 sending 6163 packages of size 100 from times 24.2862 - 25
+Sensor-3 sending 6163 packages of size 100 from times 24.2863 - 25
+Sensor-4 COULD NOT SEND 2615 PACKAGES IN TIME.
+Sensor-5 COULD NOT SEND 2615 PACKAGES IN TIME.
+Sensor-3 COULD NOT SEND 2614 PACKAGES IN TIME.

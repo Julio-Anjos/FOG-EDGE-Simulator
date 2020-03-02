@@ -247,7 +247,7 @@ vector<int> math_function_match(string math_function, float math_start, float ma
         cout << "Time: " << interval_start+i*step << " - " << interval_start+ (1+i)*step << " Packages: " << package_amounts[i] << endl;
     }
     */
-
+   
     return package_amounts;
     
 }
