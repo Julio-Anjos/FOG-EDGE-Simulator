@@ -34,15 +34,34 @@ for line in f:
         numbers = []
 
 
+
 plt.subplot(2, 1, 1)
+sensor_id=[]
 start=0
 end=0
 pkgs=0
 red_printed = False
 #Plotting number of packages sent at specific time
-first_sensor = data[0][0] #For now, displaying only a single sensor, due to all of the sensors connected to the same MSQ_node doing the same thing
 for d in data:
-        
+    if len(d) == 5:
+
+
+
+
+    if len(d) == 2:
+
+
+
+
+
+
+
+
+
+
+
+    first_sensor = d[0] #For now, displaying only a single sensor, due to all of the sensors connected to the same MSQ_node doing the same thing
+    
     
     if d[0] == first_sensor: 
         if len(d) == 5: 
@@ -59,12 +78,6 @@ for d in data:
         if len(d) ==2:
             plt.plot([start,end],[pkgs,pkgs],"r")  
             red_printed = True
-    
-    
-    
-
-
-
 
 blue_patch = mpatches.Patch(color='blue', label='Sucess sending all packages')
 red_patch = mpatches.Patch(color='red', label='Missed some packages')
@@ -74,6 +87,8 @@ plt.legend(handles=[blue_patch,red_patch])
 plt.title('Sensor_Msq Stream Packages Sent at Specific Time')
 plt.xlabel('time (s)'), 
 plt.ylabel('num packages sent at time')
+
+
 
 
 plt.subplot(2, 1, 2)
@@ -112,7 +127,7 @@ plt.legend(handles=[blue_patch,red_patch])
 
 
 plt.plot(time,expected_pkgs,"b")
-plt.plot(time,sent_pkgs,"r")
+#plt.plot(time,sent_pkgs,"r")
 plt.title('Sensor_Msq Stream Total Amount of Packages')
 plt.xlabel('time (s)'), 
 plt.ylabel('total packages sent')
