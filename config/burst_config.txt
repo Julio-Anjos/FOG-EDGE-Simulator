@@ -13,7 +13,7 @@ f(x)= x**2  [0,10]     //Always start with f(x)=, this math function and the def
 30 : 300000x100 
 f(x)= x**3  [0,10]
 45 : 300000x100
-f(x)= x**4  [0,10]
+f(x)= sin(x)  [0,10]
 60 : 300000x100
 f(x)= e**x  [0,10]
 

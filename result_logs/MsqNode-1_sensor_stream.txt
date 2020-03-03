@@ -883,426 +883,512 @@ Sensor-2 sending 3960 packages of size 100 from times 29.9004 - 30
 Sensor-1 COULD NOT SEND 3217 PACKAGES IN TIME.
 Sensor-2 COULD NOT SEND 3217 PACKAGES IN TIME.
 -------------------------------------------------
-Starting burst: 30 - 45: 300000x100 f(x)=x**4
+Starting burst: 30 - 45: 300000x100 f(x)=sin(x)
 -------------------------------------------------
-Sensor-1 sending 0 packages of size 100 from times 30.0005 - 30.1
-Sensor-2 sending 0 packages of size 100 from times 30.0005 - 30.1
-Sensor-1 sending 0 packages of size 100 from times 30.1 - 30.2
-Sensor-2 sending 0 packages of size 100 from times 30.1 - 30.2
-Sensor-1 sending 0 packages of size 100 from times 30.2 - 30.3
-Sensor-2 sending 0 packages of size 100 from times 30.2 - 30.3
-Sensor-1 sending 0 packages of size 100 from times 30.3 - 30.4
-Sensor-2 sending 0 packages of size 100 from times 30.3 - 30.4
-Sensor-1 sending 0 packages of size 100 from times 30.4 - 30.5
-Sensor-2 sending 0 packages of size 100 from times 30.4 - 30.5
-Sensor-1 sending 0 packages of size 100 from times 30.5 - 30.6
-Sensor-2 sending 0 packages of size 100 from times 30.5 - 30.6
-Sensor-1 sending 0 packages of size 100 from times 30.6 - 30.7
-Sensor-2 sending 0 packages of size 100 from times 30.6 - 30.7
-Sensor-1 sending 0 packages of size 100 from times 30.7 - 30.8
-Sensor-2 sending 0 packages of size 100 from times 30.7 - 30.8
-Sensor-1 sending 0 packages of size 100 from times 30.8 - 30.9
-Sensor-2 sending 0 packages of size 100 from times 30.8 - 30.9
-Sensor-1 sending 0 packages of size 100 from times 30.9 - 31
-Sensor-2 sending 0 packages of size 100 from times 30.9 - 31
-Sensor-1 sending 0 packages of size 100 from times 31 - 31.1
-Sensor-2 sending 0 packages of size 100 from times 31 - 31.1
-Sensor-1 sending 0 packages of size 100 from times 31.1 - 31.2
-Sensor-2 sending 0 packages of size 100 from times 31.1 - 31.2
-Sensor-1 sending 0 packages of size 100 from times 31.2 - 31.3
-Sensor-2 sending 0 packages of size 100 from times 31.2 - 31.3
-Sensor-1 sending 0 packages of size 100 from times 31.3 - 31.4
-Sensor-2 sending 1 packages of size 100 from times 31.3 - 31.4
-Sensor-1 sending 0 packages of size 100 from times 31.4 - 31.5
-Sensor-2 sending 1 packages of size 100 from times 31.4 - 31.5
-Sensor-1 sending 0 packages of size 100 from times 31.5 - 31.6
-Sensor-2 sending 1 packages of size 100 from times 31.5 - 31.6
-Sensor-1 sending 0 packages of size 100 from times 31.6 - 31.7
-Sensor-2 sending 1 packages of size 100 from times 31.6 - 31.7
-Sensor-1 sending 1 packages of size 100 from times 31.7 - 31.8
-Sensor-2 sending 1 packages of size 100 from times 31.7 - 31.8
-Sensor-1 sending 1 packages of size 100 from times 31.8 - 31.9
-Sensor-2 sending 1 packages of size 100 from times 31.8 - 31.9
-Sensor-1 sending 1 packages of size 100 from times 31.9 - 32
-Sensor-2 sending 2 packages of size 100 from times 31.9 - 32
-Sensor-1 sending 1 packages of size 100 from times 32 - 32.1
-Sensor-2 sending 2 packages of size 100 from times 32 - 32.1
-Sensor-1 sending 2 packages of size 100 from times 32.1 - 32.2
-Sensor-2 sending 2 packages of size 100 from times 32.1 - 32.2
-Sensor-1 sending 2 packages of size 100 from times 32.2 - 32.3
-Sensor-2 sending 3 packages of size 100 from times 32.2 - 32.3
-Sensor-1 sending 3 packages of size 100 from times 32.3 - 32.4
-Sensor-2 sending 3 packages of size 100 from times 32.3 - 32.4
-Sensor-1 sending 3 packages of size 100 from times 32.4 - 32.5
-Sensor-2 sending 4 packages of size 100 from times 32.4 - 32.5
-Sensor-1 sending 4 packages of size 100 from times 32.5 - 32.6
-Sensor-2 sending 4 packages of size 100 from times 32.5 - 32.6
-Sensor-1 sending 5 packages of size 100 from times 32.6 - 32.7
-Sensor-2 sending 5 packages of size 100 from times 32.6 - 32.7
-Sensor-1 sending 5 packages of size 100 from times 32.7 - 32.8
-Sensor-2 sending 6 packages of size 100 from times 32.7 - 32.8
-Sensor-1 sending 6 packages of size 100 from times 32.8 - 32.9
-Sensor-2 sending 7 packages of size 100 from times 32.8 - 32.9
-Sensor-1 sending 7 packages of size 100 from times 32.9 - 33
-Sensor-2 sending 8 packages of size 100 from times 32.9 - 33
-Sensor-1 sending 8 packages of size 100 from times 33 - 33.1
-Sensor-2 sending 9 packages of size 100 from times 33 - 33.1
-Sensor-1 sending 9 packages of size 100 from times 33.1 - 33.2
-Sensor-2 sending 10 packages of size 100 from times 33.1 - 33.2
-Sensor-1 sending 11 packages of size 100 from times 33.2 - 33.3
-Sensor-2 sending 11 packages of size 100 from times 33.2 - 33.3
-Sensor-1 sending 12 packages of size 100 from times 33.3 - 33.4
-Sensor-2 sending 13 packages of size 100 from times 33.3 - 33.4
-Sensor-1 sending 14 packages of size 100 from times 33.4 - 33.5
-Sensor-2 sending 14 packages of size 100 from times 33.4 - 33.5
-Sensor-1 sending 15 packages of size 100 from times 33.5 - 33.6
-Sensor-2 sending 16 packages of size 100 from times 33.5 - 33.6
-Sensor-1 sending 17 packages of size 100 from times 33.6 - 33.7
-Sensor-2 sending 18 packages of size 100 from times 33.6 - 33.7
-Sensor-1 sending 19 packages of size 100 from times 33.7 - 33.8
-Sensor-2 sending 20 packages of size 100 from times 33.7 - 33.8
-Sensor-1 sending 21 packages of size 100 from times 33.8 - 33.9
-Sensor-2 sending 22 packages of size 100 from times 33.8 - 33.9
-Sensor-1 sending 24 packages of size 100 from times 33.9 - 34
-Sensor-2 sending 24 packages of size 100 from times 33.9 - 34
-Sensor-1 sending 26 packages of size 100 from times 34 - 34.1
-Sensor-2 sending 27 packages of size 100 from times 34 - 34.1
-Sensor-1 sending 29 packages of size 100 from times 34.1 - 34.2
-Sensor-2 sending 30 packages of size 100 from times 34.1 - 34.2
-Sensor-1 sending 32 packages of size 100 from times 34.2 - 34.3
-Sensor-2 sending 32 packages of size 100 from times 34.2 - 34.3
-Sensor-1 sending 35 packages of size 100 from times 34.3 - 34.4
-Sensor-2 sending 36 packages of size 100 from times 34.3 - 34.4
-Sensor-1 sending 38 packages of size 100 from times 34.4 - 34.5
-Sensor-2 sending 39 packages of size 100 from times 34.4 - 34.5
-Sensor-1 sending 42 packages of size 100 from times 34.5 - 34.6
-Sensor-2 sending 43 packages of size 100 from times 34.5 - 34.6
-Sensor-1 sending 46 packages of size 100 from times 34.6 - 34.7
-Sensor-2 sending 46 packages of size 100 from times 34.6 - 34.7
-Sensor-1 sending 50 packages of size 100 from times 34.7 - 34.8
-Sensor-2 sending 51 packages of size 100 from times 34.7 - 34.8
-Sensor-1 sending 54 packages of size 100 from times 34.8 - 34.9
-Sensor-2 sending 55 packages of size 100 from times 34.8 - 34.9
-Sensor-1 sending 59 packages of size 100 from times 34.9 - 35
-Sensor-2 sending 60 packages of size 100 from times 34.9 - 35
-Sensor-1 sending 64 packages of size 100 from times 35 - 35.1
-Sensor-2 sending 64 packages of size 100 from times 35 - 35.1
-Sensor-1 sending 69 packages of size 100 from times 35.1 - 35.2
-Sensor-2 sending 70 packages of size 100 from times 35.1 - 35.2
-Sensor-1 sending 75 packages of size 100 from times 35.2 - 35.3
-Sensor-2 sending 75 packages of size 100 from times 35.2 - 35.3
-Sensor-1 sending 81 packages of size 100 from times 35.3 - 35.4
-Sensor-2 sending 81 packages of size 100 from times 35.3 - 35.4
-Sensor-1 sending 87 packages of size 100 from times 35.4 - 35.5
-Sensor-2 sending 87 packages of size 100 from times 35.4 - 35.5
-Sensor-1 sending 93 packages of size 100 from times 35.5 - 35.6
-Sensor-2 sending 94 packages of size 100 from times 35.5 - 35.6
-Sensor-1 sending 100 packages of size 100 from times 35.6 - 35.7
-Sensor-2 sending 101 packages of size 100 from times 35.6 - 35.7
-Sensor-1 sending 108 packages of size 100 from times 35.7 - 35.8
-Sensor-2 sending 108 packages of size 100 from times 35.7 - 35.8
-Sensor-1 sending 115 packages of size 100 from times 35.8 - 35.9
-Sensor-2 sending 116 packages of size 100 from times 35.8 - 35.9
-Sensor-1 sending 124 packages of size 100 from times 35.9 - 36
-Sensor-2 sending 124 packages of size 100 from times 35.9 - 36
-Sensor-1 sending 132 packages of size 100 from times 36 - 36.1
-Sensor-2 sending 133 packages of size 100 from times 36 - 36.1
-Sensor-1 sending 141 packages of size 100 from times 36.1 - 36.2
-Sensor-2 sending 142 packages of size 100 from times 36.1 - 36.2
-Sensor-1 sending 150 packages of size 100 from times 36.2 - 36.3
-Sensor-2 sending 151 packages of size 100 from times 36.2 - 36.3
-Sensor-1 sending 160 packages of size 100 from times 36.3 - 36.4
-Sensor-2 sending 161 packages of size 100 from times 36.3 - 36.4
-Sensor-1 sending 171 packages of size 100 from times 36.4 - 36.5
-Sensor-2 sending 171 packages of size 100 from times 36.4 - 36.5
-Sensor-1 sending 182 packages of size 100 from times 36.5 - 36.6
-Sensor-2 sending 182 packages of size 100 from times 36.5 - 36.6
-Sensor-1 sending 193 packages of size 100 from times 36.6 - 36.7
-Sensor-2 sending 193 packages of size 100 from times 36.6 - 36.7
-Sensor-1 sending 205 packages of size 100 from times 36.7 - 36.8
-Sensor-2 sending 205 packages of size 100 from times 36.7 - 36.8
-Sensor-1 sending 217 packages of size 100 from times 36.8 - 36.9
-Sensor-2 sending 218 packages of size 100 from times 36.8 - 36.9
-Sensor-1 sending 230 packages of size 100 from times 36.9 - 37
-Sensor-2 sending 231 packages of size 100 from times 36.9 - 37
-Sensor-1 sending 244 packages of size 100 from times 37 - 37.1
-Sensor-2 sending 245 packages of size 100 from times 37 - 37.1
-Sensor-1 sending 258 packages of size 100 from times 37.1 - 37.2
-Sensor-2 sending 259 packages of size 100 from times 37.1 - 37.2
-Sensor-1 sending 273 packages of size 100 from times 37.2 - 37.3
-Sensor-2 sending 274 packages of size 100 from times 37.2 - 37.3
-Sensor-1 sending 289 packages of size 100 from times 37.3 - 37.4
-Sensor-2 sending 289 packages of size 100 from times 37.3 - 37.4
-Sensor-1 sending 305 packages of size 100 from times 37.4 - 37.5
-Sensor-2 sending 305 packages of size 100 from times 37.4 - 37.5
-Sensor-1 sending 321 packages of size 100 from times 37.5 - 37.6
-Sensor-2 sending 322 packages of size 100 from times 37.5 - 37.6
-Sensor-1 sending 338 packages of size 100 from times 37.6 - 37.7
-Sensor-2 sending 339 packages of size 100 from times 37.6 - 37.7
-Sensor-1 sending 356 packages of size 100 from times 37.7 - 37.8
-Sensor-2 sending 357 packages of size 100 from times 37.7 - 37.8
-Sensor-1 sending 375 packages of size 100 from times 37.8 - 37.9
-Sensor-2 sending 375 packages of size 100 from times 37.8 - 37.9
-Sensor-1 sending 394 packages of size 100 from times 37.9 - 38
-Sensor-2 sending 395 packages of size 100 from times 37.9 - 38
-Sensor-1 sending 415 packages of size 100 from times 38 - 38.1
-Sensor-2 sending 415 packages of size 100 from times 38 - 38.1
-Sensor-1 sending 436 packages of size 100 from times 38.1 - 38.2
-Sensor-2 sending 436 packages of size 100 from times 38.1 - 38.2
-Sensor-1 sending 457 packages of size 100 from times 38.2 - 38.3
-Sensor-2 sending 458 packages of size 100 from times 38.2 - 38.3
-Sensor-1 sending 480 packages of size 100 from times 38.3 - 38.4
-Sensor-2 sending 480 packages of size 100 from times 38.3 - 38.4
-Sensor-1 sending 503 packages of size 100 from times 38.4 - 38.5
-Sensor-2 sending 504 packages of size 100 from times 38.4 - 38.5
-Sensor-1 sending 528 packages of size 100 from times 38.5 - 38.6
-Sensor-2 sending 528 packages of size 100 from times 38.5 - 38.6
-Sensor-1 sending 553 packages of size 100 from times 38.6 - 38.7
-Sensor-2 sending 553 packages of size 100 from times 38.6 - 38.7
-Sensor-1 sending 579 packages of size 100 from times 38.7 - 38.8
-Sensor-2 sending 579 packages of size 100 from times 38.7 - 38.8
-Sensor-1 sending 606 packages of size 100 from times 38.8 - 38.9
-Sensor-2 sending 606 packages of size 100 from times 38.8 - 38.9
-Sensor-1 sending 633 packages of size 100 from times 38.9 - 39
-Sensor-2 sending 634 packages of size 100 from times 38.9 - 39
-Sensor-1 sending 662 packages of size 100 from times 39 - 39.1
-Sensor-2 sending 663 packages of size 100 from times 39 - 39.1
-Sensor-1 sending 692 packages of size 100 from times 39.1 - 39.2
-Sensor-2 sending 693 packages of size 100 from times 39.1 - 39.2
-Sensor-1 sending 723 packages of size 100 from times 39.2 - 39.3
-Sensor-2 sending 723 packages of size 100 from times 39.2 - 39.3
-Sensor-1 sending 755 packages of size 100 from times 39.3 - 39.4
-Sensor-2 sending 755 packages of size 100 from times 39.3 - 39.4
-Sensor-2 COULD NOT SEND 10 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 9 PACKAGES IN TIME.
-Sensor-2 sending 788 packages of size 100 from times 39.4003 - 39.5
-Sensor-1 sending 787 packages of size 100 from times 39.4003 - 39.5
-Sensor-1 COULD NOT SEND 44 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 45 PACKAGES IN TIME.
-Sensor-1 sending 821 packages of size 100 from times 39.5003 - 39.6
-Sensor-2 sending 822 packages of size 100 from times 39.5004 - 39.6
-Sensor-1 COULD NOT SEND 78 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 79 PACKAGES IN TIME.
-Sensor-1 sending 856 packages of size 100 from times 39.6003 - 39.7
-Sensor-2 sending 857 packages of size 100 from times 39.6004 - 39.7
-Sensor-1 COULD NOT SEND 113 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 114 PACKAGES IN TIME.
-Sensor-1 sending 892 packages of size 100 from times 39.7003 - 39.8
-Sensor-2 sending 893 packages of size 100 from times 39.7004 - 39.8
-Sensor-1 COULD NOT SEND 149 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 150 PACKAGES IN TIME.
-Sensor-1 sending 929 packages of size 100 from times 39.8003 - 39.9
-Sensor-2 sending 930 packages of size 100 from times 39.8004 - 39.9
-Sensor-1 COULD NOT SEND 186 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 187 PACKAGES IN TIME.
-Sensor-1 sending 968 packages of size 100 from times 39.9003 - 40
-Sensor-2 sending 968 packages of size 100 from times 39.9004 - 40
-Sensor-2 COULD NOT SEND 226 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 225 PACKAGES IN TIME.
-Sensor-2 sending 1008 packages of size 100 from times 40.0003 - 40.1
-Sensor-1 sending 1007 packages of size 100 from times 40.0003 - 40.1
-Sensor-1 COULD NOT SEND 264 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 265 PACKAGES IN TIME.
-Sensor-1 sending 1048 packages of size 100 from times 40.1003 - 40.2
-Sensor-2 sending 1049 packages of size 100 from times 40.1003 - 40.2
-Sensor-1 COULD NOT SEND 305 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 306 PACKAGES IN TIME.
-Sensor-1 sending 1090 packages of size 100 from times 40.2003 - 40.3
-Sensor-2 sending 1090 packages of size 100 from times 40.2004 - 40.3
-Sensor-1 COULD NOT SEND 347 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 347 PACKAGES IN TIME.
-Sensor-1 sending 1133 packages of size 100 from times 40.3003 - 40.4
-Sensor-2 sending 1134 packages of size 100 from times 40.3004 - 40.4
-Sensor-1 COULD NOT SEND 390 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 391 PACKAGES IN TIME.
-Sensor-1 sending 1178 packages of size 100 from times 40.4003 - 40.5
-Sensor-2 sending 1178 packages of size 100 from times 40.4004 - 40.5
-Sensor-1 COULD NOT SEND 435 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 435 PACKAGES IN TIME.
-Sensor-1 sending 1223 packages of size 100 from times 40.5003 - 40.6
-Sensor-2 sending 1224 packages of size 100 from times 40.5004 - 40.6
-Sensor-1 COULD NOT SEND 480 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 481 PACKAGES IN TIME.
-Sensor-1 sending 1270 packages of size 100 from times 40.6003 - 40.7
-Sensor-2 sending 1271 packages of size 100 from times 40.6004 - 40.7
-Sensor-1 COULD NOT SEND 527 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 528 PACKAGES IN TIME.
-Sensor-1 sending 1319 packages of size 100 from times 40.7003 - 40.8
-Sensor-2 sending 1319 packages of size 100 from times 40.7004 - 40.8
-Sensor-2 COULD NOT SEND 577 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 576 PACKAGES IN TIME.
-Sensor-2 sending 1369 packages of size 100 from times 40.8003 - 40.9
-Sensor-1 sending 1369 packages of size 100 from times 40.8003 - 40.9
-Sensor-1 COULD NOT SEND 626 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 626 PACKAGES IN TIME.
-Sensor-1 sending 1420 packages of size 100 from times 40.9003 - 41
-Sensor-2 sending 1420 packages of size 100 from times 40.9003 - 41
-Sensor-1 COULD NOT SEND 677 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 677 PACKAGES IN TIME.
-Sensor-1 sending 1472 packages of size 100 from times 41.0003 - 41.1
-Sensor-2 sending 1473 packages of size 100 from times 41.0004 - 41.1
-Sensor-1 COULD NOT SEND 729 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 730 PACKAGES IN TIME.
-Sensor-1 sending 1526 packages of size 100 from times 41.1003 - 41.2
-Sensor-2 sending 1527 packages of size 100 from times 41.1004 - 41.2
-Sensor-1 COULD NOT SEND 783 PACKAGES IN TIME.
+Sensor-1 sending 54 packages of size 100 from times 30.0005 - 30.1
+Sensor-2 sending 54 packages of size 100 from times 30.0005 - 30.1
+Sensor-1 sending 162 packages of size 100 from times 30.1 - 30.2
+Sensor-2 sending 162 packages of size 100 from times 30.1 - 30.2
+Sensor-1 sending 269 packages of size 100 from times 30.2 - 30.3
+Sensor-2 sending 270 packages of size 100 from times 30.2 - 30.3
+Sensor-1 sending 375 packages of size 100 from times 30.3 - 30.4
+Sensor-2 sending 376 packages of size 100 from times 30.3 - 30.4
+Sensor-1 sending 479 packages of size 100 from times 30.4 - 30.5
+Sensor-2 sending 480 packages of size 100 from times 30.4 - 30.5
+Sensor-1 sending 582 packages of size 100 from times 30.5 - 30.6
+Sensor-2 sending 582 packages of size 100 from times 30.5 - 30.6
+Sensor-1 sending 681 packages of size 100 from times 30.6 - 30.7
+Sensor-2 sending 682 packages of size 100 from times 30.6 - 30.7
+Sensor-1 sending 778 packages of size 100 from times 30.7 - 30.8
+Sensor-2 sending 778 packages of size 100 from times 30.7 - 30.8
+Sensor-2 COULD NOT SEND 33 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 32 PACKAGES IN TIME.
+Sensor-2 sending 872 packages of size 100 from times 30.8003 - 30.9
+Sensor-1 sending 871 packages of size 100 from times 30.8004 - 30.9
+Sensor-2 COULD NOT SEND 130 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 128 PACKAGES IN TIME.
+Sensor-2 sending 961 packages of size 100 from times 30.9003 - 31
+Sensor-1 sending 960 packages of size 100 from times 30.9003 - 31
+Sensor-1 COULD NOT SEND 217 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 218 PACKAGES IN TIME.
+Sensor-1 sending 1045 packages of size 100 from times 31.0003 - 31.1
+Sensor-2 sending 1046 packages of size 100 from times 31.0003 - 31.1
+Sensor-1 COULD NOT SEND 302 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 303 PACKAGES IN TIME.
+Sensor-1 sending 1126 packages of size 100 from times 31.1003 - 31.2
+Sensor-2 sending 1126 packages of size 100 from times 31.1004 - 31.2
+Sensor-1 COULD NOT SEND 383 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 383 PACKAGES IN TIME.
+Sensor-1 sending 1201 packages of size 100 from times 31.2003 - 31.3
+Sensor-2 sending 1202 packages of size 100 from times 31.2004 - 31.3
+Sensor-1 COULD NOT SEND 458 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 459 PACKAGES IN TIME.
+Sensor-1 sending 1271 packages of size 100 from times 31.3003 - 31.4
+Sensor-2 sending 1272 packages of size 100 from times 31.3004 - 31.4
+Sensor-1 COULD NOT SEND 528 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 529 PACKAGES IN TIME.
+Sensor-1 sending 1336 packages of size 100 from times 31.4003 - 31.5
+Sensor-2 sending 1336 packages of size 100 from times 31.4004 - 31.5
+Sensor-2 COULD NOT SEND 594 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 593 PACKAGES IN TIME.
+Sensor-2 sending 1394 packages of size 100 from times 31.5003 - 31.6
+Sensor-1 sending 1394 packages of size 100 from times 31.5003 - 31.6
+Sensor-1 COULD NOT SEND 651 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 651 PACKAGES IN TIME.
+Sensor-1 sending 1446 packages of size 100 from times 31.6003 - 31.7
+Sensor-2 sending 1447 packages of size 100 from times 31.6003 - 31.7
+Sensor-1 COULD NOT SEND 703 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 704 PACKAGES IN TIME.
+Sensor-1 sending 1492 packages of size 100 from times 31.7003 - 31.8
+Sensor-2 sending 1493 packages of size 100 from times 31.7004 - 31.8
+Sensor-1 COULD NOT SEND 749 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 750 PACKAGES IN TIME.
+Sensor-1 sending 1531 packages of size 100 from times 31.8003 - 31.9
+Sensor-2 sending 1532 packages of size 100 from times 31.8004 - 31.9
+Sensor-1 COULD NOT SEND 788 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 789 PACKAGES IN TIME.
+Sensor-1 sending 1564 packages of size 100 from times 31.9003 - 32
+Sensor-2 sending 1564 packages of size 100 from times 31.9004 - 32
+Sensor-1 COULD NOT SEND 821 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 821 PACKAGES IN TIME.
+Sensor-1 sending 1589 packages of size 100 from times 32.0003 - 32.1
+Sensor-2 sending 1590 packages of size 100 from times 32.0004 - 32.1
+Sensor-1 COULD NOT SEND 846 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 847 PACKAGES IN TIME.
+Sensor-1 sending 1608 packages of size 100 from times 32.1003 - 32.2
+Sensor-2 sending 1608 packages of size 100 from times 32.1004 - 32.2
+Sensor-1 COULD NOT SEND 865 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 865 PACKAGES IN TIME.
+Sensor-1 sending 1619 packages of size 100 from times 32.2003 - 32.3
+Sensor-2 sending 1619 packages of size 100 from times 32.2004 - 32.3
+Sensor-2 COULD NOT SEND 877 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 876 PACKAGES IN TIME.
+Sensor-2 sending 1623 packages of size 100 from times 32.3003 - 32.4
+Sensor-1 sending 1623 packages of size 100 from times 32.3003 - 32.4
+Sensor-1 COULD NOT SEND 880 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 880 PACKAGES IN TIME.
+Sensor-1 sending 1620 packages of size 100 from times 32.4003 - 32.5
+Sensor-2 sending 1620 packages of size 100 from times 32.4003 - 32.5
+Sensor-1 COULD NOT SEND 877 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 877 PACKAGES IN TIME.
+Sensor-1 sending 1609 packages of size 100 from times 32.5003 - 32.6
+Sensor-2 sending 1610 packages of size 100 from times 32.5004 - 32.6
+Sensor-1 COULD NOT SEND 866 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 867 PACKAGES IN TIME.
+Sensor-1 sending 1592 packages of size 100 from times 32.6003 - 32.7
+Sensor-2 sending 1592 packages of size 100 from times 32.6004 - 32.7
+Sensor-1 COULD NOT SEND 849 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 849 PACKAGES IN TIME.
+Sensor-1 sending 1567 packages of size 100 from times 32.7003 - 32.8
+Sensor-2 sending 1568 packages of size 100 from times 32.7004 - 32.8
+Sensor-1 COULD NOT SEND 824 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 825 PACKAGES IN TIME.
+Sensor-1 sending 1536 packages of size 100 from times 32.8003 - 32.9
+Sensor-2 sending 1536 packages of size 100 from times 32.8004 - 32.9
+Sensor-1 COULD NOT SEND 793 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 793 PACKAGES IN TIME.
+Sensor-1 sending 1497 packages of size 100 from times 32.9003 - 33
+Sensor-2 sending 1498 packages of size 100 from times 32.9004 - 33
+Sensor-2 COULD NOT SEND 756 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 754 PACKAGES IN TIME.
+Sensor-2 sending 1453 packages of size 100 from times 33.0003 - 33.1
+Sensor-1 sending 1452 packages of size 100 from times 33.0003 - 33.1
+Sensor-1 COULD NOT SEND 709 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 710 PACKAGES IN TIME.
+Sensor-1 sending 1401 packages of size 100 from times 33.1003 - 33.2
+Sensor-2 sending 1401 packages of size 100 from times 33.1003 - 33.2
+Sensor-1 COULD NOT SEND 658 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 658 PACKAGES IN TIME.
+Sensor-1 sending 1343 packages of size 100 from times 33.2003 - 33.3
+Sensor-2 sending 1344 packages of size 100 from times 33.2004 - 33.3
+Sensor-1 COULD NOT SEND 600 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 601 PACKAGES IN TIME.
+Sensor-1 sending 1279 packages of size 100 from times 33.3003 - 33.4
+Sensor-2 sending 1280 packages of size 100 from times 33.3004 - 33.4
+Sensor-1 COULD NOT SEND 536 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 537 PACKAGES IN TIME.
+Sensor-1 sending 1210 packages of size 100 from times 33.4003 - 33.5
+Sensor-2 sending 1211 packages of size 100 from times 33.4004 - 33.5
+Sensor-1 COULD NOT SEND 467 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 468 PACKAGES IN TIME.
+Sensor-1 sending 1135 packages of size 100 from times 33.5003 - 33.6
+Sensor-2 sending 1136 packages of size 100 from times 33.5004 - 33.6
+Sensor-1 COULD NOT SEND 392 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 393 PACKAGES IN TIME.
+Sensor-1 sending 1056 packages of size 100 from times 33.6003 - 33.7
+Sensor-2 sending 1056 packages of size 100 from times 33.6004 - 33.7
+Sensor-2 COULD NOT SEND 314 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 313 PACKAGES IN TIME.
+Sensor-2 sending 972 packages of size 100 from times 33.7003 - 33.8
+Sensor-1 sending 971 packages of size 100 from times 33.7003 - 33.8
+Sensor-1 COULD NOT SEND 228 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 229 PACKAGES IN TIME.
+Sensor-1 sending 882 packages of size 100 from times 33.8003 - 33.9
+Sensor-2 sending 883 packages of size 100 from times 33.8003 - 33.9
+Sensor-1 COULD NOT SEND 139 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 140 PACKAGES IN TIME.
+Sensor-1 sending 790 packages of size 100 from times 33.9003 - 34
+Sensor-2 sending 790 packages of size 100 from times 33.9004 - 34
+Sensor-1 COULD NOT SEND 47 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 47 PACKAGES IN TIME.
+Sensor-1 sending 693 packages of size 100 from times 34.0003 - 34.1
+Sensor-2 sending 694 packages of size 100 from times 34.0004 - 34.1
+Sensor-1 sending 594 packages of size 100 from times 34.1 - 34.2
+Sensor-2 sending 595 packages of size 100 from times 34.1 - 34.2
+Sensor-1 sending 492 packages of size 100 from times 34.2 - 34.3
+Sensor-2 sending 493 packages of size 100 from times 34.2 - 34.3
+Sensor-1 sending 388 packages of size 100 from times 34.3 - 34.4
+Sensor-2 sending 389 packages of size 100 from times 34.3 - 34.4
+Sensor-1 sending 282 packages of size 100 from times 34.4 - 34.5
+Sensor-2 sending 283 packages of size 100 from times 34.4 - 34.5
+Sensor-1 sending 175 packages of size 100 from times 34.5 - 34.6
+Sensor-2 sending 176 packages of size 100 from times 34.5 - 34.6
+Sensor-1 sending 67 packages of size 100 from times 34.6 - 34.7
+Sensor-2 sending 68 packages of size 100 from times 34.6 - 34.7
+Sensor-1 sending 40 packages of size 100 from times 34.7 - 34.8
+Sensor-2 sending 41 packages of size 100 from times 34.7 - 34.8
+Sensor-1 sending 148 packages of size 100 from times 34.8 - 34.9
+Sensor-2 sending 149 packages of size 100 from times 34.8 - 34.9
+Sensor-1 sending 256 packages of size 100 from times 34.9 - 35
+Sensor-2 sending 256 packages of size 100 from times 34.9 - 35
+Sensor-1 sending 362 packages of size 100 from times 35 - 35.1
+Sensor-2 sending 362 packages of size 100 from times 35 - 35.1
+Sensor-1 sending 467 packages of size 100 from times 35.1 - 35.2
+Sensor-2 sending 467 packages of size 100 from times 35.1 - 35.2
+Sensor-1 sending 569 packages of size 100 from times 35.2 - 35.3
+Sensor-2 sending 570 packages of size 100 from times 35.2 - 35.3
+Sensor-1 sending 669 packages of size 100 from times 35.3 - 35.4
+Sensor-2 sending 670 packages of size 100 from times 35.3 - 35.4
+Sensor-1 sending 766 packages of size 100 from times 35.4 - 35.5
+Sensor-2 sending 767 packages of size 100 from times 35.4 - 35.5
+Sensor-2 COULD NOT SEND 22 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 20 PACKAGES IN TIME.
+Sensor-2 sending 860 packages of size 100 from times 35.5003 - 35.6
+Sensor-1 sending 860 packages of size 100 from times 35.5004 - 35.6
+Sensor-2 COULD NOT SEND 118 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 117 PACKAGES IN TIME.
+Sensor-2 sending 950 packages of size 100 from times 35.6003 - 35.7
+Sensor-1 sending 950 packages of size 100 from times 35.6003 - 35.7
+Sensor-1 COULD NOT SEND 207 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 207 PACKAGES IN TIME.
+Sensor-1 sending 1035 packages of size 100 from times 35.7003 - 35.8
+Sensor-2 sending 1036 packages of size 100 from times 35.7003 - 35.8
+Sensor-1 COULD NOT SEND 292 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 293 PACKAGES IN TIME.
+Sensor-1 sending 1116 packages of size 100 from times 35.8003 - 35.9
+Sensor-2 sending 1117 packages of size 100 from times 35.8004 - 35.9
+Sensor-1 COULD NOT SEND 373 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 374 PACKAGES IN TIME.
+Sensor-1 sending 1192 packages of size 100 from times 35.9003 - 36
+Sensor-2 sending 1193 packages of size 100 from times 35.9004 - 36
+Sensor-1 COULD NOT SEND 449 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 450 PACKAGES IN TIME.
+Sensor-1 sending 1263 packages of size 100 from times 36.0003 - 36.1
+Sensor-2 sending 1263 packages of size 100 from times 36.0004 - 36.1
+Sensor-1 COULD NOT SEND 520 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 520 PACKAGES IN TIME.
+Sensor-1 sending 1328 packages of size 100 from times 36.1003 - 36.2
+Sensor-2 sending 1328 packages of size 100 from times 36.1004 - 36.2
+Sensor-2 COULD NOT SEND 586 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 585 PACKAGES IN TIME.
+Sensor-2 sending 1388 packages of size 100 from times 36.2003 - 36.3
+Sensor-1 sending 1387 packages of size 100 from times 36.2003 - 36.3
+Sensor-1 COULD NOT SEND 644 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 645 PACKAGES IN TIME.
+Sensor-1 sending 1440 packages of size 100 from times 36.3003 - 36.4
+Sensor-2 sending 1441 packages of size 100 from times 36.3003 - 36.4
+Sensor-1 COULD NOT SEND 697 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 698 PACKAGES IN TIME.
+Sensor-1 sending 1487 packages of size 100 from times 36.4003 - 36.5
+Sensor-2 sending 1487 packages of size 100 from times 36.4004 - 36.5
+Sensor-1 COULD NOT SEND 744 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 744 PACKAGES IN TIME.
+Sensor-1 sending 1527 packages of size 100 from times 36.5003 - 36.6
+Sensor-2 sending 1527 packages of size 100 from times 36.5004 - 36.6
+Sensor-1 COULD NOT SEND 784 PACKAGES IN TIME.
 Sensor-2 COULD NOT SEND 784 PACKAGES IN TIME.
-Sensor-1 sending 1582 packages of size 100 from times 41.2003 - 41.3
-Sensor-2 sending 1582 packages of size 100 from times 41.2004 - 41.3
-Sensor-1 COULD NOT SEND 839 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 839 PACKAGES IN TIME.
-Sensor-1 sending 1639 packages of size 100 from times 41.3003 - 41.4
-Sensor-2 sending 1639 packages of size 100 from times 41.3004 - 41.4
-Sensor-1 COULD NOT SEND 896 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 896 PACKAGES IN TIME.
-Sensor-1 sending 1697 packages of size 100 from times 41.4003 - 41.5
-Sensor-2 sending 1698 packages of size 100 from times 41.4004 - 41.5
-Sensor-2 COULD NOT SEND 956 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 954 PACKAGES IN TIME.
-Sensor-2 sending 1758 packages of size 100 from times 41.5003 - 41.6
-Sensor-1 sending 1757 packages of size 100 from times 41.5003 - 41.6
-Sensor-1 COULD NOT SEND 1014 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1015 PACKAGES IN TIME.
-Sensor-1 sending 1819 packages of size 100 from times 41.6003 - 41.7
-Sensor-2 sending 1820 packages of size 100 from times 41.6003 - 41.7
-Sensor-1 COULD NOT SEND 1076 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1077 PACKAGES IN TIME.
-Sensor-1 sending 1882 packages of size 100 from times 41.7003 - 41.8
-Sensor-2 sending 1883 packages of size 100 from times 41.7004 - 41.8
-Sensor-1 COULD NOT SEND 1139 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1140 PACKAGES IN TIME.
-Sensor-1 sending 1947 packages of size 100 from times 41.8003 - 41.9
-Sensor-2 sending 1948 packages of size 100 from times 41.8004 - 41.9
-Sensor-1 COULD NOT SEND 1204 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1205 PACKAGES IN TIME.
-Sensor-1 sending 2014 packages of size 100 from times 41.9003 - 42
-Sensor-2 sending 2014 packages of size 100 from times 41.9004 - 42
-Sensor-1 COULD NOT SEND 1271 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1271 PACKAGES IN TIME.
-Sensor-1 sending 2082 packages of size 100 from times 42.0003 - 42.1
-Sensor-2 sending 2083 packages of size 100 from times 42.0004 - 42.1
-Sensor-1 COULD NOT SEND 1339 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1340 PACKAGES IN TIME.
-Sensor-1 sending 2152 packages of size 100 from times 42.1003 - 42.2
-Sensor-2 sending 2153 packages of size 100 from times 42.1004 - 42.2
-Sensor-2 COULD NOT SEND 1411 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 1409 PACKAGES IN TIME.
-Sensor-2 sending 2224 packages of size 100 from times 42.2003 - 42.3
-Sensor-1 sending 2224 packages of size 100 from times 42.2003 - 42.3
-Sensor-1 COULD NOT SEND 1481 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1481 PACKAGES IN TIME.
-Sensor-1 sending 2297 packages of size 100 from times 42.3003 - 42.4
-Sensor-2 sending 2298 packages of size 100 from times 42.3003 - 42.4
-Sensor-1 COULD NOT SEND 1554 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1555 PACKAGES IN TIME.
-Sensor-1 sending 2373 packages of size 100 from times 42.4003 - 42.5
-Sensor-2 sending 2373 packages of size 100 from times 42.4004 - 42.5
-Sensor-1 COULD NOT SEND 1630 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1630 PACKAGES IN TIME.
-Sensor-1 sending 2450 packages of size 100 from times 42.5003 - 42.6
-Sensor-2 sending 2450 packages of size 100 from times 42.5004 - 42.6
-Sensor-1 COULD NOT SEND 1707 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1707 PACKAGES IN TIME.
-Sensor-1 sending 2529 packages of size 100 from times 42.6003 - 42.7
-Sensor-2 sending 2529 packages of size 100 from times 42.6004 - 42.7
-Sensor-1 COULD NOT SEND 1786 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1786 PACKAGES IN TIME.
-Sensor-1 sending 2610 packages of size 100 from times 42.7003 - 42.8
-Sensor-2 sending 2610 packages of size 100 from times 42.7004 - 42.8
-Sensor-1 COULD NOT SEND 1867 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 1867 PACKAGES IN TIME.
-Sensor-1 sending 2693 packages of size 100 from times 42.8003 - 42.9
-Sensor-2 sending 2693 packages of size 100 from times 42.8004 - 42.9
-Sensor-2 COULD NOT SEND 1951 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 1950 PACKAGES IN TIME.
-Sensor-2 sending 2778 packages of size 100 from times 42.9003 - 43
-Sensor-1 sending 2778 packages of size 100 from times 42.9003 - 43
-Sensor-1 COULD NOT SEND 2035 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2035 PACKAGES IN TIME.
-Sensor-1 sending 2864 packages of size 100 from times 43.0003 - 43.1
-Sensor-2 sending 2865 packages of size 100 from times 43.0003 - 43.1
-Sensor-1 COULD NOT SEND 2121 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2122 PACKAGES IN TIME.
-Sensor-1 sending 2953 packages of size 100 from times 43.1003 - 43.2
-Sensor-2 sending 2954 packages of size 100 from times 43.1004 - 43.2
-Sensor-1 COULD NOT SEND 2210 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2211 PACKAGES IN TIME.
-Sensor-1 sending 3044 packages of size 100 from times 43.2003 - 43.3
-Sensor-2 sending 3045 packages of size 100 from times 43.2004 - 43.3
-Sensor-1 COULD NOT SEND 2301 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2302 PACKAGES IN TIME.
-Sensor-1 sending 3137 packages of size 100 from times 43.3003 - 43.4
-Sensor-2 sending 3137 packages of size 100 from times 43.3004 - 43.4
-Sensor-1 COULD NOT SEND 2394 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2394 PACKAGES IN TIME.
-Sensor-1 sending 3232 packages of size 100 from times 43.4003 - 43.5
-Sensor-2 sending 3233 packages of size 100 from times 43.4004 - 43.5
-Sensor-1 COULD NOT SEND 2489 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2490 PACKAGES IN TIME.
-Sensor-1 sending 3329 packages of size 100 from times 43.5003 - 43.6
-Sensor-2 sending 3330 packages of size 100 from times 43.5004 - 43.6
-Sensor-2 COULD NOT SEND 2588 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 2586 PACKAGES IN TIME.
-Sensor-2 sending 3429 packages of size 100 from times 43.6003 - 43.7
-Sensor-1 sending 3429 packages of size 100 from times 43.6003 - 43.7
-Sensor-1 COULD NOT SEND 2686 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2686 PACKAGES IN TIME.
-Sensor-1 sending 3530 packages of size 100 from times 43.7003 - 43.8
-Sensor-2 sending 3531 packages of size 100 from times 43.7003 - 43.8
-Sensor-1 COULD NOT SEND 2787 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2788 PACKAGES IN TIME.
-Sensor-1 sending 3634 packages of size 100 from times 43.8003 - 43.9
-Sensor-2 sending 3635 packages of size 100 from times 43.8004 - 43.9
-Sensor-1 COULD NOT SEND 2891 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2892 PACKAGES IN TIME.
-Sensor-1 sending 3740 packages of size 100 from times 43.9003 - 44
-Sensor-2 sending 3741 packages of size 100 from times 43.9004 - 44
-Sensor-1 COULD NOT SEND 2997 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 2998 PACKAGES IN TIME.
-Sensor-1 sending 3849 packages of size 100 from times 44.0003 - 44.1
-Sensor-2 sending 3849 packages of size 100 from times 44.0004 - 44.1
-Sensor-1 COULD NOT SEND 3106 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 3106 PACKAGES IN TIME.
-Sensor-1 sending 3959 packages of size 100 from times 44.1003 - 44.2
-Sensor-2 sending 3960 packages of size 100 from times 44.1004 - 44.2
-Sensor-1 COULD NOT SEND 3216 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 3217 PACKAGES IN TIME.
-Sensor-1 sending 4072 packages of size 100 from times 44.2003 - 44.3
-Sensor-2 sending 4073 packages of size 100 from times 44.2004 - 44.3
-Sensor-2 COULD NOT SEND 3331 PACKAGES IN TIME.
-Sensor-1 COULD NOT SEND 3329 PACKAGES IN TIME.
-Sensor-2 sending 4188 packages of size 100 from times 44.3003 - 44.4
-Sensor-1 sending 4188 packages of size 100 from times 44.3003 - 44.4
-Sensor-1 COULD NOT SEND 3445 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 3445 PACKAGES IN TIME.
-Sensor-1 sending 4306 packages of size 100 from times 44.4003 - 44.5
-Sensor-2 sending 4306 packages of size 100 from times 44.4003 - 44.5
-Sensor-1 COULD NOT SEND 3563 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 3563 PACKAGES IN TIME.
-Sensor-1 sending 4426 packages of size 100 from times 44.5003 - 44.6
-Sensor-2 sending 4427 packages of size 100 from times 44.5003 - 44.6
-Sensor-1 COULD NOT SEND 3683 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 3684 PACKAGES IN TIME.
-Sensor-1 sending 4549 packages of size 100 from times 44.6003 - 44.7
-Sensor-2 sending 4550 packages of size 100 from times 44.6004 - 44.7
-Sensor-1 COULD NOT SEND 3806 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 3807 PACKAGES IN TIME.
-Sensor-1 sending 4675 packages of size 100 from times 44.7003 - 44.8
-Sensor-2 sending 4675 packages of size 100 from times 44.7004 - 44.8
-Sensor-1 COULD NOT SEND 3932 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 3932 PACKAGES IN TIME.
-Sensor-1 sending 4803 packages of size 100 from times 44.8003 - 44.9
-Sensor-2 sending 4803 packages of size 100 from times 44.8004 - 44.9
-Sensor-1 COULD NOT SEND 4060 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 4060 PACKAGES IN TIME.
-Sensor-1 sending 4934 packages of size 100 from times 44.9003 - 45
-Sensor-2 sending 4934 packages of size 100 from times 44.9004 - 45
-Sensor-1 COULD NOT SEND 4191 PACKAGES IN TIME.
-Sensor-2 COULD NOT SEND 4191 PACKAGES IN TIME.
+Sensor-1 sending 1560 packages of size 100 from times 36.6003 - 36.7
+Sensor-2 sending 1561 packages of size 100 from times 36.6004 - 36.7
+Sensor-1 COULD NOT SEND 817 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 818 PACKAGES IN TIME.
+Sensor-1 sending 1586 packages of size 100 from times 36.7003 - 36.8
+Sensor-2 sending 1587 packages of size 100 from times 36.7004 - 36.8
+Sensor-1 COULD NOT SEND 843 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 844 PACKAGES IN TIME.
+Sensor-1 sending 1606 packages of size 100 from times 36.8003 - 36.9
+Sensor-2 sending 1606 packages of size 100 from times 36.8004 - 36.9
+Sensor-1 COULD NOT SEND 863 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 863 PACKAGES IN TIME.
+Sensor-1 sending 1618 packages of size 100 from times 36.9003 - 37
+Sensor-2 sending 1618 packages of size 100 from times 36.9004 - 37
+Sensor-2 COULD NOT SEND 876 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 875 PACKAGES IN TIME.
+Sensor-2 sending 1623 packages of size 100 from times 37.0003 - 37.1
+Sensor-1 sending 1623 packages of size 100 from times 37.0003 - 37.1
+Sensor-1 COULD NOT SEND 880 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 880 PACKAGES IN TIME.
+Sensor-1 sending 1620 packages of size 100 from times 37.1003 - 37.2
+Sensor-2 sending 1621 packages of size 100 from times 37.1003 - 37.2
+Sensor-1 COULD NOT SEND 877 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 878 PACKAGES IN TIME.
+Sensor-1 sending 1611 packages of size 100 from times 37.2003 - 37.3
+Sensor-2 sending 1611 packages of size 100 from times 37.2004 - 37.3
+Sensor-1 COULD NOT SEND 868 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 868 PACKAGES IN TIME.
+Sensor-1 sending 1594 packages of size 100 from times 37.3003 - 37.4
+Sensor-2 sending 1595 packages of size 100 from times 37.3004 - 37.4
+Sensor-1 COULD NOT SEND 851 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 852 PACKAGES IN TIME.
+Sensor-1 sending 1571 packages of size 100 from times 37.4003 - 37.5
+Sensor-2 sending 1571 packages of size 100 from times 37.4004 - 37.5
+Sensor-1 COULD NOT SEND 828 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 828 PACKAGES IN TIME.
+Sensor-1 sending 1539 packages of size 100 from times 37.5003 - 37.6
+Sensor-2 sending 1540 packages of size 100 from times 37.5004 - 37.6
+Sensor-1 COULD NOT SEND 796 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 797 PACKAGES IN TIME.
+Sensor-1 sending 1502 packages of size 100 from times 37.6003 - 37.7
+Sensor-2 sending 1502 packages of size 100 from times 37.6004 - 37.7
+Sensor-2 COULD NOT SEND 760 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 759 PACKAGES IN TIME.
+Sensor-2 sending 1458 packages of size 100 from times 37.7003 - 37.8
+Sensor-1 sending 1458 packages of size 100 from times 37.7003 - 37.8
+Sensor-1 COULD NOT SEND 715 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 715 PACKAGES IN TIME.
+Sensor-1 sending 1407 packages of size 100 from times 37.8003 - 37.9
+Sensor-2 sending 1408 packages of size 100 from times 37.8003 - 37.9
+Sensor-1 COULD NOT SEND 664 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 665 PACKAGES IN TIME.
+Sensor-1 sending 1350 packages of size 100 from times 37.9003 - 38
+Sensor-2 sending 1351 packages of size 100 from times 37.9004 - 38
+Sensor-1 COULD NOT SEND 607 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 608 PACKAGES IN TIME.
+Sensor-1 sending 1288 packages of size 100 from times 38.0003 - 38.1
+Sensor-2 sending 1288 packages of size 100 from times 38.0004 - 38.1
+Sensor-1 COULD NOT SEND 545 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 545 PACKAGES IN TIME.
+Sensor-1 sending 1219 packages of size 100 from times 38.1003 - 38.2
+Sensor-2 sending 1219 packages of size 100 from times 38.1004 - 38.2
+Sensor-1 COULD NOT SEND 476 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 476 PACKAGES IN TIME.
+Sensor-1 sending 1145 packages of size 100 from times 38.2003 - 38.3
+Sensor-2 sending 1145 packages of size 100 from times 38.2004 - 38.3
+Sensor-1 COULD NOT SEND 402 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 402 PACKAGES IN TIME.
+Sensor-1 sending 1066 packages of size 100 from times 38.3003 - 38.4
+Sensor-2 sending 1066 packages of size 100 from times 38.3004 - 38.4
+Sensor-2 COULD NOT SEND 324 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 323 PACKAGES IN TIME.
+Sensor-2 sending 982 packages of size 100 from times 38.4003 - 38.5
+Sensor-1 sending 982 packages of size 100 from times 38.4003 - 38.5
+Sensor-1 COULD NOT SEND 239 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 239 PACKAGES IN TIME.
+Sensor-1 sending 894 packages of size 100 from times 38.5003 - 38.6
+Sensor-2 sending 894 packages of size 100 from times 38.5003 - 38.6
+Sensor-1 COULD NOT SEND 151 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 151 PACKAGES IN TIME.
+Sensor-1 sending 801 packages of size 100 from times 38.6003 - 38.7
+Sensor-2 sending 802 packages of size 100 from times 38.6004 - 38.7
+Sensor-1 COULD NOT SEND 58 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 59 PACKAGES IN TIME.
+Sensor-1 sending 706 packages of size 100 from times 38.7003 - 38.8
+Sensor-2 sending 706 packages of size 100 from times 38.7004 - 38.8
+Sensor-1 sending 607 packages of size 100 from times 38.8 - 38.9
+Sensor-2 sending 607 packages of size 100 from times 38.8 - 38.9
+Sensor-1 sending 505 packages of size 100 from times 38.9 - 39
+Sensor-2 sending 505 packages of size 100 from times 38.9 - 39
+Sensor-1 sending 401 packages of size 100 from times 39 - 39.1
+Sensor-2 sending 402 packages of size 100 from times 39 - 39.1
+Sensor-1 sending 295 packages of size 100 from times 39.1 - 39.2
+Sensor-2 sending 296 packages of size 100 from times 39.1 - 39.2
+Sensor-1 sending 188 packages of size 100 from times 39.2 - 39.3
+Sensor-2 sending 189 packages of size 100 from times 39.2 - 39.3
+Sensor-1 sending 81 packages of size 100 from times 39.3 - 39.4
+Sensor-2 sending 81 packages of size 100 from times 39.3 - 39.4
+Sensor-1 sending 27 packages of size 100 from times 39.4 - 39.5
+Sensor-2 sending 28 packages of size 100 from times 39.4 - 39.5
+Sensor-1 sending 135 packages of size 100 from times 39.5 - 39.6
+Sensor-2 sending 136 packages of size 100 from times 39.5 - 39.6
+Sensor-1 sending 243 packages of size 100 from times 39.6 - 39.7
+Sensor-2 sending 243 packages of size 100 from times 39.6 - 39.7
+Sensor-1 sending 349 packages of size 100 from times 39.7 - 39.8
+Sensor-2 sending 349 packages of size 100 from times 39.7 - 39.8
+Sensor-1 sending 454 packages of size 100 from times 39.8 - 39.9
+Sensor-2 sending 454 packages of size 100 from times 39.8 - 39.9
+Sensor-1 sending 557 packages of size 100 from times 39.9 - 40
+Sensor-2 sending 557 packages of size 100 from times 39.9 - 40
+Sensor-1 sending 657 packages of size 100 from times 40 - 40.1
+Sensor-2 sending 657 packages of size 100 from times 40 - 40.1
+Sensor-1 sending 754 packages of size 100 from times 40.1 - 40.2
+Sensor-2 sending 755 packages of size 100 from times 40.1 - 40.2
+Sensor-2 COULD NOT SEND 10 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 8 PACKAGES IN TIME.
+Sensor-2 sending 849 packages of size 100 from times 40.2003 - 40.3
+Sensor-1 sending 848 packages of size 100 from times 40.2003 - 40.3
+Sensor-1 COULD NOT SEND 105 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 106 PACKAGES IN TIME.
+Sensor-1 sending 939 packages of size 100 from times 40.3003 - 40.4
+Sensor-2 sending 939 packages of size 100 from times 40.3004 - 40.4
+Sensor-1 COULD NOT SEND 196 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 196 PACKAGES IN TIME.
+Sensor-1 sending 1025 packages of size 100 from times 40.4003 - 40.5
+Sensor-2 sending 1025 packages of size 100 from times 40.4004 - 40.5
+Sensor-1 COULD NOT SEND 282 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 282 PACKAGES IN TIME.
+Sensor-1 sending 1106 packages of size 100 from times 40.5003 - 40.6
+Sensor-2 sending 1107 packages of size 100 from times 40.5004 - 40.6
+Sensor-1 COULD NOT SEND 363 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 364 PACKAGES IN TIME.
+Sensor-1 sending 1183 packages of size 100 from times 40.6003 - 40.7
+Sensor-2 sending 1183 packages of size 100 from times 40.6004 - 40.7
+Sensor-1 COULD NOT SEND 440 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 440 PACKAGES IN TIME.
+Sensor-1 sending 1254 packages of size 100 from times 40.7003 - 40.8
+Sensor-2 sending 1255 packages of size 100 from times 40.7004 - 40.8
+Sensor-2 COULD NOT SEND 513 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 511 PACKAGES IN TIME.
+Sensor-2 sending 1321 packages of size 100 from times 40.8003 - 40.9
+Sensor-1 sending 1320 packages of size 100 from times 40.8003 - 40.9
+Sensor-1 COULD NOT SEND 577 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 578 PACKAGES IN TIME.
+Sensor-1 sending 1380 packages of size 100 from times 40.9003 - 41
+Sensor-2 sending 1381 packages of size 100 from times 40.9003 - 41
+Sensor-1 COULD NOT SEND 637 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 638 PACKAGES IN TIME.
+Sensor-1 sending 1434 packages of size 100 from times 41.0003 - 41.1
+Sensor-2 sending 1434 packages of size 100 from times 41.0004 - 41.1
+Sensor-1 COULD NOT SEND 691 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 691 PACKAGES IN TIME.
+Sensor-1 sending 1481 packages of size 100 from times 41.1003 - 41.2
+Sensor-2 sending 1482 packages of size 100 from times 41.1004 - 41.2
+Sensor-1 COULD NOT SEND 738 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 739 PACKAGES IN TIME.
+Sensor-1 sending 1522 packages of size 100 from times 41.2003 - 41.3
+Sensor-2 sending 1523 packages of size 100 from times 41.2004 - 41.3
+Sensor-1 COULD NOT SEND 779 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 780 PACKAGES IN TIME.
+Sensor-1 sending 1556 packages of size 100 from times 41.3003 - 41.4
+Sensor-2 sending 1557 packages of size 100 from times 41.3004 - 41.4
+Sensor-1 COULD NOT SEND 813 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 814 PACKAGES IN TIME.
+Sensor-1 sending 1583 packages of size 100 from times 41.4003 - 41.5
+Sensor-2 sending 1584 packages of size 100 from times 41.4004 - 41.5
+Sensor-2 COULD NOT SEND 842 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 840 PACKAGES IN TIME.
+Sensor-2 sending 1604 packages of size 100 from times 41.5003 - 41.6
+Sensor-1 sending 1604 packages of size 100 from times 41.5003 - 41.6
+Sensor-1 COULD NOT SEND 861 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 861 PACKAGES IN TIME.
+Sensor-1 sending 1617 packages of size 100 from times 41.6003 - 41.7
+Sensor-2 sending 1617 packages of size 100 from times 41.6003 - 41.7
+Sensor-1 COULD NOT SEND 874 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 874 PACKAGES IN TIME.
+Sensor-1 sending 1622 packages of size 100 from times 41.7003 - 41.8
+Sensor-2 sending 1623 packages of size 100 from times 41.7003 - 41.8
+Sensor-1 COULD NOT SEND 879 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 880 PACKAGES IN TIME.
+Sensor-1 sending 1621 packages of size 100 from times 41.8003 - 41.9
+Sensor-2 sending 1622 packages of size 100 from times 41.8004 - 41.9
+Sensor-1 COULD NOT SEND 878 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 879 PACKAGES IN TIME.
+Sensor-1 sending 1613 packages of size 100 from times 41.9003 - 42
+Sensor-2 sending 1613 packages of size 100 from times 41.9004 - 42
+Sensor-1 COULD NOT SEND 870 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 870 PACKAGES IN TIME.
+Sensor-1 sending 1597 packages of size 100 from times 42.0003 - 42.1
+Sensor-2 sending 1597 packages of size 100 from times 42.0004 - 42.1
+Sensor-1 COULD NOT SEND 854 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 854 PACKAGES IN TIME.
+Sensor-1 sending 1574 packages of size 100 from times 42.1003 - 42.2
+Sensor-2 sending 1574 packages of size 100 from times 42.1004 - 42.2
+Sensor-1 COULD NOT SEND 831 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 831 PACKAGES IN TIME.
+Sensor-1 sending 1544 packages of size 100 from times 42.2003 - 42.3
+Sensor-2 sending 1545 packages of size 100 from times 42.2004 - 42.3
+Sensor-2 COULD NOT SEND 803 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 801 PACKAGES IN TIME.
+Sensor-2 sending 1508 packages of size 100 from times 42.3003 - 42.4
+Sensor-1 sending 1507 packages of size 100 from times 42.3003 - 42.4
+Sensor-1 COULD NOT SEND 764 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 765 PACKAGES IN TIME.
+Sensor-1 sending 1464 packages of size 100 from times 42.4003 - 42.5
+Sensor-2 sending 1465 packages of size 100 from times 42.4003 - 42.5
+Sensor-1 COULD NOT SEND 721 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 722 PACKAGES IN TIME.
+Sensor-1 sending 1414 packages of size 100 from times 42.5003 - 42.6
+Sensor-2 sending 1415 packages of size 100 from times 42.5004 - 42.6
+Sensor-1 COULD NOT SEND 671 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 672 PACKAGES IN TIME.
+Sensor-1 sending 1358 packages of size 100 from times 42.6003 - 42.7
+Sensor-2 sending 1358 packages of size 100 from times 42.6004 - 42.7
+Sensor-1 COULD NOT SEND 615 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 615 PACKAGES IN TIME.
+Sensor-1 sending 1296 packages of size 100 from times 42.7003 - 42.8
+Sensor-2 sending 1296 packages of size 100 from times 42.7004 - 42.8
+Sensor-1 COULD NOT SEND 553 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 553 PACKAGES IN TIME.
+Sensor-1 sending 1228 packages of size 100 from times 42.8003 - 42.9
+Sensor-2 sending 1228 packages of size 100 from times 42.8004 - 42.9
+Sensor-1 COULD NOT SEND 485 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 485 PACKAGES IN TIME.
+Sensor-1 sending 1154 packages of size 100 from times 42.9003 - 43
+Sensor-2 sending 1155 packages of size 100 from times 42.9004 - 43
+Sensor-2 COULD NOT SEND 413 PACKAGES IN TIME.
+Sensor-1 COULD NOT SEND 411 PACKAGES IN TIME.
+Sensor-2 sending 1076 packages of size 100 from times 43.0003 - 43.1
+Sensor-1 sending 1076 packages of size 100 from times 43.0003 - 43.1
+Sensor-1 COULD NOT SEND 333 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 333 PACKAGES IN TIME.
+Sensor-1 sending 992 packages of size 100 from times 43.1003 - 43.2
+Sensor-2 sending 993 packages of size 100 from times 43.1003 - 43.2
+Sensor-1 COULD NOT SEND 249 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 250 PACKAGES IN TIME.
+Sensor-1 sending 905 packages of size 100 from times 43.2003 - 43.3
+Sensor-2 sending 905 packages of size 100 from times 43.2004 - 43.3
+Sensor-1 COULD NOT SEND 162 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 162 PACKAGES IN TIME.
+Sensor-1 sending 813 packages of size 100 from times 43.3003 - 43.4
+Sensor-2 sending 813 packages of size 100 from times 43.3004 - 43.4
+Sensor-1 COULD NOT SEND 70 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 70 PACKAGES IN TIME.
+Sensor-1 sending 718 packages of size 100 from times 43.4003 - 43.5
+Sensor-2 sending 718 packages of size 100 from times 43.4004 - 43.5
+Sensor-1 sending 619 packages of size 100 from times 43.5 - 43.6
+Sensor-2 sending 620 packages of size 100 from times 43.5 - 43.6
+Sensor-1 sending 518 packages of size 100 from times 43.6 - 43.7
+Sensor-2 sending 518 packages of size 100 from times 43.6 - 43.7
+Sensor-1 sending 414 packages of size 100 from times 43.7 - 43.8
+Sensor-2 sending 415 packages of size 100 from times 43.7 - 43.8
+Sensor-1 sending 309 packages of size 100 from times 43.8 - 43.9
+Sensor-2 sending 309 packages of size 100 from times 43.8 - 43.9
+Sensor-1 sending 202 packages of size 100 from times 43.9 - 44
+Sensor-2 sending 202 packages of size 100 from times 43.9 - 44
+Sensor-1 sending 94 packages of size 100 from times 44 - 44.1
+Sensor-2 sending 95 packages of size 100 from times 44 - 44.1
+Sensor-1 sending 14 packages of size 100 from times 44.1 - 44.2
+Sensor-2 sending 14 packages of size 100 from times 44.1 - 44.2
+Sensor-1 sending 122 packages of size 100 from times 44.2 - 44.3
+Sensor-2 sending 122 packages of size 100 from times 44.2 - 44.3
+Sensor-1 sending 229 packages of size 100 from times 44.3 - 44.4
+Sensor-2 sending 230 packages of size 100 from times 44.3 - 44.4
+Sensor-1 sending 336 packages of size 100 from times 44.4 - 44.5
+Sensor-2 sending 336 packages of size 100 from times 44.4 - 44.5
+Sensor-1 sending 441 packages of size 100 from times 44.5 - 44.6
+Sensor-2 sending 441 packages of size 100 from times 44.5 - 44.6
+Sensor-1 sending 544 packages of size 100 from times 44.6 - 44.7
+Sensor-2 sending 544 packages of size 100 from times 44.6 - 44.7
+Sensor-1 sending 645 packages of size 100 from times 44.7 - 44.8
+Sensor-2 sending 645 packages of size 100 from times 44.7 - 44.8
+Sensor-1 sending 742 packages of size 100 from times 44.8 - 44.9
+Sensor-2 sending 743 packages of size 100 from times 44.8 - 44.9
+Sensor-1 sending 837 packages of size 100 from times 44.9 - 45
+Sensor-2 sending 837 packages of size 100 from times 44.9001 - 45
+Sensor-1 COULD NOT SEND 92 PACKAGES IN TIME.
+Sensor-2 COULD NOT SEND 92 PACKAGES IN TIME.
 -------------------------------------------------
 Starting burst: 45 - 60: 300000x100 f(x)=e**x
 -------------------------------------------------
-Sensor-1 sending 0 packages of size 100 from times 45.0005 - 45.1
+Sensor-1 sending 0 packages of size 100 from times 45.0004 - 45.1
 Sensor-2 sending 1 packages of size 100 from times 45.0005 - 45.1
 Sensor-1 sending 0 packages of size 100 from times 45.1 - 45.2
 Sensor-2 sending 1 packages of size 100 from times 45.1 - 45.2
