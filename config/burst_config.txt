@@ -5,7 +5,7 @@
 // +, -, /, *, %, <<, >>, sqrt(), pow(), ** ,sin, cos, tan, abs. Consts: pi,e
 //example: cube root of x: f(x)=x**(1/3)
 
-PRECISION=10            //The higher the number the better is the matching between the math function and the intervals (makes the code run slower)
+PRECISION=12.5            //The higher the number the better is the matching between the math function and the intervals (makes the code run slower)
 
 burst_config=0
 15 : 300000x100        //Template: time_end : num_packets x size_packets 
