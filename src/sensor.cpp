@@ -16,40 +16,32 @@ Sensor::Sensor(vector<string> args)
     //Setting host variables
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
-
-    //Target msq_node mailbox
+    //This sensor mailbox
     mailbox = simgrid::s4u::Mailbox::by_name(host_name);
 
-    //Receive some information from the msq_node
-    get_msq_information();
+    
+    
+    //Testing arguments (localized on the deploy platform file)
+    xbt_assert(args.size() > 4, "Msq_actor is missing arguments.");
 
-}
+    //Burst config arguments
+    burst_config_id = args[1];
+    intervals =  burst_config.get_intervals(burst_config_id);
+    
+    connected_msq_name = args[2];
+    msq_mailbox = simgrid::s4u::Mailbox::by_name( connected_msq_name + "_" +host_name);
 
- //Receiving starting information from the msq_node
-void Sensor::get_msq_information(){
-
-    //Get the msq node for creating the mailbox
-    string *temp_payload1 =  static_cast<string*>(mailbox->get());
-    connected_msq_node = *temp_payload1;
-    msq_mailbox = simgrid::s4u::Mailbox::by_name(connected_msq_node+ "_" +host_name);
-
-    //Gets the intervals
-    vector<interval> *temp_payload2  = static_cast<vector<interval>*>(mailbox->get());
-    intervals = *temp_payload2;
-    //Getting info used to divide packages
-    int *temp_payload3  = static_cast<int*>(mailbox->get());
-    num_sensors = *temp_payload3;
-    int *temp_payload4  = static_cast<int*>(mailbox->get());
-    sensors_position = *temp_payload4;
+    //Information used to define how many packages this node will send
+    num_sensors = stoi(args[3]);
+    sensors_position = stoi(args[4]);
 
 
     //Open the log file
-    logfile.open ("result_logs/"+connected_msq_node+"_sensor_stream.txt",fstream::app);
-    
-    
+    logfile.open ("result_logs/"+connected_msq_name+"_sensor_stream.txt",fstream::app);
+
+
 
 }
-
 
 
 //Function to guaranteed that packages aren't lost due to doing a common division

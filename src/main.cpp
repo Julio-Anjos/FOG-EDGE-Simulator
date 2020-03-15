@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "sensor.h"
-#include "msq_node.h"
+#include "msq_actor.h"
 #include "burst_conf.h"
 using namespace std; 
 
@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 
     
     //Register sensors and msq_actors
-    e.register_actor<Msq_node>("msq_actor");
+    e.register_actor<Msq_actor>("msq_actor");
     e.register_actor<Sensor>("sensor");
 
     //Loading platforms

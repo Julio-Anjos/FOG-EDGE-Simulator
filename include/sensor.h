@@ -8,7 +8,7 @@ using namespace std;
 class Sensor
 {
     private:
-        string connected_msq_node;    //Msq node that is connected to this sensor
+        string connected_msq_name;    //Msq node that is connected to this sensor
         string burst_config_id;       //Burst configuration that its being used
         
         
@@ -30,8 +30,7 @@ class Sensor
         
         Sensor(vector<string> args); //Constructor
         
-        
-        void get_msq_information();//Receiving starting information from the msq_node (burst config and host name)
+    
 
         void operator()(void); //This is the function that will first run when the platform executes
         

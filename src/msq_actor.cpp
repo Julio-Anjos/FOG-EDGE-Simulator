@@ -1,13 +1,13 @@
 #include <simgrid/s4u.hpp>
 #include <iostream>
 #include <string>
-#include "msq_node.h"
+#include "msq_actor.h"
 
 
 using namespace std; 
 
 //Constructor
-Msq_node::Msq_node(vector<string> args)
+Msq_actor::Msq_actor(vector<string> args)
 {
     
     //Getting host variables
@@ -15,7 +15,7 @@ Msq_node::Msq_node(vector<string> args)
     host_name = host->get_name();
     
     //Testing arguments (localized on the deploy platform file)
-    xbt_assert(args.size() > 1, "Burst config id needed for each msq_node");
+    xbt_assert(args.size() > 5,"Msq_actor missing arguments.");
 
     //Burst config arguments
     burst_config_id = args[1];
@@ -23,47 +23,39 @@ Msq_node::Msq_node(vector<string> args)
     num_intervals = intervals.size(); //numbers of intervals
     
 
+    //This actor will receive messages from a single sensor
+    sensor_mailbox = simgrid::s4u::Mailbox::by_name(args[2]);
+    receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + args[2]);  
+   
     
-
-
-    //Getting mailboxes for each sensors (Arguments from 5.. are sensor names)
-    for(int i =5; i< args.size(); i++){
-        sensor_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(args[i]));
-        receive_mailboxes.push_back(simgrid::s4u::Mailbox::by_name(host_name + "_" + args[i]));  //This node has one mailbox for each sensor to receive their info
-    }
-    num_sensors =  sensor_mailboxes.size();
-
-    //Create logfile for the stream between msq and sensors
-    sensor_stream_logfile.open ("result_logs/"+host_name+"_sensor_stream.txt",fstream::out | fstream::trunc );   
     
+    cout << host_name + "_" + args[2] << endl;
 
     /*
     //Streaming arguments, currently not being used
-    int window_size = stoi(args[2]);
-    int buffer_size = stoi(args[3]);
-    float stream_timeout = stof(args[4]);
+    int window_size = stoi(args[3]);
+    int buffer_size = stoi(args[4]);
+    float stream_timeout = stof(args[5]);
     streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
     */
+
+
+
+    //Create logfile for the stream between msq and sensors
+    sensor_stream_logfile.open ("result_logs/"+host_name+"_sensor_stream.txt",fstream::out | fstream::trunc );   
     sensor_stream_logfile.close();
 }
 
 
 //The operator is the function that will run automatically as the platform starting executing
-void Msq_node::operator()(void)
+void Msq_actor::operator()(void)
 {
    
-    //Send starting information to the sensors
-    for(int i =0;i<num_sensors ;i++){
-        sensor_mailboxes[i]->put(&host_name,0);
-        sensor_mailboxes[i]->put(&intervals,0);
-        sensor_mailboxes[i]->put(&num_sensors,0);//Used to divide messages between sensors
-        sensor_mailboxes[i]->put(&i,0);          //Used to divide messages between sensors
-    }
 
     int burst_counter=0;
     int interval_sent_packages;
     vector<int> packages;
-    //Receive the packages from the sensors    
+    //Receive the packages from the sensor   
     for(interval inter : intervals ){
         burst_counter++;
         packages = inter.package_amounts;
@@ -75,13 +67,10 @@ void Msq_node::operator()(void)
             receive_packages();
         }
         
-
-        int *temp;
         //For this specific interval, get the amount of packages correctly sent
-        for(int i =0;i<num_sensors ;i++){
-            temp  = static_cast<int*>(receive_mailboxes[i]->get());
-            interval_sent_packages += *temp;   
-        }
+        int *temp  = static_cast<int*>(receive_mailbox->get());
+        interval_sent_packages =*temp;
+
 
         //Print information about missed packages
         if(interval_sent_packages < inter.num_packages){
@@ -103,7 +92,7 @@ void Msq_node::operator()(void)
 
 //Keeps receiving data untill told to stop by the sensor
 //receives a full burst from each sensor
-void Msq_node::receive_packages()
+void Msq_actor::receive_packages()
 {
     
     double* current_time = new double();
@@ -114,39 +103,28 @@ void Msq_node::receive_packages()
     // payload = -1 MEANS THE COMMUNICATION MUST STOP
     // Otherwise, payload is the number of bytes that were transmitted
     int *payload;  
-    // When a payload = -1 is received, the flags vector is updated on that sensor, indicating that the current burst ended
-    int flags[num_sensors];   
-    for(int i=0;i<num_sensors;i++)//Initialize with 1 (communication burst still running)
-        flags[i] = 1;
+    // When a payload = -1 is received, iit ndicates that the current burst ended
+    
+    
     
 
     do{
         //Receive a payload
-        for(int i=0;i<num_sensors;i++){
-            
-            if(flags[i]){ //Test if this communication hasn't ended
-                payload = static_cast<int*>(receive_mailboxes[i]->get()); //Receive data from sensor
+    
+        payload = static_cast<int*>(receive_mailbox->get()); //Receive data from sensor
+        
+        *current_time = simgrid::s4u::Engine::get_clock();
+        
+        //Update the buffer with the new amount of data, currently incomplete
+        //update_buffer(*payload,*current_time);
                 
-                *current_time = simgrid::s4u::Engine::get_clock();
-                
-                
-                if(*payload == -1){  //Update the flag vector in case the payload is -1 (burst ended)
-                    complete_bursts++;
-                    flags[i] = 0;
-                }
-                
-                
-                //Update the buffer with the new amount of data, currently incomplete
-                //update_buffer(*payload,*current_time);
-            }     
-        }
     }
-    while(complete_bursts < num_sensors); //Check if all sensors of this node have ended
+    while(*payload != -1); //Check if all sensors of this node have ended
     
 }
 
 /*
-void Msq_node::update_buffer(int num_bytes, double current_time){
+void Msq_actor::update_buffer(int num_bytes, double current_time){
    
     string buffer_command;
     string exec_flag;
