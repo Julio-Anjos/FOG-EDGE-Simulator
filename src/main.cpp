@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
    
 
     
-    //Register sensors and msq_nodes
-    e.register_actor<Msq_node>("msq_node");
+    //Register sensors and msq_actors
+    e.register_actor<Msq_node>("msq_actor");
     e.register_actor<Sensor>("sensor");
 
     //Loading platforms

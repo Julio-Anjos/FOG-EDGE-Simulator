@@ -162,8 +162,8 @@ def write_argument(f,value,comment):
 def write_deploy_sensor(f,sensor_id):
     f.write("   <actor host=\"Sensor-"+str(sensor_id)+"\" function=\"sensor\">\n")
 
-def write_deploy_msq_node(f,msq_node_id):
-    f.write("   <actor host=\"MsqNode-"+str(msq_node_id)+"\" function=\"msq_node\">\n")
+def write_deploy_msq_actor(f,msq_node_id):
+    f.write("   <actor host=\"MsqNode-"+str(msq_node_id)+"\" function=\"msq_actor\">\n")
 
 def write_d_plat_file(config):
 
@@ -229,17 +229,21 @@ def write_d_plat_file(config):
     sensor_id2=0
     #Writing for the MSQ node each of its arguments, arguments include: Burst config id, connected sensors, and information about the streaming window and buffer
     for num_sensors in sensor_amounts:
-        write_deploy_msq_node(f,msq_node_id)
-        write_argument(f,burst_configs[msq_node_id],"burst config id")
-        write_argument(f,window_sizes[msq_node_id],"stream window size")
-        write_argument(f,buffer_sizes[msq_node_id],"stream buffer size")
-        write_argument(f,timeout_times[msq_node_id],"stream timeout time")
+
+        
         for i in range(num_sensors):
-            write_argument(f,"Sensor-"+str(sensor_id1),"one of this hosts sensor")
+            write_deploy_msq_actor(f,msq_node_id)
+            write_argument(f,burst_configs[msq_node_id],"burst config id")
+            write_argument(f,window_sizes[msq_node_id],"stream window size")
+            write_argument(f,buffer_sizes[msq_node_id],"stream buffer size")
+            write_argument(f,timeout_times[msq_node_id],"stream timeout time")
+            write_argument(f,"Sensor-"+str(sensor_id1),"sensor connected actor")
+            write_argument(f,str(num_sensors),"total number of sensors connected to host")
+            f.write("   </actor>\n\n")
             sensor_id1 += 1
 
 
-        f.write("   </actor>\n\n")
+        
         for i in range(num_sensors):
             write_deploy_sensor(f,sensor_id2)
             f.write("   </actor>\n\n")
