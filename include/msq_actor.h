@@ -33,7 +33,7 @@ class Msq_actor
         void operator()(void); //This is the function that will first run when the platform executes
         void receive_packages(); //Receives packages from the
 
-        void update_buffer(int num_bytes, double current_time); //Updates the buffer and tests if data must/can be executed
+        //void update_buffer(int num_bytes, double current_time); //Updates the buffer and tests if data must/can be executed
 };
 
 #endif

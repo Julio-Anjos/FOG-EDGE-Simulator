@@ -4,17 +4,18 @@
 #include "sensor.h"
 #include "msq_actor.h"
 #include "burst_conf.h"
+#include "msq_host.h"
 using namespace std; 
 
 XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simulator");
 
 
 
-
+map <string,Msq_host> msq_hosts; //declaring to be used globally, its extern on the msq_host.h file
 
 int main(int argc, char* argv[])
 {
-    system("exec clear");
+   
     system("exec rm -r result_logs/*.txt");
     //Starting engine and confirming number of arguments
     simgrid::s4u::Engine e(&argc, argv);
