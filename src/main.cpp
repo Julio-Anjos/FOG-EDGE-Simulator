@@ -14,6 +14,7 @@ XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simul
 
 int main(int argc, char* argv[])
 {
+    system("exec clear");
     system("exec rm -r result_logs/*.txt");
     //Starting engine and confirming number of arguments
     simgrid::s4u::Engine e(&argc, argv);
