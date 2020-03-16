@@ -12,6 +12,8 @@ class Msq_actor
         simgrid::s4u::Mailbox* sensor_mailbox;
         simgrid::s4u::Mailbox* receive_mailbox; //This node has one mailbox for each sensor to receive their info
 
+        string connected_sensor_name; //name of the sensor this actor communicates with
+
         string burst_config_id;  
         vector<interval> intervals;
         int num_intervals; //Number of intervals in the burst_config

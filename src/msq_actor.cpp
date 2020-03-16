@@ -24,12 +24,11 @@ Msq_actor::Msq_actor(vector<string> args)
     
 
     //This actor will receive messages from a single sensor
-    sensor_mailbox = simgrid::s4u::Mailbox::by_name(args[2]);
-    receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + args[2]);  
+    connected_sensor_name = args[2];
+    sensor_mailbox = simgrid::s4u::Mailbox::by_name(connected_sensor_name);
+    receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + connected_sensor_name);  
    
     
-    
-    cout << host_name + "_" + args[2] << endl;
 
     /*
     //Streaming arguments, currently not being used
@@ -61,7 +60,7 @@ void Msq_actor::operator()(void)
         packages = inter.package_amounts;
         interval_sent_packages =0;
         
-        cout <<  host_name << " started  burst "<<burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()  << endl;
+        cout << connected_sensor_name << "_" << host_name << " started  burst "<<burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()  << endl;
         //Receive the packages that are being sent from the sensors
         for(int i =0;i<packages.size();i++){
             receive_packages();
@@ -74,16 +73,16 @@ void Msq_actor::operator()(void)
 
         //Print information about missed packages
         if(interval_sent_packages < inter.num_packages){
-            cout  << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<<" FAILED TO SEND " << inter.num_packages - interval_sent_packages << " packages out of " << inter.num_packages << endl;;
+            cout  << connected_sensor_name <<"_" << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<<" FAILED TO SEND " << inter.num_packages - interval_sent_packages << " packages out of " << inter.num_packages << endl;;
         }
         else{
-            cout  << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<< " sucessfully sending all " <<  inter.num_packages <<" packages " << endl;
+            cout << connected_sensor_name << "_" << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<< " sucessfully sending all " <<  inter.num_packages <<" packages " << endl;
         }
        
 
 
     }
-    cout << host_name << " completed all " << num_intervals << " bursts." << endl;
+    cout << connected_sensor_name << "_" <<  host_name << " completed all " << num_intervals << " bursts." << endl;
     
 
     
