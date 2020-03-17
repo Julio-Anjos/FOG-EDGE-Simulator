@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "msq_actor.h"
+#include "msq_host.h"
 
 
 using namespace std; 
@@ -11,8 +12,8 @@ Msq_actor::Msq_actor(vector<string> args)
 {
     
     //Getting host variables
-    host = simgrid::s4u::this_actor::get_host();
-    host_name = host->get_name();
+    host_name = simgrid::s4u::this_actor::get_host()->get_name();
+    //host = create_or_fetch_host();
     
     //Testing arguments (localized on the deploy platform file)
     xbt_assert(args.size() > 5,"Msq_actor missing arguments.");
@@ -29,6 +30,8 @@ Msq_actor::Msq_actor(vector<string> args)
     receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + connected_sensor_name);  
    
     
+    create_or_fetch_host();
+
 
     /*
     //Streaming arguments, currently not being used
@@ -121,6 +124,34 @@ void Msq_actor::receive_packages()
     while(*payload != -1); //Check if all sensors of this node have ended
     
 }
+
+void Msq_actor::create_or_fetch_host(){
+
+    cout << msq_host_map.count(host_name) << endl;
+    
+    
+    
+    if ( msq_host_map.count(host_name)) {
+    // FOUND
+        msq_host_map[host_name].add_sensor(connected_sensor_name);
+    } 
+    else {
+    //NOT FOUND
+        
+        
+        Msq_host new_host(host_name);
+        
+        new_host.add_sensor(connected_sensor_name);
+        
+        msq_host_map.insert(make_pair(host_name, new_host));
+        
+
+
+    }
+    msq_host_map[host_name].test();
+   
+}   
+
 
 /*
 void Msq_actor::update_buffer(int num_bytes, double current_time){

@@ -5,18 +5,23 @@
 #include <fstream>
 using namespace std; 
 
+//This class manages the communication between all msq_actors on a specific hosts
 class Msq_host
 {
     private:
     
         string host_name;
+        vector<string> sensor_list;
     
     public:
-        
+        Msq_host(); //Constructor
         Msq_host(string name); //Constructor
+        void add_sensor(string sensor);
+        void test();
         
     
         
 };
-
+extern map <string,Msq_host> msq_host_map;
 #endif
+

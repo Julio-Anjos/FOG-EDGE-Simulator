@@ -11,7 +11,7 @@ XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simul
 
 
 
-map <string,Msq_host> msq_hosts; //declaring to be used globally, its extern on the msq_host.h file
+map <string,Msq_host> msq_host_map; //declaring to be used globally, its extern on the msq_host.h file
 
 int main(int argc, char* argv[])
 {
@@ -22,6 +22,9 @@ int main(int argc, char* argv[])
     xbt_assert(argc > 3, "Usage: %s platform_file deployment_file burst_config_file\n", argv[0]);
 
     
+
+
+
     //Getting burst config path
     burst_config.initialize(argv[3]);
    

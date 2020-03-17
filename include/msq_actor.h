@@ -2,6 +2,7 @@
 #define MSQ_ACTOR_H
 #include "burst_conf.h"
 #include "stream_buffer.h"
+#include "msq_host.h"
 #include <fstream>
 using namespace std; 
 
@@ -23,17 +24,20 @@ class Msq_actor
 
         //Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed
 
-        simgrid::s4u::Host *host;  
+        
         string host_name;
     
     public:
         
         Msq_actor(vector<string> args); //Constructor
-        
         void operator()(void); //This is the function that will first run when the platform executes
         void receive_packages(); //Receives packages from the
 
+        void create_or_fetch_host(); //Gets the host manager class for this actor
+
+
         //void update_buffer(int num_bytes, double current_time); //Updates the buffer and tests if data must/can be executed
+
 };
 
 #endif
