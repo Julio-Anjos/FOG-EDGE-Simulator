@@ -17,6 +17,7 @@ Msq_host::Msq_host(string name){
     host_name = name;
 }
 
+//Sensor list functions
 void Msq_host::add_sensor(string sensor){
     this->sensor_list.push_back(sensor);
 }
