@@ -39,7 +39,7 @@ Msq_actor::Msq_actor(vector<string> args)
 
     //Getting msq_host that this actor acts on, he is used to store compile info on all actors
     host = fetch_host(); //gets the host that will manage this actor
-    host->test();
+    host->inform_burst(actor_id);
 
 
 
@@ -47,6 +47,10 @@ Msq_actor::Msq_actor(vector<string> args)
     //Create logfile for the stream between msq and sensors
     sensor_stream_logfile.open ("result_logs/"+host_name+"_sensor_stream.txt",fstream::out | fstream::trunc );   
     sensor_stream_logfile.close();
+
+
+
+
 }
 
 
@@ -145,7 +149,11 @@ Msq_host* Msq_actor::fetch_host(){
 
 
     }
-    simgrid::s4u::this_actor::yield();  //this makes sure all actors are synchronized
+    actor_id = msq_host_map[host_name].get_sensor_list_size() -1 ;
+
+
+    simgrid::s4u::this_actor::yield();  //this makes sure all actors have gotten to this part of the code before going foward
+                                        
     return &msq_host_map[host_name];
 }    
 

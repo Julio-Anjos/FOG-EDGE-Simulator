@@ -18,16 +18,13 @@ Msq_host::Msq_host(string name){
 }
 
 void Msq_host::add_sensor(string sensor){
-
     this->sensor_list.push_back(sensor);
 }
 
-//Test
-void Msq_host::test(){
-
-
-    for(string sensor : sensor_list){
-        cout << host_name <<" has sensor " << sensor << endl;
-    }  
+int Msq_host::get_sensor_list_size(){
+    return sensor_list.size();
 }
 
+void Msq_host::inform_burst(int actor_id){
+    cout << "Hey i'm the actor connected to: "<< sensor_list[actor_id] << endl;
+}

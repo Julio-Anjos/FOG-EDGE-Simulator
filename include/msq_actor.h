@@ -12,7 +12,7 @@ class Msq_actor
         string host_name;
         string connected_sensor_name; //name of the sensor this actor communicates with
         Msq_host *host; //Host class that manages this actor
-
+        int actor_id;//position of this actor on the host sensor list, used to communicate with the msq_host
 
         simgrid::s4u::Mailbox* sensor_mailbox;
         simgrid::s4u::Mailbox* receive_mailbox; //This node has one mailbox for each sensor to receive their info
