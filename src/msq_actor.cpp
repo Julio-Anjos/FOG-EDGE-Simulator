@@ -10,14 +10,12 @@ using namespace std;
 //Constructor
 Msq_actor::Msq_actor(vector<string> args)
 {
-    
-    //Getting host variables
-    host_name = simgrid::s4u::this_actor::get_host()->get_name();
-    //host = create_or_fetch_host();
-    
     //Testing arguments (localized on the deploy platform file)
     xbt_assert(args.size() > 5,"Msq_actor missing arguments.");
 
+    //Getting host variables
+    host_name = simgrid::s4u::this_actor::get_host()->get_name();
+    
     //Burst config arguments
     burst_config_id = args[1];
     intervals =  burst_config.get_intervals(burst_config_id);
@@ -30,9 +28,6 @@ Msq_actor::Msq_actor(vector<string> args)
     receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + connected_sensor_name);  
    
     
-    create_or_fetch_host();
-
-
     /*
     //Streaming arguments, currently not being used
     int window_size = stoi(args[3]);
@@ -40,6 +35,12 @@ Msq_actor::Msq_actor(vector<string> args)
     float stream_timeout = stof(args[5]);
     streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
     */
+
+
+    //Getting msq_host that this actor acts on, he is used to store compile info on all actors
+    host = fetch_host(); //gets the host that will manage this actor
+    host->test();
+
 
 
 
@@ -52,8 +53,8 @@ Msq_actor::Msq_actor(vector<string> args)
 //The operator is the function that will run automatically as the platform starting executing
 void Msq_actor::operator()(void)
 {
-   
-
+    
+    
     int burst_counter=0;
     int interval_sent_packages;
     vector<int> packages;
@@ -125,32 +126,28 @@ void Msq_actor::receive_packages()
     
 }
 
-void Msq_actor::create_or_fetch_host(){
+Msq_host* Msq_actor::fetch_host(){
 
-    cout << msq_host_map.count(host_name) << endl;
-    
-    
+
     
     if ( msq_host_map.count(host_name)) {
     // FOUND
+    //Add this sensor to the list of sensors that the following host manages
         msq_host_map[host_name].add_sensor(connected_sensor_name);
     } 
     else {
     //NOT FOUND
-        
-        
+        //Creates the host and add this sensor
         Msq_host new_host(host_name);
-        
         new_host.add_sensor(connected_sensor_name);
-        
         msq_host_map.insert(make_pair(host_name, new_host));
         
 
 
     }
-    msq_host_map[host_name].test();
-   
-}   
+    simgrid::s4u::this_actor::yield();  //this makes sure all actors are synchronized
+    return &msq_host_map[host_name];
+}    
 
 
 /*

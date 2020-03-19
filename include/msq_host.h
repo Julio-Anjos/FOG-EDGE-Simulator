@@ -5,7 +5,8 @@
 #include <fstream>
 using namespace std; 
 
-//This class manages the communication between all msq_actors on a specific hosts
+//This class manages the communication between all msq_actors on a specific host, it helps to combine all the information
+//obtained on each actor.
 class Msq_host
 {
     private:
