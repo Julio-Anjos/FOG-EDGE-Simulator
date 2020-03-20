@@ -1,3 +1,9 @@
+-------------------------------------------------
+Starting burst: 0 - 15: 30000x10000 f(x)=x**2
+-------------------------------------------------
+Sensor-0 sending 0 packages of size 10000 from times 0 - 0.0802139
+Sensor-1 sending 0 packages of size 10000 from times 0 - 0.0802139
+Sensor-2 sending 0 packages of size 10000 from times 0 - 0.0802139
 Sensor-2 sending 0 packages of size 10000 from times 0.0802139 - 0.160428
 Sensor-1 sending 0 packages of size 10000 from times 0.0802139 - 0.160428
 Sensor-0 sending 0 packages of size 10000 from times 0.0802139 - 0.160428

@@ -12,9 +12,10 @@ Msq_host::Msq_host(){
 }
 
 //Constructor
-Msq_host::Msq_host(string name){
+Msq_host::Msq_host(string name, string burst_config_id){
 
     host_name = name;
+    intervals = burst_config.get_intervals(burst_config_id);
 }
 
 //Sensor list functions
@@ -26,6 +27,31 @@ int Msq_host::get_sensor_list_size(){
     return sensor_list.size();
 }
 
-void Msq_host::inform_burst(int actor_id){
-    cout << "Hey i'm the actor connected to: "<< sensor_list[actor_id] << endl;
+//Msq_actors use this function the inform the results of it's bursts
+//the Msq_host then collects the info and displays it.
+
+void Msq_host::inform_burst_start(int actor_id,int current_burst_id, double time){
+    //cout << connected_sensor_name << "_" << host_name << " started  burst "<<burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()  << endl;
+    return;
+}
+
+
+void Msq_host::inform_burst_result(int actor_id,int current_burst_id, int sent_packages, double time){
+    
+    /*
+    //Print information about missed packages
+        if(interval_sent_packages < inter.num_packages){
+            cout  << connected_sensor_name <<"_" << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<<" FAILED TO SEND " << inter.num_packages - interval_sent_packages << " packages out of " << inter.num_packages << endl;;
+        }
+        else{
+            cout << connected_sensor_name << "_" << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<< " sucessfully sending all " <<  inter.num_packages <<" packages " << endl;
+        }
+    */
+    return;
+}
+
+void Msq_host::inform_all_bursts_end(int actor_id, double time){
+    //cout << connected_sensor_name << "_" <<  host_name << " completed all " << num_intervals << " bursts." << endl;
+
+    return;
 }

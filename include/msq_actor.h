@@ -23,8 +23,7 @@ class Msq_actor
         vector<interval> intervals;
         int num_intervals; //Number of intervals in the burst_config
         
-        
-        ofstream sensor_stream_logfile; //file that logs information about the stream between sensor and msq node
+
 
         //Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed
 

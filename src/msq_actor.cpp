@@ -39,18 +39,6 @@ Msq_actor::Msq_actor(vector<string> args)
 
     //Getting msq_host that this actor acts on, he is used to store compile info on all actors
     host = fetch_host(); //gets the host that will manage this actor
-    host->inform_burst(actor_id);
-
-
-
-
-    //Create logfile for the stream between msq and sensors
-    sensor_stream_logfile.open ("result_logs/"+host_name+"_sensor_stream.txt",fstream::out | fstream::trunc );   
-    sensor_stream_logfile.close();
-
-
-
-
 }
 
 
@@ -58,43 +46,27 @@ Msq_actor::Msq_actor(vector<string> args)
 void Msq_actor::operator()(void)
 {
     
-    
-    int burst_counter=0;
-    int interval_sent_packages;
-    vector<int> packages;
+    int interval_sent_packages=0;
     //Receive the packages from the sensor   
-    for(interval inter : intervals ){
-        burst_counter++;
-        packages = inter.package_amounts;
-        interval_sent_packages =0;
+    for(int burst_counter=0;burst_counter<num_intervals;burst_counter++){
+        host->inform_burst_start(actor_id,burst_counter,simgrid::s4u::Engine::get_clock());
         
-        cout << connected_sensor_name << "_" << host_name << " started  burst "<<burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()  << endl;
+        
+        int num_pkg_divisions = intervals[burst_counter].package_amounts.size(); //How many division each interval has
+        //the divisions have different amount of packages that allow the interval do match a math function
+
         //Receive the packages that are being sent from the sensors
-        for(int i =0;i<packages.size();i++){
+        for(int i =0;i<num_pkg_divisions;i++){
             receive_packages();
         }
         
         //For this specific interval, get the amount of packages correctly sent
         int *temp  = static_cast<int*>(receive_mailbox->get());
         interval_sent_packages =*temp;
-
-
-        //Print information about missed packages
-        if(interval_sent_packages < inter.num_packages){
-            cout  << connected_sensor_name <<"_" << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<<" FAILED TO SEND " << inter.num_packages - interval_sent_packages << " packages out of " << inter.num_packages << endl;;
-        }
-        else{
-            cout << connected_sensor_name << "_" << host_name << " finished burst "<< burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()<< " sucessfully sending all " <<  inter.num_packages <<" packages " << endl;
-        }
-       
-
+        host->inform_burst_result(actor_id, burst_counter, interval_sent_packages, simgrid::s4u::Engine::get_clock());
 
     }
-    cout << connected_sensor_name << "_" <<  host_name << " completed all " << num_intervals << " bursts." << endl;
-    
-
-    
-    
+    host->inform_all_bursts_end(actor_id,simgrid::s4u::Engine::get_clock());
 }
 
 //Keeps receiving data untill told to stop by the sensor
@@ -142,7 +114,7 @@ Msq_host* Msq_actor::fetch_host(){
     else {
     //NOT FOUND
         //Creates the host and add this sensor
-        Msq_host new_host(host_name);
+        Msq_host new_host(host_name,burst_config_id);
         new_host.add_sensor(connected_sensor_name);
         msq_host_map.insert(make_pair(host_name, new_host));
         
