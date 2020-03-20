@@ -4,40 +4,135 @@
    <zone id="zone0" routing="Full">
        <host id="MsqNode-0" speed="1000000000f"  />
        <host id="Sensor-0" speed="500000000f"  />
-       <host id="MsqNode-1" speed="1000000000f"  />
        <host id="Sensor-1" speed="500000000f"  />
        <host id="Sensor-2" speed="500000000f"  />
-       <host id="MsqNode-2" speed="1000000000f"  />
        <host id="Sensor-3" speed="500000000f"  />
        <host id="Sensor-4" speed="500000000f"  />
+       <host id="MsqNode-1" speed="1000000000f"  />
        <host id="Sensor-5" speed="500000000f"  />
+       <host id="Sensor-6" speed="500000000f"  />
+       <host id="Sensor-7" speed="500000000f"  />
+       <host id="Sensor-8" speed="500000000f"  />
+       <host id="Sensor-9" speed="500000000f"  />
+       <host id="Sensor-10" speed="500000000f"  />
+       <host id="Sensor-11" speed="500000000f"  />
+       <host id="Sensor-12" speed="500000000f"  />
+       <host id="MsqNode-2" speed="1000000000f"  />
+       <host id="Sensor-13" speed="500000000f"  />
+       <host id="Sensor-14" speed="500000000f"  />
+       <host id="Sensor-15" speed="500000000f"  />
+       <host id="Sensor-16" speed="500000000f"  />
+       <host id="Sensor-17" speed="500000000f"  />
+       <host id="Sensor-18" speed="500000000f"  />
+       <host id="Sensor-19" speed="500000000f"  />
+       <host id="Sensor-20" speed="500000000f"  />
+       <host id="Sensor-21" speed="500000000f"  />
+       <host id="Sensor-22" speed="500000000f"  />
+       <host id="Sensor-23" speed="500000000f"  />
+       <host id="Sensor-24" speed="500000000f"  />
 
         <!-- The bandwidth is defined during the program execution by the burst_config -->
 
        <link id="Sensor-0_MsqNode-0" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-1_MsqNode-1" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-2_MsqNode-1" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-3_MsqNode-2" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-4_MsqNode-2" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-5_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-1_MsqNode-0" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-2_MsqNode-0" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-3_MsqNode-0" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-4_MsqNode-0" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-5_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-6_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-7_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-8_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-9_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-10_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-11_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-12_MsqNode-1" bandwidth="50MBps" latency="0us" />
+       <link id="Sensor-13_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-14_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-15_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-16_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-17_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-18_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-19_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-20_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-21_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-22_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-23_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-24_MsqNode-2" bandwidth="50MBps" latency="5us" />
 
        <route src="Sensor-0" dst="MsqNode-0" >
            <link_ctn id="Sensor-0_MsqNode-0" />
        </route>
-       <route src="Sensor-1" dst="MsqNode-1" >
-           <link_ctn id="Sensor-1_MsqNode-1" />
+       <route src="Sensor-1" dst="MsqNode-0" >
+           <link_ctn id="Sensor-1_MsqNode-0" />
        </route>
-       <route src="Sensor-2" dst="MsqNode-1" >
-           <link_ctn id="Sensor-2_MsqNode-1" />
+       <route src="Sensor-2" dst="MsqNode-0" >
+           <link_ctn id="Sensor-2_MsqNode-0" />
        </route>
-       <route src="Sensor-3" dst="MsqNode-2" >
-           <link_ctn id="Sensor-3_MsqNode-2" />
+       <route src="Sensor-3" dst="MsqNode-0" >
+           <link_ctn id="Sensor-3_MsqNode-0" />
        </route>
-       <route src="Sensor-4" dst="MsqNode-2" >
-           <link_ctn id="Sensor-4_MsqNode-2" />
+       <route src="Sensor-4" dst="MsqNode-0" >
+           <link_ctn id="Sensor-4_MsqNode-0" />
        </route>
-       <route src="Sensor-5" dst="MsqNode-2" >
-           <link_ctn id="Sensor-5_MsqNode-2" />
+       <route src="Sensor-5" dst="MsqNode-1" >
+           <link_ctn id="Sensor-5_MsqNode-1" />
+       </route>
+       <route src="Sensor-6" dst="MsqNode-1" >
+           <link_ctn id="Sensor-6_MsqNode-1" />
+       </route>
+       <route src="Sensor-7" dst="MsqNode-1" >
+           <link_ctn id="Sensor-7_MsqNode-1" />
+       </route>
+       <route src="Sensor-8" dst="MsqNode-1" >
+           <link_ctn id="Sensor-8_MsqNode-1" />
+       </route>
+       <route src="Sensor-9" dst="MsqNode-1" >
+           <link_ctn id="Sensor-9_MsqNode-1" />
+       </route>
+       <route src="Sensor-10" dst="MsqNode-1" >
+           <link_ctn id="Sensor-10_MsqNode-1" />
+       </route>
+       <route src="Sensor-11" dst="MsqNode-1" >
+           <link_ctn id="Sensor-11_MsqNode-1" />
+       </route>
+       <route src="Sensor-12" dst="MsqNode-1" >
+           <link_ctn id="Sensor-12_MsqNode-1" />
+       </route>
+       <route src="Sensor-13" dst="MsqNode-2" >
+           <link_ctn id="Sensor-13_MsqNode-2" />
+       </route>
+       <route src="Sensor-14" dst="MsqNode-2" >
+           <link_ctn id="Sensor-14_MsqNode-2" />
+       </route>
+       <route src="Sensor-15" dst="MsqNode-2" >
+           <link_ctn id="Sensor-15_MsqNode-2" />
+       </route>
+       <route src="Sensor-16" dst="MsqNode-2" >
+           <link_ctn id="Sensor-16_MsqNode-2" />
+       </route>
+       <route src="Sensor-17" dst="MsqNode-2" >
+           <link_ctn id="Sensor-17_MsqNode-2" />
+       </route>
+       <route src="Sensor-18" dst="MsqNode-2" >
+           <link_ctn id="Sensor-18_MsqNode-2" />
+       </route>
+       <route src="Sensor-19" dst="MsqNode-2" >
+           <link_ctn id="Sensor-19_MsqNode-2" />
+       </route>
+       <route src="Sensor-20" dst="MsqNode-2" >
+           <link_ctn id="Sensor-20_MsqNode-2" />
+       </route>
+       <route src="Sensor-21" dst="MsqNode-2" >
+           <link_ctn id="Sensor-21_MsqNode-2" />
+       </route>
+       <route src="Sensor-22" dst="MsqNode-2" >
+           <link_ctn id="Sensor-22_MsqNode-2" />
+       </route>
+       <route src="Sensor-23" dst="MsqNode-2" >
+           <link_ctn id="Sensor-23_MsqNode-2" />
+       </route>
+       <route src="Sensor-24" dst="MsqNode-2" >
+           <link_ctn id="Sensor-24_MsqNode-2" />
        </route>
 
    </zone>

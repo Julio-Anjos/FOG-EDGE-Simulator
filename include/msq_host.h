@@ -19,8 +19,10 @@ class Msq_host
         int num_intervals;
         
         
-        vector<int>  started_intervals; //Intervals that have already started( 1 == started)
-       
+        vector<int>  started_intervals; //How many actors that have already started each interval
+        vector<int>  total_sent_packages; //Total amount of packages sucessfully sent between sensor and the msq_node on each interval
+        vector<int>  finished_intervals; //Contains the number of actors that have finished each interval
+
         int num_actors=0;//Number of actors that act on this host
         int num_completed_actors=0;//Number of sensors that completed all the bursts, used on inform_all_bursts_end
 
@@ -32,7 +34,7 @@ class Msq_host
         int get_sensor_list_size();
 
         void inform_burst_start(int current_burst_id,double time);//lets an actor inform it started a burst
-        void inform_burst_result(int actor_id,int current_burst_id, int sent_packages, double time);//lets an actor inform the host of the results of a burst
+        void inform_burst_result(int current_burst_id, int sent_packages, double time);//lets an actor inform the host of the results of a burst
         void inform_all_bursts_end();//lets an actor inform it has ended all bursts
         
 };

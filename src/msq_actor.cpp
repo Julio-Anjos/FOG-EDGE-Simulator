@@ -63,7 +63,7 @@ void Msq_actor::operator()(void)
         //For this specific interval, get the amount of packages correctly sent
         int *temp  = static_cast<int*>(receive_mailbox->get());
         interval_sent_packages =*temp;
-        host->inform_burst_result(actor_id, burst_counter, interval_sent_packages, simgrid::s4u::Engine::get_clock());
+        host->inform_burst_result(burst_counter, interval_sent_packages, simgrid::s4u::Engine::get_clock());
 
     }
     host->inform_all_bursts_end();
