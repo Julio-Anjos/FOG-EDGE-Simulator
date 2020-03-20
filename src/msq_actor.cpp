@@ -66,7 +66,7 @@ void Msq_actor::operator()(void)
         host->inform_burst_result(actor_id, burst_counter, interval_sent_packages, simgrid::s4u::Engine::get_clock());
 
     }
-    host->inform_all_bursts_end(actor_id,simgrid::s4u::Engine::get_clock());
+    host->inform_all_bursts_end();
 }
 
 //Keeps receiving data untill told to stop by the sensor

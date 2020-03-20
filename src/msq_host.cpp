@@ -50,8 +50,13 @@ void Msq_host::inform_burst_result(int actor_id,int current_burst_id, int sent_p
     return;
 }
 
-void Msq_host::inform_all_bursts_end(int actor_id, double time){
-    //cout << connected_sensor_name << "_" <<  host_name << " completed all " << num_intervals << " bursts." << endl;
-
-    return;
+//Actors use this function to inform the end of all bursts
+void Msq_host::inform_all_bursts_end(){
+    
+    this->num_completed_actors += 1;
+    int num_actors = this->sensor_list.size();
+    
+    if(num_completed_actors == num_actors  ) //If every actor completed it's bursts, the host has done its job receiving all
+        cout << host_name << " completed all " << intervals.size() << " bursts." << endl;
+    
 }
