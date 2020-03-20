@@ -21,6 +21,8 @@ class Msq_actor
         //Interval information
         string burst_config_id;  
         vector<interval> intervals;
+
+        
         int num_intervals; //Number of intervals in the burst_config
         
 

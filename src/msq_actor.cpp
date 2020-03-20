@@ -49,7 +49,7 @@ void Msq_actor::operator()(void)
     int interval_sent_packages=0;
     //Receive the packages from the sensor   
     for(int burst_counter=0;burst_counter<num_intervals;burst_counter++){
-        host->inform_burst_start(actor_id,burst_counter,simgrid::s4u::Engine::get_clock());
+        host->inform_burst_start(burst_counter,simgrid::s4u::Engine::get_clock());
         
         
         int num_pkg_divisions = intervals[burst_counter].package_amounts.size(); //How many division each interval has

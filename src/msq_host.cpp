@@ -16,26 +16,37 @@ Msq_host::Msq_host(string name, string burst_config_id){
 
     host_name = name;
     intervals = burst_config.get_intervals(burst_config_id);
+    num_intervals = intervals.size();
+
+    vector<int> temp_vect(num_intervals,0);
+    started_intervals = temp_vect;
 }
 
 //Sensor list functions
 void Msq_host::add_sensor(string sensor){
     this->sensor_list.push_back(sensor);
+    this->num_actors += 1;
 }
 
 int Msq_host::get_sensor_list_size(){
     return sensor_list.size();
 }
 
-//Msq_actors use this function the inform the results of it's bursts
-//the Msq_host then collects the info and displays it.
 
-void Msq_host::inform_burst_start(int actor_id,int current_burst_id, double time){
-    //cout << connected_sensor_name << "_" << host_name << " started  burst "<<burst_counter <<" at " <<  simgrid::s4u::Engine::get_clock()  << endl;
-    return;
+//Display info about what intervals started
+//Msq_actors use this function when they start a new interval
+void Msq_host::inform_burst_start(int current_burst_id, double time){
+    
+    //If the interval hasn't started yet, display that it started
+    if(!started_intervals[current_burst_id]){
+        started_intervals[current_burst_id] = 1;
+        cout <<  host_name << " started  burst "<< current_burst_id <<" at " <<  time << endl;
+    }
+    
 }
 
-
+//Msq_actors use this function the inform the results of it's bursts
+//the Msq_host then collects the info and displays it.
 void Msq_host::inform_burst_result(int actor_id,int current_burst_id, int sent_packages, double time){
     
     /*
@@ -54,7 +65,7 @@ void Msq_host::inform_burst_result(int actor_id,int current_burst_id, int sent_p
 void Msq_host::inform_all_bursts_end(){
     
     this->num_completed_actors += 1;
-    int num_actors = this->sensor_list.size();
+    
     
     if(num_completed_actors == num_actors  ) //If every actor completed it's bursts, the host has done its job receiving all
         cout << host_name << " completed all " << intervals.size() << " bursts." << endl;

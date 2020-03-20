@@ -12,11 +12,16 @@ class Msq_host
     private:
     
         string host_name;
-        vector<interval> intervals; //Msq to sensor burst intervals
         vector<string> sensor_list; //list of the sensors each actor is connected to, every actor has an id that correspond to a sensor on this list
         
-       
+
+        vector<interval> intervals; //Msq to sensor burst intervals
+        int num_intervals;
         
+        
+        vector<int>  started_intervals; //Intervals that have already started( 1 == started)
+       
+        int num_actors=0;//Number of actors that act on this host
         int num_completed_actors=0;//Number of sensors that completed all the bursts, used on inform_all_bursts_end
 
 
@@ -26,7 +31,7 @@ class Msq_host
         void add_sensor(string sensor);
         int get_sensor_list_size();
 
-        void inform_burst_start(int actor_id,int current_burst_id,double time);//lets an actor inform it started a burst
+        void inform_burst_start(int current_burst_id,double time);//lets an actor inform it started a burst
         void inform_burst_result(int actor_id,int current_burst_id, int sent_packages, double time);//lets an actor inform the host of the results of a burst
         void inform_all_bursts_end();//lets an actor inform it has ended all bursts
         
