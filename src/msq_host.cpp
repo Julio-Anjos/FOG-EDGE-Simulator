@@ -12,12 +12,13 @@ Msq_host::Msq_host(){
 }
 
 //Constructor
-Msq_host::Msq_host(string name, string burst_config_id){
+Msq_host::Msq_host(string name, string burst_config_id, int window_size, int buffer_size, float stream_timeout){
 
     host_name = name;
     intervals = burst_config.get_intervals(burst_config_id);
     num_intervals = intervals.size();
 
+    //Creating vectors used on inform_burst_* functions
     vector<int> temp_vect1(num_intervals,0);
     vector<int> temp_vect2(num_intervals,0);
     vector<int> temp_vect3(num_intervals,0);
@@ -25,6 +26,11 @@ Msq_host::Msq_host(string name, string burst_config_id){
     started_intervals = temp_vect1;
     total_sent_packages= temp_vect2;
     finished_intervals = temp_vect3;
+
+    //Creating sensor buffer(currently not used)
+    streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
+    
+
 }
 
 //Sensor list functions
@@ -62,6 +68,10 @@ void Msq_host::inform_burst_result(int current_burst_id, int sent_packages, doub
     if(finished_intervals[current_burst_id] == num_actors){
         int sucessfully_sent_packages = total_sent_packages[current_burst_id];
         int expected_packages = intervals[current_burst_id].num_packages;
+        
+        
+        //Is this the correct way to do this? Or do we need to send packages to the buffer more often?
+        //stream_buffer->add(time,sent_packages)
 
 
         //Print information about missed packages
@@ -85,3 +95,4 @@ void Msq_host::inform_all_bursts_end(){
         cout << host_name << " completed all " << intervals.size() << " bursts." << endl;
     
 }
+

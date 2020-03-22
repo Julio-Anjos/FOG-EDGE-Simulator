@@ -4,7 +4,7 @@
 
 
 using namespace std; 
-//This class represents an actor of a sensor
+//This class represent a buffer that will define how often packets will be sent for processing
 class Stream_buffer
 {
 

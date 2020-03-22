@@ -28,18 +28,54 @@ Msq_actor::Msq_actor(vector<string> args)
     receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + connected_sensor_name);  
    
     
-    /*
-    //Streaming arguments, currently not being used
+    
+    //Streaming arguments, currently not being used (these are used when creating the msq_host class)
     int window_size = stoi(args[3]);
     int buffer_size = stoi(args[4]);
     float stream_timeout = stof(args[5]);
-    streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
-    */
+    
+    
 
 
     //Getting msq_host that this actor acts on, he is used to store compile info on all actors
     host = fetch_host(); //gets the host that will manage this actor
 }
+
+
+Msq_host* Msq_actor::fetch_host(){
+
+
+    
+    if ( msq_host_map.count(host_name)) {
+    // FOUND
+    //Add this sensor to the list of sensors that the following host manages
+        msq_host_map[host_name].add_sensor(connected_sensor_name);
+    } 
+    else {
+    //NOT FOUND
+        //Creates the host and add this sensor
+        Msq_host new_host(host_name,burst_config_id,window_size,buffer_size,stream_timeout);
+        new_host.add_sensor(connected_sensor_name);
+        msq_host_map.insert(make_pair(host_name, new_host));
+        
+
+
+    }
+    actor_id = msq_host_map[host_name].get_sensor_list_size() -1 ;
+
+
+    simgrid::s4u::this_actor::yield();  //this makes sure all actors have gotten to this part of the code before going foward
+                                        
+    return &msq_host_map[host_name];
+}    
+
+
+
+
+
+
+
+
 
 
 //The operator is the function that will run automatically as the platform starting executing
@@ -102,44 +138,3 @@ void Msq_actor::receive_packages()
     
 }
 
-Msq_host* Msq_actor::fetch_host(){
-
-
-    
-    if ( msq_host_map.count(host_name)) {
-    // FOUND
-    //Add this sensor to the list of sensors that the following host manages
-        msq_host_map[host_name].add_sensor(connected_sensor_name);
-    } 
-    else {
-    //NOT FOUND
-        //Creates the host and add this sensor
-        Msq_host new_host(host_name,burst_config_id);
-        new_host.add_sensor(connected_sensor_name);
-        msq_host_map.insert(make_pair(host_name, new_host));
-        
-
-
-    }
-    actor_id = msq_host_map[host_name].get_sensor_list_size() -1 ;
-
-
-    simgrid::s4u::this_actor::yield();  //this makes sure all actors have gotten to this part of the code before going foward
-                                        
-    return &msq_host_map[host_name];
-}    
-
-
-/*
-void Msq_actor::update_buffer(int num_bytes, double current_time){
-   
-    string buffer_command;
-    string exec_flag;
-    buffer_command = streaming_buffer->add(num_bytes, current_time); //Add the receiving payload to the buffer
-    //TODO
-    //This is the last step for the simulator completion.
-    //The streaming_buffer->add returns a buffer_command that explains if the data must be send for processing, and the  way of this processing
-    //will be defined by the user. There must be communication between the buffer and the processing of data to know if more data 
-    //can be sent for processing. If the buffer fills up without being able send the data for processing, that data will be lost.
-}
-*/

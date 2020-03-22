@@ -1,7 +1,7 @@
 #ifndef MSQ_ACTOR_H
 #define MSQ_ACTOR_H
 #include "burst_conf.h"
-#include "stream_buffer.h"
+
 #include "msq_host.h"
 #include <fstream>
 using namespace std; 
@@ -26,8 +26,12 @@ class Msq_actor
         int num_intervals; //Number of intervals in the burst_config
         
 
+        //Streaming arguments, currently not being used (these are used when creating the msq_host class)
+        int window_size;
+        int buffer_size;
+        float stream_timeout;
 
-        //Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed
+        
 
         
         
