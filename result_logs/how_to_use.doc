@@ -1,0 +1,15 @@
+The result_logs/ file has information about the last simulation you ran, deleting any other text files existing before the last simulation.
+
+The burst_math_logs.txt displays how the matching of between a math_function and the function of num_packages sent per time happened, these are defined on the burst_config file.
+
+The other log files named MsqNode-*_sensor_stream.txt display how each small transaction (divisions of the intervals defined by the math_function) between a sensor and a MsqNode went, warning about missing packages. 
+
+To see a graph of one of the sensors of a MsqNode, run the following script (requires matplotlib):
+
+python plot_sensor_log.py MsqNode-*_sensor_stream.txt
+
+This will show two graphics:
+
+The first one shows how many packages were sent at a specific time, if a division is marked blue, it was able to send all packages, if it is marked red, some packages were lost.
+
+The second one shows the total amount of packages that have been sent from the start untill that time. On blue you can see the graph of the expected result (the one desired by the user on the burst_config) and in red the curve considering all packages that were missed.
