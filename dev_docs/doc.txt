@@ -1,0 +1,27 @@
+Feel free to contact me at any time with questions about the code: gabriel.partichelli@inf.ufrgs.br
+
+The source code is currently divided into 4 classes:
+
+burst_config.cpp : Can be considerate an auxiliar class. It has two objectives, one is to read the information found on the burst config file, and save it as a global object, that is accessed by the msq_actor and sensor, so that they know what kind of communication must be done. 
+The second one is to match a certain mathematical function with the function that represents the amount of packages a sensor will send per time.The matching function uses the cparse library (https://github.com/cparse/cparse) to read a string representing a math expresion and be able to calculate it.
+It's quite a bit of a complex function to understand, i highly recommend reading the result printed in the result_logs/burst_math_logs to see better what it does.
+
+sensor.ccp: The sensor class is an actor represent a process inside of sensor_node that sends a stream of data according to the burst config. 
+Its operator basically loops through each interval, and grabs the mathematical division calculated on the burst_config (package_amounts). The vector packages_amounts has the total number of packages to be sent by all sensors, so they must first be divided to calculate how many are sent by a single sensor (calc_num_packages_divided). When you run the simulator on your terminal, you only see the results of each interval defined by the burst_config, but those intervals are divided in smalls divisions that were created when matching the function with the math function(package_amounts), to see the result of how each of these
+division went (and see if all the packages were correctly sent), look at the result_logs/MsqNode-* for a specific msq_node.
+
+msq_actor.cpp: The msq_actor class represensts a process inside of a msq_node (Message Queue), this node receives bursts of data from a sensor, so it has to know how many times the sensor will be starting communications (it acesses the burst_config too). One of the actors (the first one) creates the msq_host object, and the other actors are all added to it, this is done this way because only the actors have the information that come from the deploy platform (like for example, number of concurrent actors). When an actor finishes a burst, it sends how did the burst go to a msq_host object.
+
+msq_host: This host class is NOT a simgrid class, its used to compile the information from all the msq_actors acting on a single host on the simulation. It gathers together all the information regarding things like how many packages were sucessfully sent, when did the bursts started/ended and displays it.
+
+stream_buffer.cpp: This class is not implemented yet, it is a template for the next step of the simulator, on which the packages sucessfully sent to the msq_node, will go through being processed. This buffer basically will indicate that packages must be sent for processing once a certain amount of time passes or a certain amount of packages has been acumulated. (timeout / window_size)
+
+
+What has yet to be done?
+
+The simulator has been completed until before the point of processing. Right now, it simulates communication between Sensors and receiver nodes (Msq_nodes), giving the user access to alot of flexibility by defining the intervals (bursts) of packages with a certain quantity,time and size with also support for defining the shape of the graph of num_packages sent x time throug mathematical functions. The next step is for the msq_nodes that receive this data to send it to a processing phase. The data will first go through the stream_buffer, which will divide it in windows of specific size, and then be sent to go through various processing stages, that must be able to be defined by the user. This processing stages will be defined in a very high level, with the user defining things like: stage processing speed, stage communication speed with next stage, possible data storage simulation, % of data go through from one stage to the next one.
+
+
+
+
+
