@@ -16,11 +16,8 @@ Sensor::Sensor(vector<string> args)
     //Setting host variables
     host = simgrid::s4u::this_actor::get_host();
     host_name = host->get_name();
-    //This sensor mailbox
-    mailbox = simgrid::s4u::Mailbox::by_name(host_name);
+    
 
-    
-    
     //Testing arguments (localized on the deploy platform file)
     xbt_assert(args.size() > 4, "Msq_actor is missing arguments.");
 
@@ -49,8 +46,8 @@ Sensor::Sensor(vector<string> args)
 //Sensors are ordered as 0,1,2,3... n-1
 //When rest of the division by n can be 0,1,2,3... n-1
 //So to make sure the packages are divided correctly, we are putting a package for every sensor
-//if his position is between the 0 and the rest+1 
-//Ex: 5 % 3 = 2, sensor 0 is not 0 < and <=2, but the other 2 are, division becomes: 1,2,2
+//if his position is bigger than 0 and less or equal than the rest
+//Ex: 5 % 3 = 2, sensor 0 is not 0 < and <= 2, but sensor 1 and sensor 2 are, division becomes: 1,2,2
 //Sensor with relative position 0 never gets extra packages
 int calculate_num_packages_divided(int num_packages, int num_sensors, int sensor_position){
     //gets the rest of division
@@ -101,13 +98,13 @@ void Sensor::operator()(void)
         //Send the packages according to the previous defined division
         for(int i =0;i<packages.size();i++){
             
-            num_packages = calculate_num_packages_divided(packages[i],num_sensors, sensors_position);
-            interval_sent_packages += send_packages(start_time+(step*(i+1)),num_packages, package_size);
+            num_packages = calculate_num_packages_divided(packages[i],num_sensors, sensors_position);//first calculate the division between sensors
+            interval_sent_packages += send_packages(start_time+(step*(i+1)),num_packages, package_size);//send the packages
             
         }
     
         //Checking for missing packages
-        msq_mailbox->put(new int(interval_sent_packages),0); //Sending to the msq_node how sucessfull was the interval burst          
+        msq_mailbox->put(new int(interval_sent_packages),0); //Sending to the msq_actor how sucessfull was the interval burst          
         
 
         start_time = inter.end_time;
@@ -116,7 +113,7 @@ void Sensor::operator()(void)
 }
 
 
-
+//Equally divides the time interval from start to end, sends the packages
 int Sensor::send_packages(float end_time, int num_packages, int package_size)
 {
     

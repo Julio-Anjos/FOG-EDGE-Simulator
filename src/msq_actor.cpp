@@ -24,7 +24,6 @@ Msq_actor::Msq_actor(vector<string> args)
 
     //This actor will receive messages from a single sensor
     connected_sensor_name = args[2];
-    sensor_mailbox = simgrid::s4u::Mailbox::by_name(connected_sensor_name);
     receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + connected_sensor_name);  
    
     
@@ -45,14 +44,14 @@ Msq_actor::Msq_actor(vector<string> args)
 Msq_host* Msq_actor::fetch_host(){
 
 
-    
+    //WAS THE HOST ALREADY CREATED?
     if ( msq_host_map.count(host_name)) {
-    // FOUND
+    //YES, HOST FOUND
     //Add this sensor to the list of sensors that the following host manages
         msq_host_map[host_name].add_sensor(connected_sensor_name);
     } 
     else {
-    //NOT FOUND
+    //NO, HOST NOT FOUND
         //Creates the host and add this sensor
         Msq_host new_host(host_name,burst_config_id,window_size,buffer_size,stream_timeout);
         new_host.add_sensor(connected_sensor_name);

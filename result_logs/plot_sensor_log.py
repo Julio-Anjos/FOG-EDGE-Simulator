@@ -40,7 +40,8 @@ end=0
 pkgs=0
 red_printed = False
 #Plotting number of packages sent at specific time
-first_sensor = data[0][0] #For now, displaying only a single sensor, due to all of the sensors connected to the same MSQ_node doing the same thing
+first_sensor = data[0][0] #For now, displaying only a single sensor, 
+                        #due to all of the sensors connected to the same MSQ_node doing essentially the same thing
 for d in data:
         
     

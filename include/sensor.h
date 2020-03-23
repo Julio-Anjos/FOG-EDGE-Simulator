@@ -8,13 +8,10 @@ using namespace std;
 class Sensor
 {
     private:
-        string connected_msq_name;    //Msq node that is connected to this sensor
+        string connected_msq_name;    //Msq node(host) that is connected to this sensor
         string burst_config_id;       //Burst configuration that its being used
-        
-        
-
-        simgrid::s4u::Mailbox* mailbox;     
-        simgrid::s4u::Mailbox* msq_mailbox; //mailbox of target msq
+         
+        simgrid::s4u::Mailbox* msq_mailbox; //mailbox of target msq_actor
 
         vector<interval> intervals; //intervals this node needs to send, defined on the burst config
 
@@ -30,11 +27,10 @@ class Sensor
         
         Sensor(vector<string> args); //Constructor
         
-    
-
         void operator()(void); //This is the function that will first run when the platform executes
-        
-        int send_packages(float end_time, int num_packages, int package_size);   //Makes sensor send its stream data to its msq_nodes
+    
+        //Makes sensor send a stream of data, from current time to end_time
+        int send_packages(float end_time, int num_packages, int package_size);  
 
 };
 

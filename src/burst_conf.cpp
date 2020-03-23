@@ -79,7 +79,7 @@ void Burst_conf::parse_file(){
             continue;
         
 
-        //If it is the burst_config parameter
+        //If it is the PRECISION parameter
         found = line.find("PRECISION=");
         if(found != string::npos){
             precision = stof(line.substr(found+10,line.length()));

@@ -5,8 +5,9 @@
 #include <fstream>
 using namespace std; 
 
-//This class manages the communication between all msq_actors on a specific host, it helps to combine all the information
-//obtained on each actor.
+//This class helps to combine all the information related to how each of the communication between actors and sensors went
+//The actors inform the msq_host when they started and ended sending packages, and how many were correctly send, the host class compiles the
+//information and displays it
 class Msq_host
 {
     private:
@@ -35,9 +36,9 @@ class Msq_host
         void add_sensor(string sensor);
         int get_sensor_list_size();
 
-        void inform_burst_start(int current_burst_id,double time);//lets an actor inform it started a burst
-        void inform_burst_result(int current_burst_id, int sent_packages, double time);//lets an actor inform the host of the results of a burst
-        void inform_all_bursts_end();//lets an actor inform it has ended all bursts
+        void inform_burst_start(int current_burst_id,double time);//lets an actor inform it started a burst, then the host displays information about it
+        void inform_burst_result(int current_burst_id, int sent_packages, double time);//lets an actor inform the host of the results of a burst, then the host displays information about it
+        void inform_all_bursts_end();//lets an actor inform it has ended all bursts, then the host displays information about it
         
 };
 extern map <string,Msq_host> msq_host_map;

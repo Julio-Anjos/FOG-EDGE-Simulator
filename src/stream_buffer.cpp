@@ -4,6 +4,7 @@
 #include "stream_buffer.h"
 using namespace std; 
 
+//THIS CLASS IS CURRENTLY ON A TEMPLATE STAGE, NOT BEING USED
 
 //Class used my msq_nodes. It acts as the streaming buffer for the node. Indicating
 //when window_sized byte packages can be processed, or when the transmission must stop due to
@@ -29,6 +30,8 @@ string Stream_buffer::add(int bytes, float current_time){
     if (current_amount < window_size || current_time < last_time + stream_timeout)
         return "continue";
     else
+        //current_amount -= window_size; //this functions might need a confirmation that the send packages were able to be sent
+        //last_time = current_time;
         return "send";
 
 

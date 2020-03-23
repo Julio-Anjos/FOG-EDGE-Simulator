@@ -70,7 +70,7 @@ void Msq_host::inform_burst_result(int current_burst_id, int sent_packages, doub
         int expected_packages = intervals[current_burst_id].num_packages;
         
         
-        //Is this the correct way to do this? Or do we need to send packages to the buffer more often?
+        //Is this the correct way to do this, sending only each interval? Or do we need to send packages to the buffer more often?
         //stream_buffer->add(time,sent_packages)
 
 

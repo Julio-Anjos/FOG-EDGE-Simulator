@@ -1,10 +1,13 @@
 #ifndef STREAM_BUFFER_H
 #define STREAM_BUFFER_H
 
-
-
 using namespace std; 
-//This class represent a buffer that will define how often packets will be sent for processing
+
+//THIS CLASS IS CURRENTLY ON A TEMPLATE STAGE, NOT BEING USED
+
+//Class used my msq_nodes. It acts as the streaming buffer for the node. Indicating
+//when window_sized byte packages can be processed, or when the transmission must stop due to
+//the buffer being full.
 class Stream_buffer
 {
 

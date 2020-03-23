@@ -8,8 +8,8 @@
 PRECISION=12.5            //The higher the number the better is the matching between the math function and the intervals (makes the code run slower)
 
 burst_config=0
-15 : 30000x10000        //Template: time_end : num_packets x size_packets 
-f(x)= x**2  [0,10]     //Always start with f(x)=, this math function and the defined interval will represent how the sensor will send data
+15 : 30000x10000        //Template: time_end : num_packets x size_packets(in bytes) 
+f(x)= x**2  [0,10]      //Always start with f(x)=, this math function and the defined interval will represent how the sensor will send data
 30 : 30000x10000 
 f(x)= x**3  [0,10]
 45 : 30000x10000
