@@ -1,0 +1,12 @@
+We highly recommend you use the compile_run.sh to run your simulations, but if you want to manually make a platform, this is how you do it:
+
+Command:
+
+python createplats.py {path to platform config file}
+
+Example:
+
+python createplats.py ../config/plat_config.txt 
+
+
+This creates a platform file and a deploy file that can be used to run your simulation, to learn how to make platform config file, look at the config/ file.
