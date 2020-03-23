@@ -69,14 +69,6 @@ Msq_host* Msq_actor::fetch_host(){
 }    
 
 
-
-
-
-
-
-
-
-
 //The operator is the function that will run automatically as the platform starting executing
 void Msq_actor::operator()(void)
 {

@@ -23,8 +23,6 @@ int main(int argc, char* argv[])
 
     
 
-
-
     //Getting burst config path
     burst_config.initialize(argv[3]);
    

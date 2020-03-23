@@ -209,7 +209,8 @@ vector<int>  Burst_conf::math_function_match(string math_function, float math_st
     float x = math_start + math_step/2;
 
 
-    //Calculates a vector with the result of applying the math function with x = (math_start+math_step/2) + math_step+i, with i from 0 to num_divisions
+    //Calculates a vector with the result of applying the math function with x = (math_start+(math_step/2)) + math_step+i, with i from 0 to num_divisions
+    //We use math_start+(math_step/2) so that x doesn't start at 0, which produces worst resulsts
     //We will later scale the results from this vector to get the amount of packages for each division of the interval
     for(int i=0;i<num_divisions;i++){
         vars["x"] = x;
