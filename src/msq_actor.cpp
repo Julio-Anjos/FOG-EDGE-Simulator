@@ -90,6 +90,7 @@ void Msq_actor::operator()(void)
         //For this specific interval, get the amount of packages correctly sent
         int *temp  = static_cast<int*>(receive_mailbox->get());
         interval_sent_packages =*temp;
+        //cout << host_name << " sent " << interval_sent_packages << " at time " << simgrid::s4u::Engine::get_clock() << " count " << burst_counter << endl;
         host->inform_burst_result(burst_counter, interval_sent_packages, simgrid::s4u::Engine::get_clock());
 
     }
@@ -110,7 +111,7 @@ void Msq_actor::receive_packages()
     // Otherwise, payload is the number of bytes that were transmitted
     int *payload;  
     // When a payload = -1 is received, iit ndicates that the current burst ended
-    
+    int counter = 0;
     
     
 
@@ -118,14 +119,19 @@ void Msq_actor::receive_packages()
         //Receive a payload
     
         payload = static_cast<int*>(receive_mailbox->get()); //Receive data from sensor
+
         
         *current_time = simgrid::s4u::Engine::get_clock();
-        
+
+        counter ++;
         //Update the buffer with the new amount of data, currently incomplete
         //update_buffer(*payload,*current_time);
                 
     }
     while(*payload != -1); //Check if all sensors of this node have ended
+    counter --;
+
+    cout << host_name << " received " << counter << " packages at " << *current_time << " seconds" << endl;
     
 }
 
