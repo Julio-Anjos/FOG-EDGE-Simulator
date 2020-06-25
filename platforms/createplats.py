@@ -44,8 +44,7 @@ def write_plat_msq_node(f,id,speed):
 def write_link(f,sensor_id,msq_node_id,connection_speed,latency):
     f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
 def write_connection(f,sensor_id,msq_node_id):
-    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" >\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")
-   
+    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" >\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")  
 
 def write_plat_file(config):
     
@@ -116,7 +115,7 @@ def write_plat_file(config):
         #MAKING SURE ONLY THE ALLOWED PARAMETERS ARE BEING USED
         if parameter[0] == "burst_config" or parameter[0] ==  "sensors_speed" or parameter[0] == "plat_name" or parameter[0] ==  "connection_latency":
             continue 
-        if parameter[0] == "stream_timeout_time" or parameter[0] == "stream_buffer_size" or parameter[0] == "stream_window_size":
+        if parameter[0] == "stream_timeout_time" or parameter[0] == "stream_buffer_size" or parameter[0] == "stream_window_size" or parameter[0] == "process_equation":
             continue
 
         raise Exception("Parameter " + parameter[0] + " does not exist.")
@@ -192,6 +191,7 @@ def write_d_plat_file(config):
     window_sizes= []
     buffer_sizes=[]
     timeout_times=[]
+    equation=[]
 
     #Getting the arguments for the msq_nodes
     for i in range(len(config)):
@@ -218,6 +218,9 @@ def write_d_plat_file(config):
 
         if parameter[0] == "stream_timeout_time":
             timeout_times.append(parameter[1])
+
+        if parameter[0] == "process_equation":
+            equation.append(parameter[1])
     
 
 
@@ -238,6 +241,7 @@ def write_d_plat_file(config):
             write_argument(f,window_sizes[msq_node_id],"stream window size")
             write_argument(f,buffer_sizes[msq_node_id],"stream buffer size")
             write_argument(f,timeout_times[msq_node_id],"stream timeout time")
+            write_argument(f,equation[msq_node_id], "processing equation")
             f.write("   </actor>\n\n")
             sensor_id1 += 1
 

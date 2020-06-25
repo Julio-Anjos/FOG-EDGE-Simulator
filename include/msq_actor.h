@@ -21,8 +21,10 @@ class Msq_actor
 
         
         //Interval information
-        string burst_config_id;  
+        string burst_config_id;
+        int process_amount;  
         vector<interval> intervals;
+        string process_equation;
 
         
         int num_intervals; //Number of intervals in the burst_config
@@ -32,6 +34,8 @@ class Msq_actor
         int window_size;
         int buffer_size;
         float stream_timeout;
+
+        Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed, not currently used
 
     public:
         

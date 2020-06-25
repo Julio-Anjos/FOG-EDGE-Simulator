@@ -28,7 +28,7 @@ Msq_host::Msq_host(string name, string burst_config_id, int window_size, int buf
     finished_intervals = temp_vect3;
 
     //Creating sensor buffer(currently not used)
-    streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
+    //streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
     
 
 }

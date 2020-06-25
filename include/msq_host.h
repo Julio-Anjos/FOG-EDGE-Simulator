@@ -27,7 +27,7 @@ class Msq_host
         int num_actors=0;//Number of actors that act on this host
         int num_completed_actors=0;//Number of sensors that completed all the bursts, used on inform_all_bursts_end
 
-        Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed, not currently used
+        //Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed, not currently used
 
 
     public:

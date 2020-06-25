@@ -7,7 +7,7 @@ Please use a version of simgrid 3.22 or higher.
 You can execute a example run using the following command:
 
 ```
-./compile_run config/plat_config.txt config/burst_config.txt
+./compile_run.sh config/plat_config.txt config/burst_config.txt
 ```
 The results of the simulation will be displayed on screen, and more specific details will be stored on the result_logs/ file.
 

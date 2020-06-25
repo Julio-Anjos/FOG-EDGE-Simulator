@@ -10,7 +10,7 @@ read -r line<$1
 
 #Create platform with config file
 cd platforms
-python createplats.py "../$1"
+python3 createplats.py "../$1"
 cd ..
 
 #Get platform name (must be first line of the file)

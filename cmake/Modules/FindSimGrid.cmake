@@ -1,6 +1,6 @@
 # CMake find module to search for the SimGrid library. 
 
-# Copyright (c) 2016-2018. The SimGrid Team.
+# Copyright (c) 2016-2020. The SimGrid Team.
 #
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the license (GNU LGPL) which comes with this package.
@@ -63,6 +63,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_path(SimGrid_INCLUDE_DIR
   NAMES simgrid/config.h
+  NAMES simgrid/version.h
   PATHS ${SimGrid_PATH}/include /opt/simgrid/include
 )
 if (NOT SimGrid_INCLUDE_DIR)
@@ -81,7 +82,9 @@ mark_as_advanced(SimGrid_LIBRARY)
 
 if (SimGrid_INCLUDE_DIR)
   set(SimGrid_VERSION_REGEX "^#define SIMGRID_VERSION_(MAJOR|MINOR|PATCH) ([0-9]+)$")
-  if (EXISTS "${SimGrid_INCLUDE_DIR}/simgrid/config.h")
+  if (EXISTS "${SimGrid_INCLUDE_DIR}/simgrid/version.h")
+    file(STRINGS "${SimGrid_INCLUDE_DIR}/simgrid/version.h" SimGrid_VERSION_STRING REGEX ${SimGrid_VERSION_REGEX})
+  elseif (EXISTS "${SimGrid_INCLUDE_DIR}/simgrid/config.h")
     file(STRINGS "${SimGrid_INCLUDE_DIR}/simgrid/config.h" SimGrid_VERSION_STRING REGEX ${SimGrid_VERSION_REGEX})
   else()
     file(STRINGS "${SimGrid_INCLUDE_DIR}/simgrid_config.h" SimGrid_VERSION_STRING REGEX ${SimGrid_VERSION_REGEX})

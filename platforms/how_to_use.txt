@@ -6,7 +6,7 @@ python createplats.py {path to platform config file}
 
 Example:
 
-python createplats.py ../config/plat_config.txt 
+python3 createplats.py ../config/plat_config.txt 
 
 
 This creates a platform file and a deploy file that can be used to run your simulation, to learn how to make platform config file, look at the config/ file.

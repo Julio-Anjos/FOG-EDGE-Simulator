@@ -13,6 +13,7 @@ num_sensors=5				//Number of sensors connected to this msq_node
 sensors_speed=500000000	    //Execution speed in flops  (currently not used)
 connection_speed=50MBps		//Speed connection (link) between sensors and msq_nodes 
 connection_latency=5us      //Latency for this link
+process_equation =x*1.5
 burst_config=0				//What burst configuration it will use (look at the burst file)
 
 //Next msq node:
@@ -23,7 +24,8 @@ stream_timeout_time=20
 num_sensors=8				
 sensors_speed=500000000	
 connection_speed=50MBps
-connection_latency=0us					
+connection_latency=0us
+process_equation =x				
 burst_config=0				
 
 //Next msq node:
@@ -34,5 +36,6 @@ stream_timeout_time=20
 num_sensors=12			
 sensors_speed=500000000
 connection_speed=50MBps	
-connection_latency=5us					
+connection_latency=5us	
+process_equation =x*3				
 burst_config=1			
