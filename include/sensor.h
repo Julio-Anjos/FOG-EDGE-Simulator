@@ -5,6 +5,9 @@
 
 using namespace std; 
 //This class represents an actor of a sensor
+
+
+
 class Sensor
 {
     private:
@@ -17,21 +20,26 @@ class Sensor
 
         simgrid::s4u::Host * host;
         string host_name;
-
+        simgrid::s4u::CommPtr comm;
+        simgrid::s4u::Host * stream_host;
+        simgrid::s4u::ActorPtr stream_actor;
+        vector<simgrid::s4u::ActorPtr> actors;
         int num_sensors; //number of sensor this node divides a msq node with
         int sensors_position; //This sensor position relative to other sensors, used to correctly divide packets
+        int sensor_real_pos;
 
         ofstream logfile;
 
     public:
         
         Sensor(vector<string> args); //Constructor
-        
+        vector<simgrid::s4u::CommPtr> pending_comms;
         void operator()(void); //This is the function that will first run when the platform executes
     
         //Makes sensor send a stream of data, from current time to end_time
         int send_packages(float end_time, int num_packages, int package_size);  
 
 };
+extern vector<simgrid::s4u::CommPtr> pending_comms;
 
 #endif

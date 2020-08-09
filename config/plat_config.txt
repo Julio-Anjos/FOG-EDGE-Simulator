@@ -3,7 +3,7 @@ test_plat					//Name of the platform files that will be created MUST BE ON FIRST
 //Now lets define every msq_node and its group, please keep the ordering
 //Units can be found on the xml singrid documentation https://simgrid.org/doc/latest/XML_Reference.html?highlight=mbps#link )
 
-
+stream_speed=1000000000
 //For the first msq_node:
 msq_node_speed=1000000000 	//Execution speed in flops
 stream_window_size=1000000	//Size in bytes, when this window fills up, the data will be send to be processed, unless warned by the processing unit that it cant. 
@@ -15,6 +15,7 @@ connection_speed=50MBps		//Speed connection (link) between sensors and msq_nodes
 connection_latency=5us      //Latency for this link
 process_equation =x*1.5
 burst_config=0				//What burst configuration it will use (look at the burst file)
+
 
 //Next msq node:
 msq_node_speed=1000000000  	

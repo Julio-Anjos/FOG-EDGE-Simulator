@@ -177,7 +177,6 @@ vector<interval> Burst_conf::get_intervals(string burst_config){
 
 
 
-
 //Auxiliar function not of burst_class, returns a vector of packages amount per division
 vector<int>  Burst_conf::math_function_match(string math_function, float math_start, float math_end, int num_packages, float interval_start, float interval_end){
     TokenMap vars;  //Initialize constants

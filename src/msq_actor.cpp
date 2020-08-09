@@ -7,6 +7,7 @@
 #include "shunting-yard.h"
 #include "msq_actor.h"
 #include "msq_host.h"
+#include "sensor.h"
 
 
 using namespace std; 
@@ -41,14 +42,14 @@ Msq_actor::Msq_actor(vector<string> args)
     string process_equation = args[6];
 
     //Creating sensor buffer(currently not used)
-    streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout, process_equation); 
+    //streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout, process_equation); 
 
     //Getting msq_host that this actor acts on, he is used to store compile info on all actors
-    host = fetch_host(); //gets the host that will manage this actor
+    host = fetch_host(host_name,burst_config_id,window_size,buffer_size,stream_timeout, process_equation); //gets the host that will manage this actor
 }
 
 
-Msq_host* Msq_actor::fetch_host(){
+Msq_host* Msq_actor::fetch_host(string host_name, string burst_config_id, int window, int buffer, float timeout, string equation){
 
 
     //WAS THE HOST ALREADY CREATED?
@@ -56,18 +57,19 @@ Msq_host* Msq_actor::fetch_host(){
     //YES, HOST FOUND
     //Add this sensor to the list of sensors that the following host manages
         msq_host_map[host_name].add_sensor(connected_sensor_name);
+
     } 
     else {
     //NO, HOST NOT FOUND
         //Creates the host and add this sensor
-        Msq_host new_host(host_name,burst_config_id,window_size,buffer_size,stream_timeout);
+        Msq_host new_host(host_name,burst_config_id);
         new_host.add_sensor(connected_sensor_name);
-        msq_host_map.insert(make_pair(host_name, new_host));
-        
-
+        new_host.add_info( window,buffer,timeout, equation);
+        msq_host_map.insert(make_pair(host_name, new_host));     
 
     }
     actor_id = msq_host_map[host_name].get_sensor_list_size() -1 ;
+    stream_pkgs = msq_host_map[host_name].get_stream_pkg();
 
 
     simgrid::s4u::this_actor::yield();  //this makes sure all actors have gotten to this part of the code before going foward
@@ -89,6 +91,8 @@ void Msq_actor::operator()(void)
         int num_pkg_divisions = intervals[burst_counter].package_amounts.size(); //How many division each interval has
         //the divisions have different amount of packages that allow the interval do match a math function
 
+        //int num_pkg_divisions = stream_pkgs[burst_counter]; //How many division each interval has
+        //the divisions have different amount of packages that allow the interval do match a math process_function
 
         //Receive the packages that are being sent from the sensors
         for(int i =0;i<num_pkg_divisions;i++){
@@ -101,7 +105,16 @@ void Msq_actor::operator()(void)
         host->inform_burst_result(burst_counter, interval_sent_packages, simgrid::s4u::Engine::get_clock());
 
     }
-    cout << "Loss ratio is " << streaming_buffer->get_loss_ratio() << "% for " << host_name << " connected to " << connected_sensor_name << endl;
+    //cout << "Loss ratio is " << streaming_buffer->get_loss_ratio() << "% for " << host_name << " connected to " << connected_sensor_name << endl;
+    while (not pending_executions.empty()) {
+        int pos;
+        pos = simgrid::s4u::Exec::wait_any(&pending_executions);
+    if (pos < 0) {
+        pending_executions.clear();
+    } else {
+        pending_executions.erase(pending_executions.begin() + pos);
+    }
+    }
     host->inform_all_bursts_end();
 }
 
@@ -123,7 +136,7 @@ void Msq_actor::receive_packages()
     
     TokenMap vars;  //Initialize constants
 
-    string process_function = streaming_buffer->get_equation();
+    string process_function = host->get_equation();
 
     calculator calc2(process_function.c_str());
     
@@ -135,16 +148,19 @@ void Msq_actor::receive_packages()
         
         *current_time = simgrid::s4u::Engine::get_clock();
 
-        process_amount = streaming_buffer->add(*payload, *current_time);
-
-        vars["x"] = process_amount;
 
 
 
-        if(process_amount != -1){
+        vars["x"] = *payload;
+
+
+
+        if(*payload != -1){
 
             process_cost = calc2.eval(vars).asInt();
-            simgrid::s4u::this_actor::execute(process_cost);
+            //cout << process_cost << " cost vs " << *payload << endl;
+            exec = simgrid::s4u::this_actor::exec_async(process_cost);
+            pending_executions.push_back(exec);
         }
 
         

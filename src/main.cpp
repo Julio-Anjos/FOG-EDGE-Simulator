@@ -5,6 +5,8 @@
 #include "msq_actor.h"
 #include "burst_conf.h"
 #include "msq_host.h"
+#include "stream_buffer.h"
+
 using namespace std; 
 
 XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simulator");
@@ -12,6 +14,7 @@ XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simul
 
 
 map <string,Msq_host> msq_host_map; //declaring to be used globally, its extern on the msq_host.h file
+vector<simgrid::s4u::CommPtr> pending_comms;
 
 int main(int argc, char* argv[])
 {
@@ -31,6 +34,7 @@ int main(int argc, char* argv[])
     //Register sensors and msq_actors
     e.register_actor<Msq_actor>("msq_actor");
     e.register_actor<Sensor>("sensor");
+    e.register_actor<Stream_buffer>("stream_buffer");
 
     //Loading platforms
     e.load_platform(argv[1]);

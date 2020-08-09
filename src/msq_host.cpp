@@ -12,7 +12,7 @@ Msq_host::Msq_host(){
 }
 
 //Constructor
-Msq_host::Msq_host(string name, string burst_config_id, int window_size, int buffer_size, float stream_timeout){
+Msq_host::Msq_host(string name, string burst_config_id){
 
     host_name = name;
     intervals = burst_config.get_intervals(burst_config_id);
@@ -27,6 +27,12 @@ Msq_host::Msq_host(string name, string burst_config_id, int window_size, int buf
     total_sent_packages= temp_vect2;
     finished_intervals = temp_vect3;
 
+
+
+
+
+    string process_equation = equation;
+
     //Creating sensor buffer(currently not used)
     //streaming_buffer = new Stream_buffer(window_size,buffer_size,stream_timeout); 
     
@@ -38,12 +44,37 @@ void Msq_host::add_sensor(string sensor){
     this->sensor_list.push_back(sensor);
     this->num_actors += 1;
 }
+void Msq_host::add_info(int window_size, int buffer_size, float stream_timeout, string process_equation){
+    this->equation = process_equation;
+    this->window = window_size;
+    this->buffer = buffer_size;
+    this->timeout = stream_timeout;
+}
 
 int Msq_host::get_sensor_list_size(){
     return sensor_list.size();
 }
-
-
+vector<interval> Msq_host::get_intervals(){
+    return intervals;
+}
+int Msq_host::get_window(){
+    return window;
+}
+int Msq_host::get_buffer(){
+    return buffer;
+}
+float Msq_host::get_timeout(){
+    return timeout;
+}
+string Msq_host::get_equation(){
+    return equation;
+}
+void Msq_host::set_stream_pkg(int pkg_amount){
+    this->stream_pkg_amount.push_back(pkg_amount);
+}
+vector<int> Msq_host::get_stream_pkg(){
+    return stream_pkg_amount;
+}
 //Display info about what intervals started, shows only when all the actors start
 //Msq_actors use this function when they start a new interval
 void Msq_host::inform_burst_start(int current_burst_id, double time){

@@ -42,7 +42,6 @@ class Burst_conf
     public:
         void initialize(string file_path); //Sets the path to the burst config file         
         vector<interval> get_intervals(string burst_config);//Parses the burst config files and stores each interval list
-        
 
         //Inside each interval, calculates sending times according to a math function
         void calculate_send_times(); 

@@ -1,7 +1,6 @@
 #ifndef MSQ_HOST_H
 #define MSQ_HOST_H
 #include "burst_conf.h"
-#include "stream_buffer.h"
 #include <fstream>
 using namespace std; 
 
@@ -19,10 +18,18 @@ class Msq_host
         vector<interval> intervals; //Msq to sensor burst intervals
         int num_intervals;
         
-        
+        string equation;
         vector<int>  started_intervals; //How many actors that have already started each interval
         vector<int>  total_sent_packages; //Total amount of packages sucessfully sent between sensor and the msq_node on each interval
         vector<int>  finished_intervals; //Contains the number of actors that have finished each interval
+        vector<int>  stream_pkg_amount;
+        int sent_packages;
+
+
+
+        int window;
+        int buffer;
+        float timeout;
 
         int num_actors=0;//Number of actors that act on this host
         int num_completed_actors=0;//Number of sensors that completed all the bursts, used on inform_all_bursts_end
@@ -31,11 +38,20 @@ class Msq_host
 
 
     public:
-        Msq_host(); //Constructor
-        Msq_host(string name, string burst_config_id, int window_size, int buffer_size, float stream_timeout); //Constructor
-        void add_sensor(string sensor);
-        int get_sensor_list_size();
 
+        Msq_host(); //Constructor
+        Msq_host(string name, string burst_config_id); //Constructor
+        void add_sensor(string sensor);
+        void add_info(int window_size, int buffer_size, float stream_timeout, string process_equation);
+        int get_sensor_list_size();
+        vector<interval> get_intervals();
+        int get_window();
+        int get_buffer();
+        float get_timeout();
+        string get_equation();
+        int get_sent_packages();
+        void set_stream_pkg(int pkg_amount);
+        vector<int> get_stream_pkg();
         void inform_burst_start(int current_burst_id,double time);//lets an actor inform it started a burst, then the host displays information about it
         void inform_burst_result(int current_burst_id, int sent_packages, double time);//lets an actor inform the host of the results of a burst, then the host displays information about it
         void inform_all_bursts_end();//lets an actor inform it has ended all bursts, then the host displays information about it

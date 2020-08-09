@@ -18,13 +18,15 @@ class Msq_actor
         int actor_id;// Position of this actor on the host sensor list
 
         simgrid::s4u::Mailbox* receive_mailbox; //This node has one mailbox for each sensor to receive their info
-
-        
+        simgrid::s4u::ExecPtr exec;
+        /* Vector in which we store all pending executions*/
+        vector<simgrid::s4u::ExecPtr> pending_executions;
         //Interval information
         string burst_config_id;
         int process_amount;  
         vector<interval> intervals;
         string process_equation;
+        vector<int> stream_pkgs;
 
         
         int num_intervals; //Number of intervals in the burst_config
@@ -35,7 +37,6 @@ class Msq_actor
         int buffer_size;
         float stream_timeout;
 
-        Stream_buffer *streaming_buffer; //Buffer that controls when data will be send to be processed, not currently used
 
     public:
         
@@ -43,7 +44,7 @@ class Msq_actor
         void operator()(void);          //This is the function that will first run when the platform executes
         void receive_packages();        //Receives packages from the connected sensor
 
-        Msq_host* fetch_host();         //Gets the host manager class for this actor
+        Msq_host* fetch_host(string host_name, string burst_config_id, int window, int buffer, float timeout, string equation);         //Gets the host manager class for this actor
 
 
         

@@ -6,6 +6,8 @@
 #include "sensor.h"
 
 
+
+
 using namespace std; 
 
 
@@ -19,18 +21,24 @@ Sensor::Sensor(vector<string> args)
     
 
     //Testing arguments (localized on the deploy platform file)
-    xbt_assert(args.size() > 4, "Msq_actor is missing arguments.");
+    xbt_assert(args.size() > 5, "Sensor is missing arguments.");
 
     //Burst config arguments
     burst_config_id = args[1];
     intervals =  burst_config.get_intervals(burst_config_id);
     
     connected_msq_name = args[2];
-    msq_mailbox = simgrid::s4u::Mailbox::by_name( connected_msq_name + "_" +host_name);
+    msq_mailbox = simgrid::s4u::Mailbox::by_name( host_name + "_" + connected_msq_name);
+    stream_host = simgrid::s4u::Host::by_name("StreamBuffer");
+    actors = stream_host->get_all_actors();
+    stream_actor = actors.front();
+    msq_mailbox->set_receiver(stream_actor);
 
     //Information used to define how many packages this node will send
     num_sensors = stoi(args[3]);
     sensors_position = stoi(args[4]);
+    sensor_real_pos = stoi(args[5]);
+
 
 
     //Open the log file
@@ -86,7 +94,6 @@ void Sensor::operator()(void)
         end_time = inter.end_time;
         packages = inter.package_amounts;
         step = inter.step;
-        
 
         if(sensors_position == 0){
             logfile << "-------------------------------------------------" << endl;
@@ -97,19 +104,18 @@ void Sensor::operator()(void)
 
         //Send the packages according to the previous defined division
         for(int i =0;i<packages.size();i++){
-            
+
             num_packages = calculate_num_packages_divided(packages[i],num_sensors, sensors_position);//first calculate the division between sensors
             interval_sent_packages += send_packages(start_time+(step*(i+1)),num_packages, package_size);//send the packages
             
         }
-    
         //Checking for missing packages
-        msq_mailbox->put(new int(interval_sent_packages),0); //Sending to the msq_actor how sucessfull was the interval burst          
-        
+        comm = msq_mailbox->put_async(new int(interval_sent_packages),0); //Sending to the msq_actor how sucessfull was the interval burst          
+        pending_comms.push_back(comm);
 
         start_time = inter.end_time;
+        simgrid::s4u::Comm::wait_all(&pending_comms);
         }
-
 }
 
 
@@ -132,7 +138,6 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
     double spacing = duration/num_packages;
 
     logfile << host_name << " sending " <<  num_packages << " packages of size " << package_size << " from times " << *start_time << " - " << end_time << endl;
-    
 
     //Main loop of sending packages
     while(counter < num_packages &&  *current_time < end_time ){
@@ -140,8 +145,8 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
         *current_time = simgrid::s4u::Engine::get_clock();
         
         //Send the package
-        msq_mailbox->put(&package_size,package_size);
-       
+        comm = msq_mailbox->put_async(&package_size,package_size);
+        pending_comms.push_back(comm);
         
         simgrid::s4u::this_actor::sleep_until(counter*spacing + *start_time);
     
@@ -150,7 +155,6 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
         
     }
     
-    
 
     //Checking for missing packages in this division
     if(counter < num_packages ){
@@ -158,10 +162,9 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
     }
 
     //Send to the msq_node that the transmission has ended
-    msq_mailbox->put(stop_flag,0);
-
+    comm = msq_mailbox->put_async(stop_flag,0);
+    pending_comms.push_back(comm);
     simgrid::s4u::this_actor::sleep_until(end_time);  //Making sure a new interval doesn't start before the correct time
-    
     
     
     
