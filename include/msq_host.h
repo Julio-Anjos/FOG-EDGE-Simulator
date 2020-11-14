@@ -25,7 +25,9 @@ class Msq_host
         vector<int>  stream_pkg_amount;
         int sent_packages;
 
+        vector<int> pkgs_per_interval;
 
+        int buffered_pkgs;
 
         int window;
         int buffer;
@@ -41,7 +43,7 @@ class Msq_host
 
         Msq_host(); //Constructor
         Msq_host(string name, string burst_config_id); //Constructor
-        void add_sensor(string sensor);
+        void add_sensor(vector<string> sensor);
         void add_info(int window_size, int buffer_size, float stream_timeout, string process_equation);
         int get_sensor_list_size();
         vector<interval> get_intervals();
@@ -49,9 +51,10 @@ class Msq_host
         int get_buffer();
         float get_timeout();
         string get_equation();
-        int get_sent_packages();
-        void set_stream_pkg(int pkg_amount);
-        vector<int> get_stream_pkg();
+        void add_buffered_pkgs(int pkg_count);
+        int get_buffered_pkgs();
+        void set_pkgs_per_interval(int pkg_amount, int interval);
+        vector<int> get_pkgs_per_interval();
         void inform_burst_start(int current_burst_id,double time);//lets an actor inform it started a burst, then the host displays information about it
         void inform_burst_result(int current_burst_id, int sent_packages, double time);//lets an actor inform the host of the results of a burst, then the host displays information about it
         void inform_all_bursts_end();//lets an actor inform it has ended all bursts, then the host displays information about it

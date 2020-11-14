@@ -2,14 +2,16 @@
 <!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
 <platform version="4.1">
    <zone id="zone0" routing="Full">
-       <host id="StreamBuffer" speed="1000000000f"  />
+       <host id="StreamMaster" speed="1000000000f"  />
        <host id="MsqNode-0" speed="1000000000f"  />
+       <host id="StreamBuffer-0" speed="1000000000f"  />
        <host id="Sensor-0" speed="500000000f"  />
        <host id="Sensor-1" speed="500000000f"  />
        <host id="Sensor-2" speed="500000000f"  />
        <host id="Sensor-3" speed="500000000f"  />
        <host id="Sensor-4" speed="500000000f"  />
        <host id="MsqNode-1" speed="1000000000f"  />
+       <host id="StreamBuffer-1" speed="1000000000f"  />
        <host id="Sensor-5" speed="500000000f"  />
        <host id="Sensor-6" speed="500000000f"  />
        <host id="Sensor-7" speed="500000000f"  />
@@ -19,6 +21,7 @@
        <host id="Sensor-11" speed="500000000f"  />
        <host id="Sensor-12" speed="500000000f"  />
        <host id="MsqNode-2" speed="1000000000f"  />
+       <host id="StreamBuffer-2" speed="1000000000f"  />
        <host id="Sensor-13" speed="500000000f"  />
        <host id="Sensor-14" speed="500000000f"  />
        <host id="Sensor-15" speed="500000000f"  />
@@ -34,118 +37,131 @@
 
         <!-- The bandwidth is defined during the program execution by the burst_config -->
 
-       <link id="StreamBuffer_MsqNode-0" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-0_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-1_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-2_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-3_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-4_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="StreamBuffer_MsqNode-1" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-5_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-6_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-7_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-8_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-9_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-10_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-11_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="Sensor-12_StreamBuffer" bandwidth="50MBps" latency="0us" />
-       <link id="StreamBuffer_MsqNode-2" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-13_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-14_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-15_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-16_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-17_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-18_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-19_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-20_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-21_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-22_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-23_StreamBuffer" bandwidth="50MBps" latency="5us" />
-       <link id="Sensor-24_StreamBuffer" bandwidth="50MBps" latency="5us" />
+       <link id="StreamMaster_MsqNode-0" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-0_StreamBuffer-0" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-1_StreamBuffer-0" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-2_StreamBuffer-0" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-3_StreamBuffer-0" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-4_StreamBuffer-0" bandwidth="50MBps" latency="0" />
+       <link id="StreamMaster_MsqNode-1" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-5_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-6_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-7_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-8_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-9_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-10_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-11_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-12_StreamBuffer-1" bandwidth="50MBps" latency="0" />
+       <link id="StreamMaster_MsqNode-2" bandwidth="50MBps" latency="5us" />
+       <link id="Sensor-13_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-14_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-15_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-16_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-17_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-18_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-19_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-20_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-21_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-22_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-23_StreamBuffer-2" bandwidth="50MBps" latency="0" />
+       <link id="Sensor-24_StreamBuffer-2" bandwidth="50MBps" latency="0" />
 
-       <route src="StreamBuffer" dst="MsqNode-0" >
-           <link_ctn id="StreamBuffer_MsqNode-0" />
+       <link id="StreamBuffer-0_StreamMaster" bandwidth="50MBps" latency="5us" />
+       <link id="StreamBuffer-1_StreamMaster" bandwidth="50MBps" latency="5us" />
+       <link id="StreamBuffer-2_StreamMaster" bandwidth="50MBps" latency="5us" />
+
+       <route src="StreamMaster" dst="MsqNode-0" >
+           <link_ctn id="StreamMaster_MsqNode-0" />
        </route>
-       <route src="Sensor-0" dst="StreamBuffer" >
-           <link_ctn id="Sensor-0_StreamBuffer" />
+       <route src="Sensor-0" dst="StreamBuffer-0" >
+           <link_ctn id="Sensor-0_StreamBuffer-0" />
        </route>
-       <route src="Sensor-1" dst="StreamBuffer" >
-           <link_ctn id="Sensor-1_StreamBuffer" />
+       <route src="Sensor-1" dst="StreamBuffer-0" >
+           <link_ctn id="Sensor-1_StreamBuffer-0" />
        </route>
-       <route src="Sensor-2" dst="StreamBuffer" >
-           <link_ctn id="Sensor-2_StreamBuffer" />
+       <route src="Sensor-2" dst="StreamBuffer-0" >
+           <link_ctn id="Sensor-2_StreamBuffer-0" />
        </route>
-       <route src="Sensor-3" dst="StreamBuffer" >
-           <link_ctn id="Sensor-3_StreamBuffer" />
+       <route src="Sensor-3" dst="StreamBuffer-0" >
+           <link_ctn id="Sensor-3_StreamBuffer-0" />
        </route>
-       <route src="Sensor-4" dst="StreamBuffer" >
-           <link_ctn id="Sensor-4_StreamBuffer" />
+       <route src="Sensor-4" dst="StreamBuffer-0" >
+           <link_ctn id="Sensor-4_StreamBuffer-0" />
        </route>
-       <route src="StreamBuffer" dst="MsqNode-1" >
-           <link_ctn id="StreamBuffer_MsqNode-1" />
+       <route src="StreamBuffer-0" dst="StreamMaster" >
+           <link_ctn id="StreamBuffer-0_StreamMaster" />
        </route>
-       <route src="Sensor-5" dst="StreamBuffer" >
-           <link_ctn id="Sensor-5_StreamBuffer" />
+       <route src="StreamMaster" dst="MsqNode-1" >
+           <link_ctn id="StreamMaster_MsqNode-1" />
        </route>
-       <route src="Sensor-6" dst="StreamBuffer" >
-           <link_ctn id="Sensor-6_StreamBuffer" />
+       <route src="Sensor-5" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-5_StreamBuffer-1" />
        </route>
-       <route src="Sensor-7" dst="StreamBuffer" >
-           <link_ctn id="Sensor-7_StreamBuffer" />
+       <route src="Sensor-6" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-6_StreamBuffer-1" />
        </route>
-       <route src="Sensor-8" dst="StreamBuffer" >
-           <link_ctn id="Sensor-8_StreamBuffer" />
+       <route src="Sensor-7" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-7_StreamBuffer-1" />
        </route>
-       <route src="Sensor-9" dst="StreamBuffer" >
-           <link_ctn id="Sensor-9_StreamBuffer" />
+       <route src="Sensor-8" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-8_StreamBuffer-1" />
        </route>
-       <route src="Sensor-10" dst="StreamBuffer" >
-           <link_ctn id="Sensor-10_StreamBuffer" />
+       <route src="Sensor-9" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-9_StreamBuffer-1" />
        </route>
-       <route src="Sensor-11" dst="StreamBuffer" >
-           <link_ctn id="Sensor-11_StreamBuffer" />
+       <route src="Sensor-10" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-10_StreamBuffer-1" />
        </route>
-       <route src="Sensor-12" dst="StreamBuffer" >
-           <link_ctn id="Sensor-12_StreamBuffer" />
+       <route src="Sensor-11" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-11_StreamBuffer-1" />
        </route>
-       <route src="StreamBuffer" dst="MsqNode-2" >
-           <link_ctn id="StreamBuffer_MsqNode-2" />
+       <route src="Sensor-12" dst="StreamBuffer-1" >
+           <link_ctn id="Sensor-12_StreamBuffer-1" />
        </route>
-       <route src="Sensor-13" dst="StreamBuffer" >
-           <link_ctn id="Sensor-13_StreamBuffer" />
+       <route src="StreamBuffer-1" dst="StreamMaster" >
+           <link_ctn id="StreamBuffer-1_StreamMaster" />
        </route>
-       <route src="Sensor-14" dst="StreamBuffer" >
-           <link_ctn id="Sensor-14_StreamBuffer" />
+       <route src="StreamMaster" dst="MsqNode-2" >
+           <link_ctn id="StreamMaster_MsqNode-2" />
        </route>
-       <route src="Sensor-15" dst="StreamBuffer" >
-           <link_ctn id="Sensor-15_StreamBuffer" />
+       <route src="Sensor-13" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-13_StreamBuffer-2" />
        </route>
-       <route src="Sensor-16" dst="StreamBuffer" >
-           <link_ctn id="Sensor-16_StreamBuffer" />
+       <route src="Sensor-14" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-14_StreamBuffer-2" />
        </route>
-       <route src="Sensor-17" dst="StreamBuffer" >
-           <link_ctn id="Sensor-17_StreamBuffer" />
+       <route src="Sensor-15" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-15_StreamBuffer-2" />
        </route>
-       <route src="Sensor-18" dst="StreamBuffer" >
-           <link_ctn id="Sensor-18_StreamBuffer" />
+       <route src="Sensor-16" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-16_StreamBuffer-2" />
        </route>
-       <route src="Sensor-19" dst="StreamBuffer" >
-           <link_ctn id="Sensor-19_StreamBuffer" />
+       <route src="Sensor-17" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-17_StreamBuffer-2" />
        </route>
-       <route src="Sensor-20" dst="StreamBuffer" >
-           <link_ctn id="Sensor-20_StreamBuffer" />
+       <route src="Sensor-18" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-18_StreamBuffer-2" />
        </route>
-       <route src="Sensor-21" dst="StreamBuffer" >
-           <link_ctn id="Sensor-21_StreamBuffer" />
+       <route src="Sensor-19" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-19_StreamBuffer-2" />
        </route>
-       <route src="Sensor-22" dst="StreamBuffer" >
-           <link_ctn id="Sensor-22_StreamBuffer" />
+       <route src="Sensor-20" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-20_StreamBuffer-2" />
        </route>
-       <route src="Sensor-23" dst="StreamBuffer" >
-           <link_ctn id="Sensor-23_StreamBuffer" />
+       <route src="Sensor-21" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-21_StreamBuffer-2" />
        </route>
-       <route src="Sensor-24" dst="StreamBuffer" >
-           <link_ctn id="Sensor-24_StreamBuffer" />
+       <route src="Sensor-22" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-22_StreamBuffer-2" />
+       </route>
+       <route src="Sensor-23" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-23_StreamBuffer-2" />
+       </route>
+       <route src="Sensor-24" dst="StreamBuffer-2" >
+           <link_ctn id="Sensor-24_StreamBuffer-2" />
+       </route>
+       <route src="StreamBuffer-2" dst="StreamMaster" >
+           <link_ctn id="StreamBuffer-2_StreamMaster" />
        </route>
 
    </zone>

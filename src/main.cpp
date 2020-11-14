@@ -15,6 +15,8 @@ XBT_LOG_NEW_DEFAULT_CATEGORY(sample_simulator, "Messages specific for this simul
 
 map <string,Msq_host> msq_host_map; //declaring to be used globally, its extern on the msq_host.h file
 vector<simgrid::s4u::CommPtr> pending_comms;
+vector<vector<simgrid::s4u::CommPtr>> all_stream_comms;
+int finished_buffers = 0;
 
 int main(int argc, char* argv[])
 {
@@ -35,6 +37,8 @@ int main(int argc, char* argv[])
     e.register_actor<Msq_actor>("msq_actor");
     e.register_actor<Sensor>("sensor");
     e.register_actor<Stream_buffer>("stream_buffer");
+    e.register_actor<Stream_master>("stream_master");
+
 
     //Loading platforms
     e.load_platform(argv[1]);

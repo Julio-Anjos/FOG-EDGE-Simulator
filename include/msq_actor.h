@@ -28,7 +28,9 @@ class Msq_actor
         string process_equation;
         vector<int> stream_pkgs;
 
-        
+        vector<string> connected_sensors;
+
+        int num_sensors;
         int num_intervals; //Number of intervals in the burst_config
         
 

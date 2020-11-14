@@ -27,9 +27,9 @@ Msq_host::Msq_host(string name, string burst_config_id){
     total_sent_packages= temp_vect2;
     finished_intervals = temp_vect3;
 
+    pkgs_per_interval = temp_vect1;
 
-
-
+    buffered_pkgs = 0;
 
     string process_equation = equation;
 
@@ -40,9 +40,9 @@ Msq_host::Msq_host(string name, string burst_config_id){
 }
 
 //Sensor list functions
-void Msq_host::add_sensor(string sensor){
-    this->sensor_list.push_back(sensor);
-    this->num_actors += 1;
+void Msq_host::add_sensor(vector<string> sensor){
+    this->sensor_list = sensor;
+    this->num_actors = 1;
 }
 void Msq_host::add_info(int window_size, int buffer_size, float stream_timeout, string process_equation){
     this->equation = process_equation;
@@ -69,11 +69,17 @@ float Msq_host::get_timeout(){
 string Msq_host::get_equation(){
     return equation;
 }
-void Msq_host::set_stream_pkg(int pkg_amount){
-    this->stream_pkg_amount.push_back(pkg_amount);
+void Msq_host::add_buffered_pkgs(int pkg_count){
+    this->buffered_pkgs += pkg_count;
 }
-vector<int> Msq_host::get_stream_pkg(){
-    return stream_pkg_amount;
+int Msq_host::get_buffered_pkgs(){
+    return buffered_pkgs;
+}
+void Msq_host::set_pkgs_per_interval(int pkg_amount, int interval){
+    this->pkgs_per_interval[interval] += pkg_amount;
+}
+vector<int> Msq_host::get_pkgs_per_interval(){
+    return pkgs_per_interval;
 }
 //Display info about what intervals started, shows only when all the actors start
 //Msq_actors use this function when they start a new interval

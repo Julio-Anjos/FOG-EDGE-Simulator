@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <boost/algorithm/string.hpp>
 #include "burst_conf.h"
+#include "msq_host.h"
 #include "sensor.h"
 
 
@@ -21,24 +23,29 @@ Sensor::Sensor(vector<string> args)
     
 
     //Testing arguments (localized on the deploy platform file)
-    xbt_assert(args.size() > 5, "Sensor is missing arguments.");
+    xbt_assert(args.size() > 6, "Sensor is missing arguments.");
 
     //Burst config arguments
     burst_config_id = args[1];
     intervals =  burst_config.get_intervals(burst_config_id);
     
     connected_msq_name = args[2];
-    msq_mailbox = simgrid::s4u::Mailbox::by_name( host_name + "_" + connected_msq_name);
-    stream_host = simgrid::s4u::Host::by_name("StreamBuffer");
-    actors = stream_host->get_all_actors();
-    stream_actor = actors.front();
-    msq_mailbox->set_receiver(stream_actor);
+    
 
     //Information used to define how many packages this node will send
     num_sensors = stoi(args[3]);
     sensors_position = stoi(args[4]);
     sensor_real_pos = stoi(args[5]);
+    linked_streambuffer = args[6];
 
+
+    msq_mailbox = simgrid::s4u::Mailbox::by_name( host_name + "_" + linked_streambuffer);
+    stream_host = simgrid::s4u::Host::by_name(linked_streambuffer);
+    actors = stream_host->get_all_actors();
+    stream_actor = actors.front();
+    msq_mailbox->set_receiver(stream_actor);
+
+    msq_host = msq_host_map[connected_msq_name];
 
 
     //Open the log file
@@ -87,7 +94,7 @@ void Sensor::operator()(void)
 
     //Iterate over the intervals, every interval is divided in small divisions of time, on each
     //division a certain amount of packages must be sent, this are defined by the user using mathematical functions
-   
+    int current_interval = 0;   
     for(interval inter : intervals ){
         interval_sent_packages =0;
         package_size = inter.package_size;
@@ -101,18 +108,21 @@ void Sensor::operator()(void)
             logfile << ": " << inter.num_packages << "x" << package_size << " f(x)=" << inter.math_function << endl;
             logfile << "-------------------------------------------------" << endl; 
         }
-
         //Send the packages according to the previous defined division
+        //cout << host_name << " sensor.cpp " << packages.size() << endl;
         for(int i =0;i<packages.size();i++){
-
             num_packages = calculate_num_packages_divided(packages[i],num_sensors, sensors_position);//first calculate the division between sensors
+            //cout << packages[i] << " " << num_packages << " packages divided " << host_name << endl;
             interval_sent_packages += send_packages(start_time+(step*(i+1)),num_packages, package_size);//send the packages
-            
         }
         //Checking for missing packages
         comm = msq_mailbox->put_async(new int(interval_sent_packages),0); //Sending to the msq_actor how sucessfull was the interval burst          
         pending_comms.push_back(comm);
+        //msq_host.set_pkgs_per_interval(interval_sent_packages, current_interval);
+        //vector<int> temp_pkgs =  msq_host.get_pkgs_per_interval();
+        //cout << temp_pkgs[current_interval] << " pkgs from " << host_name << " interval " << current_interval << endl;
 
+        current_interval++;
         start_time = inter.end_time;
         simgrid::s4u::Comm::wait_all(&pending_comms);
         }
@@ -147,7 +157,6 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
         //Send the package
         comm = msq_mailbox->put_async(&package_size,package_size);
         pending_comms.push_back(comm);
-        
         simgrid::s4u::this_actor::sleep_until(counter*spacing + *start_time);
     
         counter++;
@@ -160,7 +169,6 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
     if(counter < num_packages ){
         logfile << host_name << " COULD NOT SEND " << num_packages-counter << " PACKAGES IN TIME." << endl;  
     }
-
     //Send to the msq_node that the transmission has ended
     comm = msq_mailbox->put_async(stop_flag,0);
     pending_comms.push_back(comm);

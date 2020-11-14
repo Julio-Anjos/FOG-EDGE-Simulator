@@ -40,17 +40,23 @@ def write_plat_sensor(f,id,speed):
 
 def write_plat_msq_node(f,id,speed):
     f.write("       <host id=\"MsqNode-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
-def write_plat_stream_buffer(f,speed):
-    f.write("       <host id=\"StreamBuffer""\" speed=\""+ speed +"f\"  />\n")
+def write_plat_stream_buffer(f,id,speed):
+    f.write("       <host id=\"StreamBuffer-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
+def write_plat_stream_master(f,speed):
+    f.write("       <host id=\"StreamMaster""\" speed=\""+ speed +"f\"  />\n")
 
-def write_link_sensor(f,sensor_id,connection_speed,latency):
-    f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_StreamBuffer"  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
+def write_link_sensor(f,sensor_id,connection_speed,latency, stream_id):
+    f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_StreamBuffer-"+str(stream_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
 def write_link_node(f,msq_node_id,connection_speed,latency):
-    f.write("\n       <link id=\"" + "StreamBuffer" + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
-def write_connection_sensor(f,sensor_id):
-    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"StreamBuffer"+"\" >\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_StreamBuffer" +"\" />\n       </route>\n")  
+    f.write("\n       <link id=\"" + "StreamMaster" + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
+def write_link_streams(f,connection_speed,latency, stream_id):
+    f.write("\n       <link id=\"" + "StreamBuffer-"+str(stream_id) + "_StreamMaster"+  "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
+def write_connection_sensor(f,sensor_id, stream_id):
+    f.write("       <route src=\"Sensor-"+str(sensor_id)+"\" dst=\"StreamBuffer-"+str(stream_id)+"\" >\n           <link_ctn id=\"" + "Sensor-"+ str(sensor_id) + "_StreamBuffer-"+str(stream_id) +"\" />\n       </route>\n")  
 def write_connection_node(f,msq_node_id):
-    f.write("       <route src=\"StreamBuffer"+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" >\n           <link_ctn id=\"" + "StreamBuffer" + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")  
+    f.write("       <route src=\"StreamMaster"+"\" dst=\"MsqNode-"+str(msq_node_id)+"\" >\n           <link_ctn id=\"" + "StreamMaster" + "_MsqNode-" +str(msq_node_id)+"\" />\n       </route>\n")  
+def write_connection_streams(f,stream_id):
+    f.write("       <route src=\"StreamBuffer-"+str(stream_id)+"\" dst=\"StreamMaster"+"\" >\n           <link_ctn id=\"" + "StreamBuffer-"+str(stream_id) + "_StreamMaster"+"\" />\n       </route>\n")  
 
 def write_plat_file(config):
     
@@ -92,11 +98,13 @@ def write_plat_file(config):
             next_parameter = config[i+1]
 
         if parameter[0] == "stream_speed":
-            write_plat_stream_buffer(f, parameter[1])
+            write_plat_stream_master(f, parameter[1])
+            stream_speed = parameter[1]
 
         
         if parameter[0] == "msq_node_speed":
             write_plat_msq_node(f,id_msq_node,parameter[1])
+            write_plat_stream_buffer(f,id_msq_node,stream_speed)
             id_msq_node += 1
             continue
         
@@ -135,27 +143,42 @@ def write_plat_file(config):
     #Making the links
     msq_node_id = 0
     sensor_id = 0
+    stream_id = 0
     for num_sensors in sensor_amount:
         #creates empty profile files, they will be written during the program
         write_link_node(f,msq_node_id,link_speed[msq_node_id],link_latency[msq_node_id])
         for i in range(num_sensors):
-            write_link_sensor(f,sensor_id,link_speed[sensor_id],link_latency[sensor_id])
+            write_link_sensor(f,sensor_id,link_speed[sensor_id],str(0), stream_id)
             sensor_id += 1
         msq_node_id += 1
+        stream_id += 1
 
+
+    f.write("\n")
+    stream_id = 0
+    msq_node_id = 0
+    for num_sensors in sensor_amount:
+        write_link_streams(f,link_speed[msq_node_id],link_latency[msq_node_id], stream_id)
+        stream_id+= 1
+        msq_node_id+= 1
 
     f.write("\n\n")
+
+
     #Making the connections
     msq_node_id = 0
     sensor_id = 0
+    stream_id = 0
     for num_sensors in sensor_amount:
         write_connection_node(f,msq_node_id)
         for i in range(num_sensors):
-            write_connection_sensor(f,sensor_id)
+            write_connection_sensor(f,sensor_id, stream_id)
             sensor_id += 1
+        write_connection_streams(f,stream_id)
         msq_node_id += 1
+        stream_id += 1
 
-        
+
 
 
     #End file
@@ -174,8 +197,10 @@ def write_deploy_sensor(f,sensor_id):
 
 def write_deploy_msq_actor(f,msq_node_id):
     f.write("   <actor host=\"MsqNode-"+str(msq_node_id)+"\" function=\"msq_actor\">\n")
-def write_deploy_streambuffer(f):
-    f.write("   <actor host=\"StreamBuffer"+"\" function=\"stream_buffer\">\n")
+def write_deploy_streambuffer(f,stream_id):
+    f.write("   <actor host=\"StreamBuffer-"+str(stream_id)+"\" function=\"stream_buffer\">\n")
+def write_deploy_streammaster(f):
+    f.write("   <actor host=\"StreamMaster"+"\" function=\"stream_master\">\n")
 
 def write_d_plat_file(config):
 
@@ -243,54 +268,63 @@ def write_d_plat_file(config):
     msq_node_id = 0
     sensor_id1 = 0
     sensor_id2=0
+    stream_id=0
     #Writing for the MSQ node each of its arguments, arguments include: Burst config id, connected sensors, and information about the streaming window and buffer
     for num_sensors in sensor_amounts: #FOR EACH MSQ_NODE
 
         
+       
+        write_deploy_msq_actor(f,msq_node_id)
+        write_argument(f,burst_configs[msq_node_id],"burst config id")
+        write_argument(f,str(num_sensors), "number of connected sensors")
+        write_argument(f,window_sizes[msq_node_id],"stream window size")
+        write_argument(f,buffer_sizes[msq_node_id],"stream buffer size")
+        write_argument(f,timeout_times[msq_node_id],"stream timeout time")
+        write_argument(f,equation[msq_node_id], "processing equation")
         for i in range(num_sensors):
-            write_deploy_msq_actor(f,msq_node_id)
-            write_argument(f,burst_configs[msq_node_id],"burst config id")
             write_argument(f,"Sensor-"+str(sensor_id1),"sensor connected actor")
-            write_argument(f,window_sizes[msq_node_id],"stream window size")
-            write_argument(f,buffer_sizes[msq_node_id],"stream buffer size")
-            write_argument(f,timeout_times[msq_node_id],"stream timeout time")
-            write_argument(f,equation[msq_node_id], "processing equation")
-            f.write("   </actor>\n\n")
             sensor_id1 += 1
+        f.write("   </actor>\n\n")
+            
 
 
         
         for i in range(num_sensors):
             write_deploy_sensor(f,sensor_id2)
             write_argument(f,burst_configs[msq_node_id],"burst config id")
-            write_argument(f,"MsqNode-"+str(msq_node_id),"connected msq node host")
+            write_argument(f,"MsqNode-"+str(msq_node_id),"associated msq node host")
             write_argument(f,str(num_sensors),"total number of sensors connected to host")
-            write_argument(f,str(i),"position of the sensor in relation of other sensors connected to msq_node")
+            write_argument(f,str(i),"relative position of the sensor")
             write_argument(f,str(sensor_id2), "literal position of the sensor")
+            write_argument(f,"StreamBuffer-"+str(msq_node_id), "connected stream_buffer")
             f.write("   </actor>\n\n")
             
             sensor_id2 += 1
         msq_node_id += 1
 
+
+    msq_node_id = 0
+    write_deploy_streammaster(f)
+    write_argument(f,str(len(sensor_amounts)), "total number of pairs")
+    for num_sensors in sensor_amounts:
+        write_argument(f,"StreamBuffer-"+str(msq_node_id)+"_"+"MsqNode-"+str(msq_node_id), "buffer node pairs")
+        msq_node_id += 1
+    f.write("   </actor>\n\n")
+
     msq_node_id = 0
     sensor_id1 = 0
-    sensor_id2=0
-    write_deploy_streambuffer(f)
-    count = 0
-    for num_sensors in sensor_amounts: #FOR EACH MSQ_NODE        
-        for i in range(num_sensors):
-            count +=1
-
-    write_argument(f,str(count),"number of pairs")
+    sensor_id2= 0
     #Writing for the MSQ node each of its arguments, arguments include: Burst config id, connected sensors, and information about the streaming window and buffer
     for num_sensors in sensor_amounts: #FOR EACH MSQ_NODE
 
-        
+        write_deploy_streambuffer(f,stream_id)
+        write_argument(f,str(num_sensors),"number of pairs")
         for i in range(num_sensors):
             write_argument(f,"Sensor-"+str(sensor_id1)+"_"+"MsqNode-"+str(msq_node_id),"sensor connected msq_node")
             sensor_id1 += 1
         msq_node_id += 1
-    f.write("   </actor>\n\n")
+        stream_id += 1
+        f.write("   </actor>\n\n")
         
     
     f.write(file_end)

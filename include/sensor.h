@@ -1,6 +1,7 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 #include "burst_conf.h"
+#include "msq_host.h"
 #include <fstream>
 
 using namespace std; 
@@ -12,12 +13,14 @@ class Sensor
 {
     private:
         string connected_msq_name;    //Msq node(host) that is connected to this sensor
+        string linked_streambuffer; //StreamBuffer that is connected to this sensor
         string burst_config_id;       //Burst configuration that its being used
          
         simgrid::s4u::Mailbox* msq_mailbox; //mailbox of target msq_actor
 
-        vector<interval> intervals; //intervals this node needs to send, defined on the burst config
+        Msq_host msq_host; //Host class that manages this actor
 
+        vector<interval> intervals; //intervals this node needs to send, defined on the burst config
         simgrid::s4u::Host * host;
         string host_name;
         simgrid::s4u::CommPtr comm;

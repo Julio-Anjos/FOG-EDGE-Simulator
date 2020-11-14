@@ -3,436 +3,299 @@
 <platform version="4.1">
    <actor host="MsqNode-0" function="msq_actor">
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="5"/>   <!-- number of connected sensors --> 
+       <argument value="30000"/>   <!-- stream window size --> 
+       <argument value="30000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="x*1.5"/>   <!-- processing equation --> 
        <argument value="Sensor-0"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*1.5"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-0" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-1"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*1.5"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-0" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-2"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*1.5"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-0" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-3"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*1.5"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-0" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-4"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*1.5"/>   <!-- processing equation --> 
    </actor>
 
    <actor host="Sensor-0" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-0"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-0"/>   <!-- associated msq node host --> 
        <argument value="5"/>   <!-- total number of sensors connected to host --> 
-       <argument value="0"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="0"/>   <!-- relative position of the sensor --> 
        <argument value="0"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-0"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-1" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-0"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-0"/>   <!-- associated msq node host --> 
        <argument value="5"/>   <!-- total number of sensors connected to host --> 
-       <argument value="1"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="1"/>   <!-- relative position of the sensor --> 
        <argument value="1"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-0"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-2" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-0"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-0"/>   <!-- associated msq node host --> 
        <argument value="5"/>   <!-- total number of sensors connected to host --> 
-       <argument value="2"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="2"/>   <!-- relative position of the sensor --> 
        <argument value="2"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-0"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-3" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-0"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-0"/>   <!-- associated msq node host --> 
        <argument value="5"/>   <!-- total number of sensors connected to host --> 
-       <argument value="3"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="3"/>   <!-- relative position of the sensor --> 
        <argument value="3"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-0"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-4" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-0"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-0"/>   <!-- associated msq node host --> 
        <argument value="5"/>   <!-- total number of sensors connected to host --> 
-       <argument value="4"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="4"/>   <!-- relative position of the sensor --> 
        <argument value="4"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-0"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
        <argument value="0"/>   <!-- burst config id --> 
+       <argument value="8"/>   <!-- number of connected sensors --> 
+       <argument value="20000"/>   <!-- stream window size --> 
+       <argument value="20000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="x"/>   <!-- processing equation --> 
        <argument value="Sensor-5"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-1" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-6"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-1" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-7"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-1" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-8"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-1" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-9"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-1" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-10"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-1" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-11"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-1" function="msq_actor">
-       <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-12"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x"/>   <!-- processing equation --> 
    </actor>
 
    <actor host="Sensor-5" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="0"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="0"/>   <!-- relative position of the sensor --> 
        <argument value="5"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-6" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="1"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="1"/>   <!-- relative position of the sensor --> 
        <argument value="6"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-7" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="2"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="2"/>   <!-- relative position of the sensor --> 
        <argument value="7"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-8" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="3"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="3"/>   <!-- relative position of the sensor --> 
        <argument value="8"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-9" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="4"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="4"/>   <!-- relative position of the sensor --> 
        <argument value="9"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-10" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="5"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="5"/>   <!-- relative position of the sensor --> 
        <argument value="10"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-11" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="6"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="6"/>   <!-- relative position of the sensor --> 
        <argument value="11"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-12" function="sensor">
        <argument value="0"/>   <!-- burst config id --> 
-       <argument value="MsqNode-1"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-1"/>   <!-- associated msq node host --> 
        <argument value="8"/>   <!-- total number of sensors connected to host --> 
-       <argument value="7"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="7"/>   <!-- relative position of the sensor --> 
        <argument value="12"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-1"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
        <argument value="1"/>   <!-- burst config id --> 
+       <argument value="12"/>   <!-- number of connected sensors --> 
+       <argument value="10000"/>   <!-- stream window size --> 
+       <argument value="10000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="x*3"/>   <!-- processing equation --> 
        <argument value="Sensor-13"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-14"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-15"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-16"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-17"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-18"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-19"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-20"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-21"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-22"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-23"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
-   </actor>
-
-   <actor host="MsqNode-2" function="msq_actor">
-       <argument value="1"/>   <!-- burst config id --> 
        <argument value="Sensor-24"/>   <!-- sensor connected actor --> 
-       <argument value="1000000"/>   <!-- stream window size --> 
-       <argument value="1000000"/>   <!-- stream buffer size --> 
-       <argument value="20"/>   <!-- stream timeout time --> 
-       <argument value="x*3"/>   <!-- processing equation --> 
    </actor>
 
    <actor host="Sensor-13" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="0"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="0"/>   <!-- relative position of the sensor --> 
        <argument value="13"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-14" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="1"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="1"/>   <!-- relative position of the sensor --> 
        <argument value="14"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-15" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="2"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="2"/>   <!-- relative position of the sensor --> 
        <argument value="15"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-16" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="3"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="3"/>   <!-- relative position of the sensor --> 
        <argument value="16"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-17" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="4"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="4"/>   <!-- relative position of the sensor --> 
        <argument value="17"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-18" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="5"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="5"/>   <!-- relative position of the sensor --> 
        <argument value="18"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-19" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="6"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="6"/>   <!-- relative position of the sensor --> 
        <argument value="19"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-20" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="7"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="7"/>   <!-- relative position of the sensor --> 
        <argument value="20"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-21" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="8"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="8"/>   <!-- relative position of the sensor --> 
        <argument value="21"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-22" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="9"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="9"/>   <!-- relative position of the sensor --> 
        <argument value="22"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-23" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="10"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="10"/>   <!-- relative position of the sensor --> 
        <argument value="23"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
    <actor host="Sensor-24" function="sensor">
        <argument value="1"/>   <!-- burst config id --> 
-       <argument value="MsqNode-2"/>   <!-- connected msq node host --> 
+       <argument value="MsqNode-2"/>   <!-- associated msq node host --> 
        <argument value="12"/>   <!-- total number of sensors connected to host --> 
-       <argument value="11"/>   <!-- position of the sensor in relation of other sensors connected to msq_node --> 
+       <argument value="11"/>   <!-- relative position of the sensor --> 
        <argument value="24"/>   <!-- literal position of the sensor --> 
+       <argument value="StreamBuffer-2"/>   <!-- connected stream_buffer --> 
    </actor>
 
-   <actor host="StreamBuffer" function="stream_buffer">
-       <argument value="25"/>   <!-- number of pairs --> 
+   <actor host="StreamMaster" function="stream_master">
+       <argument value="3"/>   <!-- total number of pairs --> 
+       <argument value="StreamBuffer-0_MsqNode-0"/>   <!-- buffer node pairs --> 
+       <argument value="StreamBuffer-1_MsqNode-1"/>   <!-- buffer node pairs --> 
+       <argument value="StreamBuffer-2_MsqNode-2"/>   <!-- buffer node pairs --> 
+   </actor>
+
+   <actor host="StreamBuffer-0" function="stream_buffer">
+       <argument value="5"/>   <!-- number of pairs --> 
        <argument value="Sensor-0_MsqNode-0"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-1_MsqNode-0"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-2_MsqNode-0"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-3_MsqNode-0"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-4_MsqNode-0"/>   <!-- sensor connected msq_node --> 
+   </actor>
+
+   <actor host="StreamBuffer-1" function="stream_buffer">
+       <argument value="8"/>   <!-- number of pairs --> 
        <argument value="Sensor-5_MsqNode-1"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-6_MsqNode-1"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-7_MsqNode-1"/>   <!-- sensor connected msq_node --> 
@@ -441,6 +304,10 @@
        <argument value="Sensor-10_MsqNode-1"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-11_MsqNode-1"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-12_MsqNode-1"/>   <!-- sensor connected msq_node --> 
+   </actor>
+
+   <actor host="StreamBuffer-2" function="stream_buffer">
+       <argument value="12"/>   <!-- number of pairs --> 
        <argument value="Sensor-13_MsqNode-2"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-14_MsqNode-2"/>   <!-- sensor connected msq_node --> 
        <argument value="Sensor-15_MsqNode-2"/>   <!-- sensor connected msq_node --> 
