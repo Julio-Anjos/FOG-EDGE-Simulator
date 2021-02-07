@@ -119,3 +119,4 @@ plt.xlabel('time (s)'),
 plt.ylabel('total packages sent')
 plt.grid()
 plt.show()
+matplotlib.pyplot.savefig("./"+sys.argv[0]+".png",dpi=300)
