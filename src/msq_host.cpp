@@ -3,10 +3,7 @@
 #include <string>
 #include "msq_host.h"
 
-
 using namespace std; 
-
-
 
 Msq_host::Msq_host(){
 }

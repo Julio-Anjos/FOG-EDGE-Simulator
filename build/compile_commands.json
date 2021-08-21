@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/home/tonelloiago/FOG-EDGE-Simulator/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/tonelloiago/FOG-EDGE-Simulator/src -I/home/tonelloiago/FOG-EDGE-Simulator/include -I/home/tonelloiago/FOG-EDGE-Simulator/cparse  -g   -std=gnu++11 -o CMakeFiles/main.dir/src/burst_conf.cpp.o -c /home/tonelloiago/FOG-EDGE-Simulator/src/burst_conf.cpp",
+  "file": "/home/tonelloiago/FOG-EDGE-Simulator/src/burst_conf.cpp"
+},
+{
+  "directory": "/home/tonelloiago/FOG-EDGE-Simulator/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/tonelloiago/FOG-EDGE-Simulator/src -I/home/tonelloiago/FOG-EDGE-Simulator/include -I/home/tonelloiago/FOG-EDGE-Simulator/cparse  -g   -std=gnu++11 -o CMakeFiles/main.dir/src/main.cpp.o -c /home/tonelloiago/FOG-EDGE-Simulator/src/main.cpp",
+  "file": "/home/tonelloiago/FOG-EDGE-Simulator/src/main.cpp"
+},
+{
+  "directory": "/home/tonelloiago/FOG-EDGE-Simulator/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/tonelloiago/FOG-EDGE-Simulator/src -I/home/tonelloiago/FOG-EDGE-Simulator/include -I/home/tonelloiago/FOG-EDGE-Simulator/cparse  -g   -std=gnu++11 -o CMakeFiles/main.dir/src/msq_actor.cpp.o -c /home/tonelloiago/FOG-EDGE-Simulator/src/msq_actor.cpp",
+  "file": "/home/tonelloiago/FOG-EDGE-Simulator/src/msq_actor.cpp"
+},
+{
+  "directory": "/home/tonelloiago/FOG-EDGE-Simulator/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/tonelloiago/FOG-EDGE-Simulator/src -I/home/tonelloiago/FOG-EDGE-Simulator/include -I/home/tonelloiago/FOG-EDGE-Simulator/cparse  -g   -std=gnu++11 -o CMakeFiles/main.dir/src/msq_actor_ps.cpp.o -c /home/tonelloiago/FOG-EDGE-Simulator/src/msq_actor_ps.cpp",
+  "file": "/home/tonelloiago/FOG-EDGE-Simulator/src/msq_actor_ps.cpp"
+},
+{
+  "directory": "/home/tonelloiago/FOG-EDGE-Simulator/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/tonelloiago/FOG-EDGE-Simulator/src -I/home/tonelloiago/FOG-EDGE-Simulator/include -I/home/tonelloiago/FOG-EDGE-Simulator/cparse  -g   -std=gnu++11 -o CMakeFiles/main.dir/src/msq_host.cpp.o -c /home/tonelloiago/FOG-EDGE-Simulator/src/msq_host.cpp",
+  "file": "/home/tonelloiago/FOG-EDGE-Simulator/src/msq_host.cpp"
+},
+{
+  "directory": "/home/tonelloiago/FOG-EDGE-Simulator/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/tonelloiago/FOG-EDGE-Simulator/src -I/home/tonelloiago/FOG-EDGE-Simulator/include -I/home/tonelloiago/FOG-EDGE-Simulator/cparse  -g   -std=gnu++11 -o CMakeFiles/main.dir/src/sensor.cpp.o -c /home/tonelloiago/FOG-EDGE-Simulator/src/sensor.cpp",
+  "file": "/home/tonelloiago/FOG-EDGE-Simulator/src/sensor.cpp"
+},
+{
+  "directory": "/home/tonelloiago/FOG-EDGE-Simulator/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/tonelloiago/FOG-EDGE-Simulator/src -I/home/tonelloiago/FOG-EDGE-Simulator/include -I/home/tonelloiago/FOG-EDGE-Simulator/cparse  -g   -std=gnu++11 -o CMakeFiles/main.dir/src/stream_buffer.cpp.o -c /home/tonelloiago/FOG-EDGE-Simulator/src/stream_buffer.cpp",
+  "file": "/home/tonelloiago/FOG-EDGE-Simulator/src/stream_buffer.cpp"
+}
+]

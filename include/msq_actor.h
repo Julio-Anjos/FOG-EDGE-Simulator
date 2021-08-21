@@ -14,12 +14,24 @@ class Msq_actor
     private:
         string host_name;  //Name of the host that this actor is in
         string connected_sensor_name; //Name of the sensor this actor communicates with
+        
+        ///////////////////////
+        string connected_msq_ps_name;
+        
+        
         Msq_host *host; //Host class that manages this actor
         int actor_id;// Position of this actor on the host sensor list
 
         simgrid::s4u::Mailbox* receive_mailbox; //This node has one mailbox for each sensor to receive their info
 
-        
+
+
+        /* ------- */
+        simgrid::s4u::Mailbox* msq_ps_mailbox;
+        queue<int> buffer;
+
+
+
         //Interval information
         string burst_config_id;  
         vector<interval> intervals;
@@ -38,6 +50,9 @@ class Msq_actor
         Msq_actor(vector<string> args); //Constructor
         void operator()(void);          //This is the function that will first run when the platform executes
         void receive_packages();        //Receives packages from the connected sensor
+
+        //-------------
+        void update_buffer(int payload, double current_time);
 
         Msq_host* fetch_host();         //Gets the host manager class for this actor
 

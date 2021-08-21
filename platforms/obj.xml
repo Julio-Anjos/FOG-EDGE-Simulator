@@ -1,0 +1,29 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+   <zone id="zone0" routing="Full">
+        <host id="MsqNode-0" speed="1000000000f" />
+        <host id="Sensor-0" speed="500000000f"   />
+ <!--/////////////////////////////////////////////////////////////////////-->
+        <host id="MsqPSNode-0" speed="1000000000f">
+            <disk id="Disk0" read_bw="200MBps" write_bw="80MBps"/>M
+        </host>  
+
+        <!--Link entre nodo local e stream buffer all-->
+        <link id="MsqNode-0_MsqPSNode-0" bandwidth="100MBps" latency="5us"  />
+        <link id="Sensor-0_MsqNode-0" bandwidth="100MBps" latency="5us" />
+        
+       <!-- Rota entre nodo local e stream buffer all-->
+        <route src="MsqNode-0" dst="MsqPSNode-0"  >
+            <link_ctn id="MsqNode-0_MsqPSNode-0"   />
+        </route>
+<!--/////////////////////////////////////////////////////////////////////-->
+
+        <!-- The bandwidth is defined during the program execution by the burst_config -->
+        
+       <route src="Sensor-0" dst="MsqNode-0" >
+           <link_ctn id="Sensor-0_MsqNode-0" />
+       </route>
+
+   </zone>
+</platform>

@@ -1,6 +1,5 @@
 #include <simgrid/s4u.hpp>
 #include <iostream>
-
 #include "stream_buffer.h"
 using namespace std; 
 
@@ -21,18 +20,19 @@ Stream_buffer::Stream_buffer(int wind_size, int buff_size, float timeout)
 
 //Adds a new quantity of bytes to the buffer and test the basic conditions if the node must attempt to 
 //send a window to be processed
-string Stream_buffer::add(int bytes, float current_time){
+string Stream_buffer::add(int bytes, float current_time)
+{
 
     current_amount = current_amount + bytes;
-    
+    cout << "WS = " << window_size << " CA = " << current_amount << endl;
 
     //Attempt to send bytes to be processed when window_size is filled or a timeout happens
-    if (current_amount < window_size || current_time < last_time + stream_timeout)
+    if (current_amount < window_size && current_time < last_time + stream_timeout)
         return "continue";
-    else
-        //current_amount -= window_size; //this functions might need a confirmation that the send packages were able to be sent
-        //last_time = current_time;
+    else{
+        current_amount -= window_size; //this functions might need a confirmation that the send packages were able to be sent
+        last_time = current_time;
         return "send";
-
+    }
 
 }
