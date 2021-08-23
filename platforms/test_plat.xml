@@ -2,13 +2,21 @@
 <!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
 <platform version="4.1">
    <zone id="zone0" routing="Full">
+       <host id="MsqPSNode-0" speed="1000000000f"  >
+              <disk id="Disk-0" read_bw="200MBps" write_bw="80MBps"  />
+              <disk id="Disk-1" read_bw="200MBps" write_bw="80MBps"  />
+              <disk id="Disk-2" read_bw="200MBps" write_bw="80MBps"  />
+              <disk id="Disk-3" read_bw="200MBps" write_bw="80MBps"  />
+              <disk id="Disk-4" read_bw="200MBps" write_bw="80MBps"  />
+       </host>
        <host id="MsqNode-0" speed="1000000000f"  />
+       <host id="MsqNode-1" speed="1000000000f"  />
+       <host id="MsqNode-2" speed="1000000000f"  />
        <host id="Sensor-0" speed="500000000f"  />
        <host id="Sensor-1" speed="500000000f"  />
        <host id="Sensor-2" speed="500000000f"  />
        <host id="Sensor-3" speed="500000000f"  />
        <host id="Sensor-4" speed="500000000f"  />
-       <host id="MsqNode-1" speed="1000000000f"  />
        <host id="Sensor-5" speed="500000000f"  />
        <host id="Sensor-6" speed="500000000f"  />
        <host id="Sensor-7" speed="500000000f"  />
@@ -17,7 +25,6 @@
        <host id="Sensor-10" speed="500000000f"  />
        <host id="Sensor-11" speed="500000000f"  />
        <host id="Sensor-12" speed="500000000f"  />
-       <host id="MsqNode-2" speed="1000000000f"  />
        <host id="Sensor-13" speed="500000000f"  />
        <host id="Sensor-14" speed="500000000f"  />
        <host id="Sensor-15" speed="500000000f"  />
@@ -33,6 +40,9 @@
 
         <!-- The bandwidth is defined during the program execution by the burst_config -->
 
+       <link id="MsqNode-0_MsqPSNode-0" bandwidth="100MBps" latency="5us" />
+       <link id="MsqNode-1_MsqPSNode-0" bandwidth="100MBps" latency="5us" />
+       <link id="MsqNode-2_MsqPSNode-0" bandwidth="100MBps" latency="5us" />
        <link id="Sensor-0_MsqNode-0" bandwidth="50MBps" latency="5us" />
        <link id="Sensor-1_MsqNode-0" bandwidth="50MBps" latency="5us" />
        <link id="Sensor-2_MsqNode-0" bandwidth="50MBps" latency="5us" />
@@ -59,6 +69,15 @@
        <link id="Sensor-23_MsqNode-2" bandwidth="50MBps" latency="5us" />
        <link id="Sensor-24_MsqNode-2" bandwidth="50MBps" latency="5us" />
 
+       <route src="MsqNode-0" dst="MsqPSNode-0" >
+           <link_ctn id="MsqNode-0_MsqPSNode-0" />
+       </route>
+       <route src="MsqNode-1" dst="MsqPSNode-0" >
+           <link_ctn id="MsqNode-1_MsqPSNode-0" />
+       </route>
+       <route src="MsqNode-2" dst="MsqPSNode-0" >
+           <link_ctn id="MsqNode-2_MsqPSNode-0" />
+       </route>
        <route src="Sensor-0" dst="MsqNode-0" >
            <link_ctn id="Sensor-0_MsqNode-0" />
        </route>

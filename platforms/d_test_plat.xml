@@ -1,12 +1,37 @@
 <?xml version='1.0'?>
 <!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
 <platform version="4.1">
+   <actor host="MsqPSNode-0" function="msq_actor_ps">
+       <argument value="0"/>   <!-- comms config id --> 
+       <argument value="MsqNode-0"/>   <!-- MsqNode connected actor --> 
+       <argument value="10000000"/>   <!-- stream window size --> 
+       <argument value="10000000000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
+   </actor>
+
+   <actor host="MsqPSNode-0" function="msq_actor_ps">
+       <argument value="0"/>   <!-- comms config id --> 
+       <argument value="MsqNode-1"/>   <!-- MsqNode connected actor --> 
+       <argument value="10000000"/>   <!-- stream window size --> 
+       <argument value="10000000000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
+   </actor>
+
+   <actor host="MsqPSNode-0" function="msq_actor_ps">
+       <argument value="0"/>   <!-- comms config id --> 
+       <argument value="MsqNode-2"/>   <!-- MsqNode connected actor --> 
+       <argument value="10000000"/>   <!-- stream window size --> 
+       <argument value="10000000000"/>   <!-- stream buffer size --> 
+       <argument value="20"/>   <!-- stream timeout time --> 
+   </actor>
+
    <actor host="MsqNode-0" function="msq_actor">
        <argument value="0"/>   <!-- burst config id --> 
        <argument value="Sensor-0"/>   <!-- sensor connected actor --> 
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-0" function="msq_actor">
@@ -15,6 +40,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-0" function="msq_actor">
@@ -23,6 +49,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-0" function="msq_actor">
@@ -31,6 +58,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-0" function="msq_actor">
@@ -39,6 +67,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="Sensor-0" function="sensor">
@@ -82,6 +111,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
@@ -90,6 +120,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
@@ -98,6 +129,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
@@ -106,6 +138,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
@@ -114,6 +147,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
@@ -122,6 +156,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
@@ -130,6 +165,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-1" function="msq_actor">
@@ -138,6 +174,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="Sensor-5" function="sensor">
@@ -202,6 +239,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -210,6 +248,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -218,6 +257,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -226,6 +266,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -234,6 +275,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -242,6 +284,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -250,6 +293,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -258,6 +302,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -266,6 +311,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -274,6 +320,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -282,6 +329,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="MsqNode-2" function="msq_actor">
@@ -290,6 +338,7 @@
        <argument value="1000000"/>   <!-- stream window size --> 
        <argument value="1000000"/>   <!-- stream buffer size --> 
        <argument value="20"/>   <!-- stream timeout time --> 
+       <argument value="MsqPSNode-0"/>   <!-- connected msq ps actor --> 
    </actor>
 
    <actor host="Sensor-13" function="sensor">

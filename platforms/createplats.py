@@ -36,7 +36,7 @@ def read_config(config_path):
 def write_plat_msq_ps_node(f,id,speed,num_disks,disks_bw):
     f.write("       <host id=\"MsqPSNode-"+str(id)+"\" speed=\""+ speed +"f\"  >\n")
     for i in range(num_disks):
-        f.write("              <disk=\"Disk-"+str(i)+"\" read_bw=\""+disks_bw[0]+"\" write_bw=\""+disks_bw[1]+"\"  />\n")
+        f.write("              <disk id=\"Disk-"+str(i)+"\" read_bw=\""+disks_bw[0]+"\" write_bw=\""+disks_bw[1]+"\"  />\n")
     f.write("       </host>\n")
 
 def write_plat_sensor(f,id,speed):
@@ -46,7 +46,7 @@ def write_plat_msq_node(f,id,speed):
     f.write("       <host id=\"MsqNode-"+str(id)+"\" speed=\""+ speed +"f\"  />\n")
 
 def write_link_ps(f,msq_node_id, msq_ps_id, connection_speed, latency):
-    f.write("\n       <link id=\"" + "MsqNode-"+str(msq_node_id)+"_MsqPSNode-"+str(msq_ps_id)+"\" bandwith=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
+    f.write("\n       <link id=\"" + "MsqNode-"+str(msq_node_id)+"_MsqPSNode-"+str(msq_ps_id)+"\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
 
 def write_link(f,sensor_id,msq_node_id,connection_speed,latency):
     f.write("\n       <link id=\"" + "Sensor-"+ str(sensor_id) + "_MsqNode-" +str(msq_node_id)  + "\" bandwidth=\""+ connection_speed +"\" latency=\""+ latency +"\" />")
@@ -182,6 +182,8 @@ def write_plat_file(config):
         #creates empty profile files, they will be written during the program
         for i in range(num_msq_nodes):
             write_link_ps(f, msq_node_id,msq_ps_node_id,link_ps_speed[msq_node_id],link_latency[msq_node_id])
+            msq_node_id += 1
+        msq_ps_node_id += 1
 
 
     msq_node_id = 0
@@ -226,6 +228,9 @@ def write_plat_file(config):
 def write_argument(f,value,comment):
     f.write("       <argument value=\""+value+"\"/>   <!-- "+ comment +" --> \n")
 
+def write_deploy_msq_ps_actor(f,msq_ps_node_id):
+    f.write("   <actor host=\"MsqPSNode-"+str(msq_ps_node_id)+"\" function=\"msq_actor_ps\">\n")
+
 def write_deploy_sensor(f,sensor_id):
     f.write("   <actor host=\"Sensor-"+str(sensor_id)+"\" function=\"sensor\">\n")
 
@@ -252,10 +257,14 @@ def write_d_plat_file(config):
 
    
     #Lets us keep track of sensors and msq_nodes
-    id_sensor = 0
-    id_msq_node = 0
+    msq_nodes_amount = []
     sensor_amounts = []
     burst_configs = []
+    
+    ps_window_sizes= []
+    ps_buffer_sizes=[]
+    ps_timeout_times=[]
+    
     window_sizes= []
     buffer_sizes=[]
     timeout_times=[]
@@ -268,36 +277,60 @@ def write_d_plat_file(config):
             
         parameter = config[i]
        
+        if parameter[0] == "num_msq_nodes":
+            msq_nodes_amount.append(int(parameter[1]))
+
         if parameter[0] == "num_sensors":
             sensor_amounts.append(int(parameter[1]))
         
         if parameter[0] == "burst_config":
             burst_configs.append(parameter[1])
 
+        if parameter[0] == "ps_stream_window_size":
+            ps_window_sizes.append(parameter[1])
 
+        if parameter[0] == "ps_stream_buffer_size":
+            ps_buffer_sizes.append(parameter[1])
+           
+        if parameter[0] == "ps_stream_timeout_time":
+            ps_timeout_times.append(parameter[1])
+    
         if parameter[0] == "stream_window_size":
             window_sizes.append(parameter[1])
-
 
         if parameter[0] == "stream_buffer_size":
             buffer_sizes.append(parameter[1])
            
-
         if parameter[0] == "stream_timeout_time":
             timeout_times.append(parameter[1])
     
 
 
+    msq_ps_node_id = 0
+    msq_node_id1 = 0
+    #Writing for the MSQ node each of its arguments, arguments include: Burst config id, connected sensors, and information about the streaming window and buffer
+    for num_msq_nodes in msq_nodes_amount: #FOR EACH MSQ_PS_NODE
 
+ 
+        for i in range(num_msq_nodes):
+            write_deploy_msq_ps_actor(f,msq_ps_node_id)
+            write_argument(f,burst_configs[msq_ps_node_id],"comms config id")
+            write_argument(f,"MsqNode-"+str(msq_node_id1),"MsqNode connected actor")
+            write_argument(f,ps_window_sizes[msq_ps_node_id],"stream window size")
+            write_argument(f,ps_buffer_sizes[msq_ps_node_id],"stream buffer size")
+            write_argument(f,ps_timeout_times[msq_ps_node_id],"stream timeout time")
+            f.write("   </actor>\n\n")
+            msq_node_id1 += 1
 
 
     msq_node_id = 0
+    msq_ps_node_id = 0
     sensor_id1 = 0
-    sensor_id2=0
+    sensor_id2 = 0
     #Writing for the MSQ node each of its arguments, arguments include: Burst config id, connected sensors, and information about the streaming window and buffer
     for num_sensors in sensor_amounts: #FOR EACH MSQ_NODE
 
-        
+ 
         for i in range(num_sensors):
             write_deploy_msq_actor(f,msq_node_id)
             write_argument(f,burst_configs[msq_node_id],"burst config id")
@@ -305,9 +338,9 @@ def write_d_plat_file(config):
             write_argument(f,window_sizes[msq_node_id],"stream window size")
             write_argument(f,buffer_sizes[msq_node_id],"stream buffer size")
             write_argument(f,timeout_times[msq_node_id],"stream timeout time")
+            write_argument(f,"MsqPSNode-"+str(msq_ps_node_id),"connected msq ps actor")
             f.write("   </actor>\n\n")
             sensor_id1 += 1
-
 
         
         for i in range(num_sensors):
