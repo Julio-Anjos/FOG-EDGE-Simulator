@@ -112,8 +112,6 @@ void Msq_actor::receive_packages()
     // When a payload = -1 is received, iit ndicates that the current burst ended
     
     
-    
-
     do{
         //Receive a payload
     
@@ -122,10 +120,15 @@ void Msq_actor::receive_packages()
         *current_time = simgrid::s4u::Engine::get_clock();
         
         //Update the buffer with the new amount of data, currently incomplete
-        //update_buffer(*payload,*current_time);
+        update_buffer(*payload,*current_time);
                 
     }
     while(*payload != -1); //Check if all sensors of this node have ended
     
 }
 
+
+void Msq_actor::update_buffer(int payload, int current_time)
+{
+    this->buffer.push(payload);
+}
