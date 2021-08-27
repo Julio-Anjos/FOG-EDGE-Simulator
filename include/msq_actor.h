@@ -19,10 +19,14 @@ class Msq_actor
 
         simgrid::s4u::Mailbox* receive_mailbox; //This node has one mailbox for each sensor to receive their info
 
+        //simgrid::s4u::Mailbox* msq_ps_mailbox;    //Mbox to msq_actor_ps. Currently not being used
+        queue<int> buffer;                          //Buffer with the data received from the sensor
         
         //Interval information
         string burst_config_id;  
         vector<interval> intervals;
+
+
 
         
         int num_intervals; //Number of intervals in the burst_config
@@ -38,7 +42,7 @@ class Msq_actor
         Msq_actor(vector<string> args); //Constructor
         void operator()(void);          //This is the function that will first run when the platform executes
         void receive_packages();        //Receives packages from the connected sensor
-
+        void update_buffer(int payload, int current_time);  //Updates buffer
         Msq_host* fetch_host();         //Gets the host manager class for this actor
 
 
