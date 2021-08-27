@@ -1,31 +1,17 @@
 one_config					//NAME OF PLATFORM FILES THAT WILL BE CREATED MUST BE ON FIRST LINE		
 
 //Now lets define every msq_node and its connected sensors, please keep the ordering
-//Units can be found on the xml simgrid documentation https://simgrid.org/doc/latest/XML_Reference.html?highlight=mbps#link )
+//Units can be found on the xml singrid documentation https://simgrid.org/doc/latest/XML_Reference.html?highlight=mbps#link )
 
 
-//For the first msq_ps_node:
-
-msq_ps_node_speed=1000000000
-num_disks=1
-disks_read_bw=200MBps
-disks_write_bw=80MBps
-
-ps_stream_window_size=10000000
-ps_stream_buffer_size=10000000000
-ps_stream_timeout_time=20
-
-num_msq_nodes=1
-msq_node_speed=1000000000 	        //Execution speed in flops
-msq_node_connection_speed=100MBp
-msq_node_connection_latency=5us
-stream_window_size=10000	//Size in bytes, when this window fills up, the data will be send to be processed, unless warned by the processing unit that it cant. 
+//For the first msq_node:
+msq_node_speed=1000000000 	//Execution speed in flops
+stream_window_size=1000000	//Size in bytes, when this window fills up, the data will be send to be processed, unless warned by the processing unit that it cant. 
 stream_buffer_size=1000000	//Size in bytes, the total buffer size, if the buffer fills up without the data being processed, the sensors are warned to stop sending data.
 stream_timeout_time=20		//Amount of time in seconds before the data in the buffer is send to be processed even if the window size hasn't completly filled up.
-
 num_sensors=1				//Number of sensors connected to this msq_node
 sensors_speed=500000000	    //Execution speed in flops
-connection_speed=100MBps     //Speed connection (link) between sensors and msq_nodes 
+connection_speed=100MBp     //Speed connection (link) between sensors and msq_nodes 
 connection_latency=5us      //Latency for this link
 burst_config=0				//What burst configuration it will use (look at the burst file)
 

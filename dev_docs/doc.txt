@@ -16,13 +16,10 @@ msq_host: This host class is NOT a simgrid class, its used to compile the inform
 
 stream_buffer.cpp: This class is not implemented yet, it is a template for the next step of the simulator, on which the packages sucessfully sent to the msq_node, will go through being processed. This buffer basically will indicate that packages must be sent for processing once a certain amount of time passes or a certain amount of packages has been acumulated. (timeout / window_size)
 
-msq_actor_ps (publish/subscribe):
-
-msq_host_ps (publish/subscribe):
 
 What has yet to be done?
 
-The simulator has been completed until before the point of processing. Right now, it simulates communication between Sensors and receiver nodes (Msq_nodes), giving the user access to a lot of flexibility by defining the intervals (bursts) of packages with a certain quantity,time and size with also support for defining the shape of the graph of num_packages sent x time throug mathematical functions. The next step is for the msq_nodes that receive this data to send it to a processing phase. The data will first go through the stream_buffer, which will divide it in windows of specific size, and then be sent to go through various processing stages, that must be able to be defined by the user. This processing stages will be defined in a very high level, with the user defining things like: stage processing speed, stage communication speed with next stage, possible data storage simulation, % of data go through from one stage to the next one.
+The simulator has been completed until before the point of processing. Right now, it simulates communication between Sensors and receiver nodes (Msq_nodes), giving the user access to alot of flexibility by defining the intervals (bursts) of packages with a certain quantity,time and size with also support for defining the shape of the graph of num_packages sent x time throug mathematical functions. The next step is for the msq_nodes that receive this data to send it to a processing phase. The data will first go through the stream_buffer, which will divide it in windows of specific size, and then be sent to go through various processing stages, that must be able to be defined by the user. This processing stages will be defined in a very high level, with the user defining things like: stage processing speed, stage communication speed with next stage, possible data storage simulation, % of data go through from one stage to the next one.
 
 
 
