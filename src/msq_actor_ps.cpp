@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include "msq_actor_ps.h"
-
 using namespace std;
 
 Msq_actor_ps::Msq_actor_ps(vector<string> args)
