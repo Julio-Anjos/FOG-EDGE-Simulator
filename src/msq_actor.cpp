@@ -130,5 +130,6 @@ void Msq_actor::receive_packages()
 
 void Msq_actor::update_buffer(int payload, int current_time)
 {
-    this->buffer.push(payload);
+    if(payload != -1)
+        this->buffer.push(payload);
 }
