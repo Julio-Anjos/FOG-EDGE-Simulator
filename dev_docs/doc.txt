@@ -14,8 +14,9 @@ msq_actor.cpp: The msq_actor class represensts a process inside of a msq_node (M
 
 msq_host: This host class is NOT a simgrid class, its used to compile the information from all the msq_actors acting on a single host on the simulation. It gathers together all the information regarding things like how many packages were sucessfully sent, when did the bursts started/ended and displays it.
 
-stream_buffer.cpp: This class is not implemented yet, it is a template for the next step of the simulator, on which the packages sucessfully sent to the msq_node, will go through being processed. This buffer basically will indicate that packages must be sent for processing once a certain amount of time passes or a certain amount of packages has been acumulated. (timeout / window_size)
+msq_actor_ps: This class represents the process inside an msq_ps_node, which receives bursts of data from msq_actor and adds to a new buffer. Then, will simulate Apache Kafka for data processing.
 
+stream_buffer.cpp: This class is not implemented yet, it is a template for the next step of the simulator, on which the packages sucessfully sent to the msq_node, will go through being processed. This buffer basically will indicate that packages must be sent for processing once a certain amount of time passes or a certain amount of packages has been acumulated. (timeout / window_size)
 
 What has yet to be done?
 
