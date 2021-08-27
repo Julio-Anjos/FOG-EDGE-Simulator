@@ -31,6 +31,7 @@ int main(int argc, char* argv[])
     //Register sensors and msq_actors
     e.register_actor<Msq_actor>("msq_actor");
     e.register_actor<Sensor>("sensor");
+    //e.register_actor<Msq_actor_ps>("Msq_actor_ps");   //Currently not being used
 
     //Loading platforms
     e.load_platform(argv[1]);
