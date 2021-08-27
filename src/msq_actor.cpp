@@ -4,13 +4,14 @@
 #include "msq_actor.h"
 #include "msq_host.h"
 
+
 using namespace std; 
 
 //Constructor
 Msq_actor::Msq_actor(vector<string> args)
 {
     //Testing arguments (localized on the deploy platform file)
-    xbt_assert(args.size() > 6,"Msq_actor missing arguments.");
+    xbt_assert(args.size() > 5,"Msq_actor missing arguments.");
 
     //Getting host variables
     host_name = simgrid::s4u::this_actor::get_host()->get_name();
@@ -21,18 +22,20 @@ Msq_actor::Msq_actor(vector<string> args)
     num_intervals = intervals.size(); //numbers of intervals
     
 
-    //This actor will receive messages from a single sensor and send to a stream_buffer
+    //This actor will receive messages from a single sensor
     connected_sensor_name = args[2];
     receive_mailbox = simgrid::s4u::Mailbox::by_name(host_name + "_" + connected_sensor_name);  
+   
     
-    connected_msq_ps_name = args[6];
-    msq_ps_mailbox = simgrid::s4u::Mailbox::by_name(connected_msq_ps_name + "_" + host_name);
-
+    
     //Streaming arguments, currently not being used (these are used when creating the msq_host class)
-    window_size = stoi(args[3]);
-    buffer_size = stoi(args[4]);
-    stream_timeout = stof(args[5]);
+    int window_size = stoi(args[3]);
+    int buffer_size = stoi(args[4]);
+    float stream_timeout = stof(args[5]);
     
+    
+
+
     //Getting msq_host that this actor acts on, he is used to store compile info on all actors
     host = fetch_host(); //gets the host that will manage this actor
 }
@@ -54,6 +57,8 @@ Msq_host* Msq_actor::fetch_host(){
         new_host.add_sensor(connected_sensor_name);
         msq_host_map.insert(make_pair(host_name, new_host));
         
+
+
     }
     actor_id = msq_host_map[host_name].get_sensor_list_size() -1 ;
 
@@ -69,7 +74,6 @@ void Msq_actor::operator()(void)
 {
     
     int interval_sent_packages=0;
-    
     //Receive the packages from the sensor   
     for(int burst_counter=0;burst_counter<num_intervals;burst_counter++){
         host->inform_burst_start(burst_counter,simgrid::s4u::Engine::get_clock());
@@ -81,26 +85,15 @@ void Msq_actor::operator()(void)
         //Receive the packages that are being sent from the sensors
         for(int i =0;i<num_pkg_divisions;i++){
             receive_packages();
-
         }
         
         //For this specific interval, get the amount of packages correctly sent
         int *temp  = static_cast<int*>(receive_mailbox->get());
         interval_sent_packages =*temp;
-        
         host->inform_burst_result(burst_counter, interval_sent_packages, simgrid::s4u::Engine::get_clock());
 
     }
     host->inform_all_bursts_end();
-
-    //Teste comm
-    cout << msq_ps_mailbox->get_name() << endl;
-    msq_ps_mailbox->put(new int(5), 0);
-/*
-    Função para verificar se ainda restam pacotes a serem enviados após encerrada a comm com os sensores    
-*/
-
-
 }
 
 //Keeps receiving data untill told to stop by the sensor
@@ -110,46 +103,29 @@ void Msq_actor::receive_packages()
     
     double* current_time = new double();
     
+    
     int complete_bursts=0;
 
     // payload = -1 MEANS THE COMMUNICATION MUST STOP
     // Otherwise, payload is the number of bytes that were transmitted
     int *payload;  
-    // When a payload = -1 is received, it indicates that the current burst ended
+    // When a payload = -1 is received, iit ndicates that the current burst ended
     
     
+    
+
     do{
-        //Receive a payload    
+        //Receive a payload
+    
         payload = static_cast<int*>(receive_mailbox->get()); //Receive data from sensor
         
         *current_time = simgrid::s4u::Engine::get_clock();
-                   
-        //Update the buffer with the new amount of data, currently incomplete    
-        update_buffer(*payload,*current_time);
         
-        if(*payload != -1){
-            
-            //Updates the stream_buffer. He must inform when the window is full and ready to be send
-            string time_to_send = host->streaming_buffer->add(*payload, *current_time);
-            cout << time_to_send << endl;
-
-            //Test         
-            if(time_to_send == "send")
-                cout << "Sending packages "<< buffer.size() << endl;
-        }
-
-        /* Provavelmente sera necessario exclusão mútua ao atualizar o buffer */ 
-    
+        //Update the buffer with the new amount of data, currently incomplete
+        //update_buffer(*payload,*current_time);
+                
     }
     while(*payload != -1); //Check if all sensors of this node have ended
     
-}
-
-
-void Msq_actor::update_buffer(int payload, double current_time) //current_time não usado
-{
-    //Update if is not communication ends flag (-1)
-    if(payload != -1)
-        this->buffer.push(payload);         //This não é necessário (i guess)
 }
 

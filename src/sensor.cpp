@@ -26,7 +26,7 @@ Sensor::Sensor(vector<string> args)
     intervals =  burst_config.get_intervals(burst_config_id);
     
     connected_msq_name = args[2];
-    msq_mailbox = simgrid::s4u::Mailbox::by_name(connected_msq_name + "_" + host_name);
+    msq_mailbox = simgrid::s4u::Mailbox::by_name( connected_msq_name + "_" +host_name);
 
     //Information used to define how many packages this node will send
     num_sensors = stoi(args[3]);
@@ -116,13 +116,15 @@ void Sensor::operator()(void)
 //Equally divides the time interval from start to end, sends the packages
 int Sensor::send_packages(float end_time, int num_packages, int package_size)
 {
-
+    
     //Flag send when the communication must stop
     int *stop_flag = new int(-1);
-    
+   
+   
     double* current_time = new double();
     double* start_time = new double();
   
+
     *start_time = simgrid::s4u::Engine::get_clock();
     int counter = 0;
 
@@ -149,6 +151,7 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
     }
     
     
+
     //Checking for missing packages in this division
     if(counter < num_packages ){
         logfile << host_name << " COULD NOT SEND " << num_packages-counter << " PACKAGES IN TIME." << endl;  
@@ -159,6 +162,11 @@ int Sensor::send_packages(float end_time, int num_packages, int package_size)
 
     simgrid::s4u::this_actor::sleep_until(end_time);  //Making sure a new interval doesn't start before the correct time
     
+    
+    
+    
+    
+
     return counter;
 }
 
